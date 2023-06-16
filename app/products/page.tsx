@@ -1,9 +1,7 @@
-export default function Home() {
+export default function Products() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-6xl items-center justify-between lg:flex">
-        Products
-      </div>
+    <main className="flex min-h-screen flex-col">
+      <div className="font-semibold">Page: Products</div>
     </main>
   )
 }
