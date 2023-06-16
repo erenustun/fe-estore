@@ -1,9 +1,5 @@
 import Image from 'next/image'
-import {
-  BookmarkIcon,
-  ShoppingCartIcon,
-  UserCircleIcon,
-} from '@heroicons/react/24/solid'
+import { BookmarkIcon, ShoppingCartIcon } from '@heroicons/react/24/solid'
 import { NavLink } from '@app/components/NavLink'
 import Link from 'next/link'
 
@@ -34,9 +30,15 @@ export const Header = () => {
           <div className="flex items-center justify-center bg-slate-400 rounded-full h-8 w-8">
             <ShoppingCartIcon className="h-6 text-gray-700" />
           </div>
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center space-x-2 cursor-pointer">
             <div className="flex items-center justify-center bg-slate-400 rounded-full h-8 w-8">
-              <UserCircleIcon className="h-6 text-gray-700" />
+              <Image
+                src="https://i.pravatar.cc/301"
+                alt="user avatar"
+                width="32"
+                height="32"
+                className="bg-cover bg-center rounded-full"
+              />
             </div>
             <div className="hidden md:flex flex-col">
               <span className="text-sm text-slate-400">Hi, Welcome!</span>
