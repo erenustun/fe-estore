@@ -29,6 +29,12 @@
       ],
       "@app/*": [
         "./app/*"
+      ],
+      "@components/*": [
+        "./app/_components/*"
+      ],
+      "@lib/*": [
+        "./app/_lib/*"
       ]
     }
   },

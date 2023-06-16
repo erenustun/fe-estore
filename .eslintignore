@@ -1,6 +1,7 @@
 /.idea
 /node_modules
 /public
+/.next
 *.json
 *.js
 *.md
