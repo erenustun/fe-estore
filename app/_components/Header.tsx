@@ -1,8 +1,9 @@
 import Image from 'next/image'
-import { BookmarkIcon, ShoppingCartIcon } from '@heroicons/react/24/solid'
+import { BookmarkIcon, ShoppingCartIcon } from '@heroicons/react/24/outline'
 import { NavLink } from '@components/NavLink'
 import Link from 'next/link'
 import tw from 'tailwind-styled-components'
+import { Badge } from '@components/Badge'
 
 const HeaderTW = tw.div`
   flex
@@ -32,32 +33,28 @@ export const Header = () => {
         <NavTW>
           <NavLink label="Home" href="/" />
           <NavLink label="Products" href="/products" />
-          <NavLink label="Categories" href="/categories" dropDown />
-          <NavLink label="Brands" href="/brands/Apple" dropDown />
+          <NavLink label="Categories" href="/categories" />
+          <NavLink label="Brands" href="/brands/Apple" />
         </NavTW>
       </div>
       <div className="flex items-center">
-        <section className="flex space-x-6 items-center">
-          <div className="flex items-center justify-center bg-slate-400 rounded-full h-8 w-8">
-            <BookmarkIcon className="h-6 text-gray-700" />
+        <section className="flex space-x-5 items-center">
+          <div className="relative cursor-pointer">
+            <BookmarkIcon className="h-6 text-slate-50 hover:text-blue-300 active:text-blue-500" />
+            <Badge>9</Badge>
           </div>
-          <div className="flex items-center justify-center bg-slate-400 rounded-full h-8 w-8">
-            <ShoppingCartIcon className="h-6 text-gray-700" />
+          <div className="relative cursor-pointer">
+            <ShoppingCartIcon className="h-6 text-slate-50 hover:text-blue-300 active:text-blue-500" />
+            <Badge>2</Badge>
           </div>
-          <div className="flex items-center space-x-2 cursor-pointer">
-            <div className="flex items-center justify-center bg-slate-400 rounded-full h-8 w-8">
-              <Image
-                src="https://i.pravatar.cc/301"
-                alt="user avatar"
-                width="32"
-                height="32"
-                className="bg-cover bg-center rounded-full"
-              />
-            </div>
-            <div className="hidden md:flex flex-col">
-              <span className="text-sm text-slate-400">Hi, Welcome!</span>
-              <span className="text-base font-medium">Jane Doe</span>
-            </div>
+          <div className="flex items-center justify-center rounded-full h-7 w-7 cursor-pointer">
+            <Image
+              src="https://i.pravatar.cc/301"
+              alt="user avatar"
+              width="32"
+              height="32"
+              className="bg-cover bg-center rounded-full"
+            />
           </div>
         </section>
       </div>
