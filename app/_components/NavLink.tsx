@@ -1,17 +1,35 @@
+'use client'
 import Link from 'next/link'
-import { ChevronDownIcon } from '@heroicons/react/24/solid'
 import { ReactNode } from 'react'
+import tw from 'tailwind-styled-components'
+import { Url } from 'url'
 
 interface NavLinkProps {
   label: string | ReactNode
-  href: string
-  dropDown?: boolean
+  href: Url | string
 }
 
-export const NavLink = ({ label, href, dropDown = false }: NavLinkProps) => {
+const LinkWrapper = tw.span`
+  flex
+  items-center
+  text-slate-50
+  hover:text-blue-300
+  active:text-blue-500
+  transition
+  ease-in
+  duration-200
+`
+
+const LinkLabel = tw.p`
+  font-semibold
+`
+
+export const NavLink = ({ label, href }: NavLinkProps) => {
   return (
-    <Link href={href} className="flex items-center font-semibold">
-      {label} {dropDown && <ChevronDownIcon className="h-5 ml-1" />}
+    <Link href={href} className="flex items-center cursor-pointer select-none">
+      <LinkWrapper>
+        <LinkLabel>{label}</LinkLabel>
+      </LinkWrapper>
     </Link>
   )
 }
