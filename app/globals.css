@@ -25,3 +25,17 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown-content {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  @apply absolute left-0 z-10 hidden w-full h-72 mt-6 bg-slate-900;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}

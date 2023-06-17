@@ -11,6 +11,7 @@
     "prettier": "prettier --write ."
   },
   "dependencies": {
+    "@heroicons/react": "^2.0.18",
     "@types/node": "20.3.1",
     "@types/react": "18.2.12",
     "@types/react-dom": "18.2.5",
@@ -21,6 +22,7 @@
     "postcss": "8.4.24",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "sass": "^1.63.4",
     "styled-components": "^6.0.0-rc.3",
     "tailwindcss": "3.3.2",
     "typescript": "5.1.3"

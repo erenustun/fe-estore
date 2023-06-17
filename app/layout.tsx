@@ -1,8 +1,8 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
 import React, { ReactNode } from 'react'
-import Link from 'next/link'
 import StyledComponentsRegistry from '@app/_lib/registry'
+import { Header } from '@components/Header'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -14,12 +14,14 @@ export const metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body
+        className={
+          (inter.className,
+          'w-full max-w-7xl mx-auto px-1 md:px-2 2xl:px-0 bg-slate-950')
+        }
+      >
         <StyledComponentsRegistry>
-          <nav>
-            <Link href="/">Home</Link>
-            <Link href="/products">Products</Link>
-          </nav>
+          <Header />
           {children}
         </StyledComponentsRegistry>
       </body>
