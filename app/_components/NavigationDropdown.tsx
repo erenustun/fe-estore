@@ -1,0 +1,96 @@
+'use client'
+import { ChevronDownIcon } from '@heroicons/react/24/solid'
+import tw from 'tailwind-styled-components'
+import { Url } from 'url'
+import Image from 'next/image'
+import Link from 'next/link'
+
+interface DropdownListProps {
+  href: Url | string
+  label: string
+  image?: string
+}
+
+interface DropdownProps {
+  label: string
+  list?: DropdownListProps[]
+}
+
+const DropdownButton = tw.span`
+  flex
+  items-center
+  text-slate-50
+  hover:text-blue-300
+  active:text-blue-500
+  transition
+  ease-in
+  duration-200
+`
+
+const Label = tw.p`
+  font-semibold
+`
+
+const Item = tw.div`
+  flex
+  flex-col
+  items-center
+  justify-center
+  w-full
+  h-full
+  hover:bg-slate-800
+  cursor-pointer
+  relative
+`
+
+const List = tw.div`
+  max-w-6xl
+  mx-auto
+  flex
+  items-center
+  justify-center
+  h-full
+`
+
+const ItemLabel = tw.div`
+  mt-2
+  text-lg
+  capitalize
+  absolute
+  bottom-0
+  mb-4
+  font-light
+  tracking-wide
+`
+
+export const NavigationDropdown = ({ label, list = [] }: DropdownProps) => (
+  <div className="dropdown z-50 cursor-pointer py-6">
+    <DropdownButton>
+      <Label>{label}</Label>
+      <ChevronDownIcon className="h-5 ml-1" />
+    </DropdownButton>
+    <div className="dropdown-content">
+      <List>
+        {list?.map((item, i) => {
+          return (
+            <Link
+              href={{ pathname: encodeURI(`/${item.href as string}`) }}
+              className="h-full w-1/4"
+              key={i}
+            >
+              <Item>
+                <Image
+                  src={`/images/${encodeURI(item.href as string)}.png`}
+                  alt={`${item.label} image`}
+                  width="150"
+                  height="0"
+                />
+                <ItemLabel>{item.label}</ItemLabel>
+              </Item>
+            </Link>
+          )
+        })}
+      </List>
+    </div>
+  </div>
+)

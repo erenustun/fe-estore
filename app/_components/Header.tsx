@@ -4,6 +4,7 @@ import { NavLink } from '@components/NavLink'
 import Link from 'next/link'
 import tw from 'tailwind-styled-components'
 import { Badge } from '@components/Badge'
+import { NavigationDropdown } from '@components/NavigationDropdown'
 
 const HeaderTW = tw.div`
   flex
@@ -33,8 +34,22 @@ export const Header = () => {
         <NavTW>
           <NavLink label="Home" href="/" />
           <NavLink label="Products" href="/products" />
-          <NavLink label="Categories" href="/categories" />
-          <NavLink label="Brands" href="/brands/Apple" />
+          <NavigationDropdown
+            label="Categories"
+            list={[
+              { label: 'Laptops', href: 'products/category/laptop' },
+              { label: 'Mobile Phones', href: 'products/category/smartphone' },
+            ]}
+          />
+          <NavigationDropdown
+            label="Brands"
+            list={[
+              { label: 'Apple', href: 'products/brand/apple' },
+              { label: 'Samsung', href: 'products/brand/samsung' },
+              { label: 'Xiaomi', href: 'products/brand/xiaomi' },
+              { label: 'OnePlus', href: 'products/brand/oneplus' },
+            ]}
+          />
         </NavTW>
       </div>
       <div className="flex items-center">
