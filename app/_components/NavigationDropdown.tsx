@@ -4,6 +4,7 @@ import tw from 'tailwind-styled-components'
 import { Url } from 'url'
 import Image from 'next/image'
 import Link from 'next/link'
+import { ReactNode } from 'react'
 
 interface DropdownListProps {
   href: Url | string
@@ -14,6 +15,7 @@ interface DropdownListProps {
 interface DropdownProps {
   label: string
   list?: DropdownListProps[]
+  icon?: ReactNode | string | null
 }
 
 const DropdownButton = tw.span`
@@ -21,7 +23,6 @@ const DropdownButton = tw.span`
   items-center
   text-slate-50
   hover:text-blue-300
-  active:text-blue-500
   transition
   ease-in
   duration-200
@@ -29,6 +30,9 @@ const DropdownButton = tw.span`
 
 const Label = tw.p`
   font-semibold
+  select-none
+  flex
+  items-center
 `
 
 const Item = tw.div`
@@ -63,10 +67,17 @@ const ItemLabel = tw.div`
   tracking-wide
 `
 
-export const NavigationDropdown = ({ label, list = [] }: DropdownProps) => (
+export const NavigationDropdown = ({
+  label,
+  list = [],
+  icon,
+}: DropdownProps) => (
   <div className="dropdown z-50 cursor-pointer py-6">
     <DropdownButton>
-      <Label>{label}</Label>
+      <Label>
+        {icon && icon}
+        {label}
+      </Label>
       <ChevronDownIcon className="h-5 ml-1" />
     </DropdownButton>
     <div className="dropdown-content">

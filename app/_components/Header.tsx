@@ -1,5 +1,12 @@
 import Image from 'next/image'
-import { BookmarkIcon, ShoppingCartIcon } from '@heroicons/react/24/outline'
+import {
+  BookmarkIcon,
+  ShoppingCartIcon,
+  TagIcon,
+  HashtagIcon,
+  BuildingStorefrontIcon,
+  HomeIcon,
+} from '@heroicons/react/24/outline'
 import { NavLink } from '@components/NavLink'
 import Link from 'next/link'
 import tw from 'tailwind-styled-components'
@@ -16,13 +23,15 @@ const HeaderTW = tw.div`
 const NavTW = tw.div`
   hidden
   md:flex
-  space-x-8
+  space-x-10
+  mr-10
+  
 `
 
 export const Header = () => {
   return (
     <HeaderTW>
-      <div className="flex items-center justify-between w-3/5">
+      <div className="flex items-center justify-between w-4/6">
         <Link href="/">
           <Image
             src="/images/web_store_hub_logo_info-blue.png"
@@ -32,14 +41,23 @@ export const Header = () => {
           />
         </Link>
         <NavTW>
-          <NavLink label="Home" href="/" />
-          <NavLink label="Products" href="/products" />
+          <NavLink
+            label="Home"
+            href="/products"
+            icon={<HomeIcon className="h-4 mr-1" />}
+          />
+          <NavLink
+            label="Shop"
+            href="/products"
+            icon={<BuildingStorefrontIcon className="h-4 mr-1" />}
+          />
           <NavigationDropdown
             label="Categories"
             list={[
               { label: 'Laptops', href: 'products/category/laptop' },
               { label: 'Mobile Phones', href: 'products/category/smartphone' },
             ]}
+            icon={<TagIcon className="h-4 mr-1" />}
           />
           <NavigationDropdown
             label="Brands"
@@ -49,6 +67,7 @@ export const Header = () => {
               { label: 'Xiaomi', href: 'products/brand/xiaomi' },
               { label: 'OnePlus', href: 'products/brand/oneplus' },
             ]}
+            icon={<HashtagIcon className="h-4 mr-1" />}
           />
         </NavTW>
       </div>
