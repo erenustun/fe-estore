@@ -14,14 +14,15 @@ export const metadata = {
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <StyledComponentsRegistry>
-      <main
-        className={
-          (inter.className,
-          'w-full max-w-7xl mx-auto px-1 md:px-2 2xl:px-0 bg-slate-950')
-        }
-      >
-        <Header />
-        <Component {...pageProps} />
+      <main className="bg-slate-950">
+        <section
+          className={
+            (inter.className, 'w-full max-w-7xl mx-auto px-1 md:px-2 2xl:px-0')
+          }
+        >
+          <Header />
+          <Component {...pageProps} />
+        </section>
       </main>
     </StyledComponentsRegistry>
   )
