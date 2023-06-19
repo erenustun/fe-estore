@@ -1,4 +1,3 @@
-'use client'
 import { ChevronDownIcon } from '@heroicons/react/24/solid'
 import tw from 'tailwind-styled-components'
 import { Url } from 'url'
