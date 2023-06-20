@@ -1,4 +1,3 @@
-'use client'
 import Link from 'next/link'
 import { ReactNode } from 'react'
 import tw from 'tailwind-styled-components'
@@ -30,7 +29,11 @@ const LinkLabel = tw.p`
 
 export const NavLink = ({ label, href, icon }: NavLinkProps) => {
   return (
-    <Link href={href} className="flex items-center cursor-pointer select-none">
+    <Link
+      href={href}
+      prefetch
+      className="flex items-center cursor-pointer select-none"
+    >
       <LinkWrapper>
         <LinkLabel>
           {icon && icon} {label}

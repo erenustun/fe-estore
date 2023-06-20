@@ -1,3 +1,6 @@
-export default function Brand({ params }: { params: { brand: string } }) {
-  return <div className="mt-72">Brand: {params.brand}</div>
+import { useRouter } from 'next/router'
+
+export default function Brand() {
+  const router = useRouter()
+  return <div className="mt-72">Brand: {router.query.brand}</div>
 }

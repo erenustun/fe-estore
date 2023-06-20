@@ -3,6 +3,10 @@ import { Inter } from 'next/font/google'
 import type { AppProps } from 'next/app'
 import { Header } from '@components/Header'
 import StyledComponentsRegistry from '@/src/lib/registry'
+import { ApolloProvider } from '@apollo/client'
+import { apolloClient } from '@lib/apollo-client.config'
+import { Layout } from '@components/Layout'
+import { hasHydrated } from '@util/has-hydrated.hook'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -12,18 +16,16 @@ export const metadata = {
 }
 
 export default function App({ Component, pageProps }: AppProps) {
-  return (
+  const hasMounted = hasHydrated()
+
+  return hasMounted ? (
     <StyledComponentsRegistry>
-      <main className="bg-slate-950">
-        <section
-          className={
-            (inter.className, 'w-full max-w-7xl mx-auto px-1 md:px-2 2xl:px-0')
-          }
-        >
+      <ApolloProvider client={apolloClient}>
+        <Layout className={inter.className}>
           <Header />
           <Component {...pageProps} />
-        </section>
-      </main>
+        </Layout>
+      </ApolloProvider>
     </StyledComponentsRegistry>
-  )
+  ) : null
 }
