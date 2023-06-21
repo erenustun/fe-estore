@@ -7,7 +7,7 @@ import { Container } from '@components/Container'
 
 export const SignInView = () => {
   const router = useRouter()
-  const [cookies, setCookie] = useCookies(['jwt'])
+  const [cookies] = useCookies(['jwt'])
 
   useEffect(() => {
     if (cookies['jwt']) router.push('/')
