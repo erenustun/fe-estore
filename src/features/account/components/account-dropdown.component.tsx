@@ -17,13 +17,13 @@ export const AccountDropdownComponent = () => {
     <div className="relative">
       <AccountIcon isVisible={isVisible} onClick={toggleDropdown} />
       <animated.div style={dropdownAppears} className="-ml-20">
-        {isVisible ? <RadioContent /> : null}
+        {isVisible ? <DropdownContent /> : null}
       </animated.div>
     </div>
   )
 }
 
-const RadioContent = () => {
+const DropdownContent = () => {
   const router = useRouter()
   const [cookies, setCookie, removeCookie] = useCookies(['jwt'])
 

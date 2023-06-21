@@ -1,4 +1,3 @@
-import { AccountIcon } from '@src/features/account/components/account-icon.component'
 import Link from 'next/link'
 import { Button } from '@components/Button'
 import { useCookies } from 'react-cookie'
