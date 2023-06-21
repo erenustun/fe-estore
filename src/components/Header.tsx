@@ -12,12 +12,12 @@ import Link from 'next/link'
 import tw from 'tailwind-styled-components'
 import { Badge } from '@components/Badge'
 import { NavigationDropdown } from '@components/NavigationDropdown'
+import { Container } from '@components/Container'
+import { HeaderAuthConditionComponent } from '@src/features/auth/components/header-auth-condition.component'
 
 const HeaderTW = tw.div`
-  flex
-  h-20
-  items-center
-  justify-between
+  h-18
+  bg-slate-900
 `
 
 const NavTW = tw.div`
@@ -25,52 +25,52 @@ const NavTW = tw.div`
   md:flex
   space-x-10
   mr-10
-  
 `
 
-export const Header = () => {
-  return (
-    <HeaderTW>
-      <div className="flex items-center justify-between w-4/6">
-        <Link href="/">
-          <Image
-            src="/images/web_store_hub_logo_info-blue.png"
-            alt="e-commerce store logo"
-            width="250"
-            height="0"
-          />
-        </Link>
-        <NavTW>
-          <NavLink
-            label="Home"
-            href="/products"
-            icon={<HomeIcon className="h-4 mr-1" />}
-          />
-          <NavLink
-            label="Shop"
-            href="/products"
-            icon={<BuildingStorefrontIcon className="h-4 mr-1" />}
-          />
-          <NavigationDropdown
-            label="Categories"
-            list={[
-              { label: 'Laptops', href: 'products/category/laptop' },
-              { label: 'Mobile Phones', href: 'products/category/smartphone' },
-            ]}
-            icon={<TagIcon className="h-4 mr-1" />}
-          />
-          <NavigationDropdown
-            label="Brands"
-            list={[
-              { label: 'Apple', href: 'products/brand/apple' },
-              { label: 'Samsung', href: 'products/brand/samsung' },
-              { label: 'Xiaomi', href: 'products/brand/xiaomi' },
-              { label: 'OnePlus', href: 'products/brand/oneplus' },
-            ]}
-            icon={<HashtagIcon className="h-4 mr-1" />}
-          />
-        </NavTW>
-      </div>
+export const Header = () => (
+  <HeaderTW>
+    <Container className="flex flex-row items-center justify-between">
+      <Link href="/">
+        <Image
+          src="/images/web_store_hub_logo_info-blue.png"
+          alt="e-commerce store logo"
+          width="250"
+          height="0"
+        />
+      </Link>
+      <NavTW>
+        <NavLink
+          label="Home"
+          href="/products"
+          icon={<HomeIcon className="h-4 mr-1" />}
+        />
+        <NavLink
+          label="Shop"
+          href="/products"
+          icon={<BuildingStorefrontIcon className="h-4 mr-1" />}
+        />
+        <NavigationDropdown
+          label="Categories"
+          list={[
+            { label: 'Laptops', href: 'products/category/laptop' },
+            {
+              label: 'Mobile Phones',
+              href: 'products/category/smartphone',
+            },
+          ]}
+          icon={<TagIcon className="h-4 mr-1" />}
+        />
+        <NavigationDropdown
+          label="Brands"
+          list={[
+            { label: 'Apple', href: 'products/brand/apple' },
+            { label: 'Samsung', href: 'products/brand/samsung' },
+            { label: 'Xiaomi', href: 'products/brand/xiaomi' },
+            { label: 'OnePlus', href: 'products/brand/oneplus' },
+          ]}
+          icon={<HashtagIcon className="h-4 mr-1" />}
+        />
+      </NavTW>
       <div className="flex items-center">
         <section className="flex space-x-5 items-center">
           <div className="relative cursor-pointer">
@@ -81,17 +81,9 @@ export const Header = () => {
             <ShoppingCartIcon className="h-6 text-slate-50 hover:text-blue-300 active:text-blue-500" />
             <Badge>2</Badge>
           </div>
-          <div className="flex items-center justify-center rounded-full h-7 w-7 cursor-pointer">
-            <Image
-              src="https://i.pravatar.cc/301"
-              alt="user avatar"
-              width="32"
-              height="32"
-              className="bg-cover bg-center rounded-full"
-            />
-          </div>
+          <HeaderAuthConditionComponent />
         </section>
       </div>
-    </HeaderTW>
-  )
-}
+    </Container>
+  </HeaderTW>
+)

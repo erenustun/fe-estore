@@ -1,10 +1,24 @@
 import tw from 'tailwind-styled-components'
 
-export const Container = tw.span`
+interface ContainerProps {
+  fluid?: boolean
+}
+
+const Container = tw.span<ContainerProps>`
   w-full
-  max-w-7xl
   mx-auto
+  flex
+  flex-col
+  justify-center
+  items-center
   px-1
   md:px-2
   2xl:px-0
+  ${p => (!p.fluid ? 'max-w-7xl' : 'w-full')}
 `
+
+Container.defaultProps = {
+  fluid: false,
+}
+
+export { Container }
