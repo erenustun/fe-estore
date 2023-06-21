@@ -8,6 +8,7 @@ import { apolloClient } from '@lib/apollo-client.config'
 import { Layout } from '@components/Layout'
 import { hasHydrated } from '@util/has-hydrated.hook'
 import { CookiesProvider } from 'react-cookie'
+import { Footer } from '@components/Footer'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -21,6 +22,7 @@ export default function App({ Component, pageProps }: AppProps) {
           <Layout className={inter.className}>
             <Header />
             <Component {...pageProps} />
+            <Footer />
           </Layout>
         </ApolloProvider>
       </StyledComponentsRegistry>
