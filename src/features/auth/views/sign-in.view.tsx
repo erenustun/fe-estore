@@ -1,5 +1,4 @@
 import { SignInComponent } from '@src/features/auth/components/sign-in.component'
-import { useRouter } from 'next/router'
 import { useCookies } from 'react-cookie'
 import { useEffect } from 'react'
 import Image from 'next/image'
