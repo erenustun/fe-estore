@@ -6,17 +6,13 @@ import { AccountDropdownComponent } from '@src/features/account/components/accou
 export const HeaderAuthConditionComponent = () => {
   const [cookies] = useCookies(['jwt'])
 
-  if (cookies['jwt']) {
-    return (
-      <div className="relative">
-        <AccountDropdownComponent />
-      </div>
-    )
-  } else {
-    return (
-      <Link href={'/auth/sign-in'}>
-        <Button $style="info">Sign in</Button>
-      </Link>
-    )
-  }
+  return cookies['jwt'] ? (
+    <div className="relative">
+      <AccountDropdownComponent />
+    </div>
+  ) : (
+    <Link href={'/auth/sign-in'}>
+      <Button $style="info">Sign in</Button>
+    </Link>
+  )
 }

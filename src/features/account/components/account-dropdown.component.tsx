@@ -1,8 +1,9 @@
-import { useState } from 'react'
+import { FC, useState } from 'react'
 import { useSpring, animated } from '@react-spring/web'
 import { AccountIcon } from '@src/features/account/components/account-icon.component'
 import { useCookies } from 'react-cookie'
 import { useRouter } from 'next/router'
+import { pushUri } from '@util/router.util'
 
 export const AccountDropdownComponent = () => {
   const [isVisible, setVisibility] = useState(false)
@@ -23,9 +24,14 @@ export const AccountDropdownComponent = () => {
   )
 }
 
-const DropdownContent = () => {
-  const router = useRouter()
-  const [cookies, setCookie, removeCookie] = useCookies(['jwt'])
+const DropdownContent: FC = () => {
+  const [, , removeCookie] = useCookies(['jwt'])
+
+  const signOut = async () => {
+    removeCookie('jwt', { path: '/' })
+    if (localStorage) localStorage.removeItem('jwt')
+    await pushUri('/', '/home')
+  }
 
   return (
     <div className="absolute flex flex-col mt-5 w-28 bg-blue-900 rounded">
@@ -38,11 +44,7 @@ const DropdownContent = () => {
         </li>
         <li
           className="w-full px-5 py-2 rounded-b hover:bg-blue-950 select-none cursor-pointer transition duration-200 ease-in"
-          onClick={() => {
-            removeCookie('jwt')
-            localStorage.removeItem('jwt')
-            router.push('/products')
-          }}
+          onClick={signOut}
         >
           Sign out
         </li>
