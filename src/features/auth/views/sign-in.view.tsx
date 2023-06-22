@@ -4,13 +4,13 @@ import { useCookies } from 'react-cookie'
 import { useEffect } from 'react'
 import Image from 'next/image'
 import { Container } from '@components/Container'
+import { pushUri } from '@util/router.util'
 
 export const SignInView = () => {
-  const router = useRouter()
   const [cookies] = useCookies(['jwt'])
 
   useEffect(() => {
-    if (cookies['jwt']) router.push('/')
+    if (cookies['jwt']) pushUri('/', '/home')
   }, [cookies])
 
   return (

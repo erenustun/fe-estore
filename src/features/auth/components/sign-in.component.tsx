@@ -1,36 +1,34 @@
 import { Input } from '@components/Form/Input'
 import { AtSymbolIcon, LockClosedIcon } from '@heroicons/react/24/solid'
-import { z } from 'zod'
+import * as Yup from 'yup'
 import {
   VALIDATION_EMAIL,
   VALIDATION_PASSWORD,
 } from '@src/features/auth/constant'
-import { zodResolver } from '@hookform/resolvers/zod'
+import { yupResolver } from '@hookform/resolvers/yup'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { ApolloError, useMutation } from '@apollo/client'
 import { useCookies } from 'react-cookie'
 import SignInMutation from '@src/features/auth/graphql/sign-in.graphql'
-import { useRouter } from 'next/router'
+import { pushUri } from '@util/router.util'
 
-type FormInputs = {
+type LoginFormInputs = {
+  apiErrors?: any
   email: string
   password: string
-  apiErrors: any
 }
 
 export const SignInComponent = () => {
-  const router = useRouter()
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [_, setCookie] = useCookies(['jwt'])
+  const [, setCookie] = useCookies(['jwt'])
 
-  const validationSchema = z.object({
+  const validationSchema = Yup.object().shape({
     ...VALIDATION_EMAIL,
     ...VALIDATION_PASSWORD,
   })
 
   const formOptions = {
-    resolver: zodResolver(validationSchema),
     name: 'auth.sign-in',
+    resolver: yupResolver(validationSchema),
     shouldUnregister: true,
   }
 
@@ -41,9 +39,9 @@ export const SignInComponent = () => {
     reset,
     formState: { errors },
     unregister,
-  } = useForm<FormInputs>(formOptions)
+  } = useForm<LoginFormInputs>(formOptions)
 
-  const onSubmit: SubmitHandler<FormInputs> = data => {
+  const onSubmit: SubmitHandler<LoginFormInputs> = data => {
     const { email, password } = data
     signIn({
       variables: {
@@ -53,9 +51,9 @@ export const SignInComponent = () => {
         },
       },
     })
-      .then(() => {
+      .then(async () => {
         reset()
-        router.push('/products')
+        await pushUri('/', '/home')
       })
       .catch((error: ApolloError) =>
         setError('apiErrors', { message: error.message })
@@ -63,8 +61,12 @@ export const SignInComponent = () => {
   }
 
   const [signIn] = useMutation(SignInMutation, {
-    onCompleted: data => setCookie('jwt', data.signIn.accessToken),
+    onCompleted: data => {
+      if (localStorage) localStorage.setItem('jwt', data?.signIn?.accessToken)
+      setCookie('jwt', data?.signIn?.accessToken, { path: '/' })
+    },
   })
+
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
@@ -110,7 +112,7 @@ export const SignInComponent = () => {
           onClick={() => {
             unregister('email')
             unregister('password')
-            router.push('/auth/sign-up')
+            pushUri('/auth/sign-up')
           }}
           className={
             'text-sm self-start text-slate-700 dark:text-slate-200 dark:hover:text-slate-50 dark:active:text-slate-400 hover:text-slate-300 active:text-blue-700 hover:underline cursor-pointer'
@@ -119,9 +121,6 @@ export const SignInComponent = () => {
           No account yet? Create account now.
         </a>
       </div>
-      {/*<Button $style="info" className="w-24 self-end">
-            Sign in
-          </Button>*/}
     </form>
   )
 }

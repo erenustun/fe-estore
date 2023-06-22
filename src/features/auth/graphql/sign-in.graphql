@@ -4,7 +4,8 @@ mutation SignIn($data: LoginUserInput!) {
       firstName
       lastName
       email
-      username
+      phone
+      avatar
     }
     accessToken
   }
