@@ -45,7 +45,7 @@ const DropdownItem = tw.ul`
   ${() => themeConfig.primaryBackgroundHoverAlt}
   ${() => themeConfig.primaryBackgroundActiveAlt}
   ${() => themeConfig.animationTransition}
-  ${() => themeConfig.animationDuration200}
+  ${() => themeConfig.animationDuration}
   ${() => themeConfig.animationEaseIn}
 `
 
@@ -61,9 +61,11 @@ const DropdownContent: FC = () => {
   const accountMenuList = [
     {
       label: 'Account',
+      onClick: async () => await pushUri('account'),
     },
     {
       label: 'Orders',
+      onClick: async () => await pushUri('account/orders'),
     },
     {
       label: 'Sign out',

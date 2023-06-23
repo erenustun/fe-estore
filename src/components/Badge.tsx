@@ -1,13 +1,12 @@
 import tw from 'tailwind-styled-components'
+import { themeConfig } from '@src/config/theme.config'
 
-export const Badge = tw.span`
+export const Badge = tw.div`
   absolute
   top-0
   right-0
   -mt-2
   -mr-2
-  bg-rose-500
-  text-slate-50
   font-semibold
   h-4
   w-4
@@ -16,4 +15,6 @@ export const Badge = tw.span`
   flex
   items-center
   justify-center
+  select-none
+  ${() => themeConfig.badgeBackgroundColor}
 `
