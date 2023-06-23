@@ -61,9 +61,11 @@ const DropdownContent: FC = () => {
   const accountMenuList = [
     {
       label: 'Account',
+      onClick: async () => await pushUri('account'),
     },
     {
       label: 'Orders',
+      onClick: async () => await pushUri('account/orders'),
     },
     {
       label: 'Sign out',
