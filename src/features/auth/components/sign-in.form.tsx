@@ -1,36 +1,53 @@
 import { Input } from '@components/Form/Input'
 import { AtSymbolIcon, LockClosedIcon } from '@heroicons/react/24/solid'
-import { z } from 'zod'
+import * as Yup from 'yup'
 import {
   VALIDATION_EMAIL,
   VALIDATION_PASSWORD,
 } from '@src/features/auth/constant'
-import { zodResolver } from '@hookform/resolvers/zod'
+import { yupResolver } from '@hookform/resolvers/yup'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { ApolloError, useMutation } from '@apollo/client'
 import { useCookies } from 'react-cookie'
 import SignInMutation from '@src/features/auth/graphql/sign-in.graphql'
+import { pushUri } from '@util/router.util'
 import { useRouter } from 'next/router'
+import {
+  Button,
+  Form,
+  FormSub,
+  FormTitle,
+  Notification,
+  TextLink,
+} from '@src/components'
 
-type FormInputs = {
+type LoginFormInputs = {
+  apiErrors?: any
   email: string
   password: string
-  apiErrors: any
 }
 
-export const SignInComponent = () => {
-  const router = useRouter()
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [_, setCookie] = useCookies(['jwt'])
+export const SignInForm = () => {
+  const [, setCookie] = useCookies(['jwt'])
+  const {
+    query: { message },
+  } = useRouter()
 
-  const validationSchema = z.object({
+  const [signIn] = useMutation(SignInMutation, {
+    onCompleted: data => {
+      if (localStorage) localStorage.setItem('jwt', data?.signIn?.accessToken)
+      setCookie('jwt', data?.signIn?.accessToken, { path: '/' })
+    },
+  })
+
+  const validationSchema = Yup.object().shape({
     ...VALIDATION_EMAIL,
     ...VALIDATION_PASSWORD,
   })
 
   const formOptions = {
-    resolver: zodResolver(validationSchema),
     name: 'auth.sign-in',
+    resolver: yupResolver(validationSchema),
     shouldUnregister: true,
   }
 
@@ -41,10 +58,11 @@ export const SignInComponent = () => {
     reset,
     formState: { errors },
     unregister,
-  } = useForm<FormInputs>(formOptions)
+  } = useForm<LoginFormInputs>(formOptions)
 
-  const onSubmit: SubmitHandler<FormInputs> = data => {
+  const onSubmit: SubmitHandler<LoginFormInputs> = data => {
     const { email, password } = data
+
     signIn({
       variables: {
         data: {
@@ -53,32 +71,30 @@ export const SignInComponent = () => {
         },
       },
     })
-      .then(() => {
+      .then(async () => {
         reset()
-        router.push('/products')
+        await pushUri('/', '/home')
       })
       .catch((error: ApolloError) =>
         setError('apiErrors', { message: error.message })
       )
   }
 
-  const [signIn] = useMutation(SignInMutation, {
-    onCompleted: data => setCookie('jwt', data.signIn.accessToken),
-  })
   return (
-    <form
-      onSubmit={handleSubmit(onSubmit)}
-      className="flex flex-col self-start text-slate-50 font-light space-y-10 w-[30rem] mx-auto relative px-5"
-    >
+    <Form onSubmit={handleSubmit(onSubmit)}>
       <div className="flex flex-col space-y-1">
-        <h1 className={`text-3xl mb-1`}>Sign in</h1>
-        <h4>Login to manage your orders.</h4>
+        <FormTitle>Sign in</FormTitle>
+        <FormSub>Login to manage your orders.</FormSub>
+        {message && (
+          <Notification className="mt-2 -mb-5">{message}</Notification>
+        )}
         {errors['apiErrors'] && (
           <span className="text-rose-400 -mt-5">
             {errors?.apiErrors?.message as string}
           </span>
         )}
       </div>
+
       <Input
         autoFocus
         errors={errors}
@@ -100,28 +116,19 @@ export const SignInComponent = () => {
         secretField
       />
 
-      <div className={'flex flex-col space-y-6'}>
-        <input
-          className="bg-sky-500 hover:bg-sky-600 w-24 py-1.5 px-2 self-end rounded-md cursor-pointer transition duration-200 ease-in"
-          type="submit"
-          value="Sign in"
-        />
-        <a
+      <div className="flex flex-row-reverse">
+        <Button>Sign in</Button>
+
+        <TextLink
           onClick={() => {
             unregister('email')
             unregister('password')
-            router.push('/auth/sign-up')
+            pushUri('/auth/sign-up')
           }}
-          className={
-            'text-sm self-start text-slate-700 dark:text-slate-200 dark:hover:text-slate-50 dark:active:text-slate-400 hover:text-slate-300 active:text-blue-700 hover:underline cursor-pointer'
-          }
-        >
-          No account yet? Create account now.
-        </a>
+          className="self-end mr-auto"
+          label="No account yet? Create account now."
+        />
       </div>
-      {/*<Button $style="info" className="w-24 self-end">
-            Sign in
-          </Button>*/}
-    </form>
+    </Form>
   )
 }

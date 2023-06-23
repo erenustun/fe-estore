@@ -1,4 +1,5 @@
 import tw from 'tailwind-styled-components'
+import { themeConfig } from '@src/config/theme.config'
 
 interface ContainerProps {
   fluid?: boolean
@@ -14,7 +15,8 @@ const Container = tw.span<ContainerProps>`
   px-1
   md:px-2
   2xl:px-0
-  ${p => (!p.fluid ? 'max-w-7xl' : 'w-full')}
+  ${p => (!p.fluid ? themeConfig.mainContainerMaxWidth : 'w-full')}
+  ${() => `${themeConfig.mainTextColor}`}
 `
 
 Container.defaultProps = {

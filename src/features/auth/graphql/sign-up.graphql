@@ -1,0 +1,6 @@
+mutation SignUp($data: RegisterUserInput!) {
+  signUp(data: $data) {
+    message
+    success
+  }
+}

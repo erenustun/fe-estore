@@ -1,8 +1,10 @@
-import { useState } from 'react'
+import { FC, useState } from 'react'
 import { useSpring, animated } from '@react-spring/web'
 import { AccountIcon } from '@src/features/account/components/account-icon.component'
 import { useCookies } from 'react-cookie'
-import { useRouter } from 'next/router'
+import { pushUri } from '@util/router.util'
+import tw from 'tailwind-styled-components'
+import { themeConfig } from '@src/config/theme.config'
 
 export const AccountDropdownComponent = () => {
   const [isVisible, setVisibility] = useState(false)
@@ -23,30 +25,67 @@ export const AccountDropdownComponent = () => {
   )
 }
 
-const DropdownContent = () => {
-  const router = useRouter()
-  const [cookies, setCookie, removeCookie] = useCookies(['jwt'])
+const MenuDropdown = tw.ul`
+  absolute
+  flex
+  flex-col
+  mt-5
+  w-28
+  rounded
+  ${() => themeConfig.primaryBackgroundColorAlt}
+`
+
+const DropdownItem = tw.ul`
+  w-full
+  px-5
+  py-2
+  rounded-t
+  select-none
+  cursor-pointer
+  ${() => themeConfig.primaryBackgroundHoverAlt}
+  ${() => themeConfig.primaryBackgroundActiveAlt}
+  ${() => themeConfig.animationTransition}
+  ${() => themeConfig.animationDuration200}
+  ${() => themeConfig.animationEaseIn}
+`
+
+const DropdownContent: FC = () => {
+  const [, , removeCookie] = useCookies(['jwt'])
+
+  const signOut = async () => {
+    removeCookie('jwt', { path: '/' })
+    if (localStorage) localStorage.removeItem('jwt')
+    await pushUri('/', '/home')
+  }
+
+  const accountMenuList = [
+    {
+      label: 'Account',
+    },
+    {
+      label: 'Orders',
+    },
+    {
+      label: 'Sign out',
+      onClick: signOut,
+    },
+  ]
 
   return (
-    <div className="absolute flex flex-col mt-5 w-28 bg-blue-900 rounded">
-      <ul className="flex flex-col">
-        <li className="w-full px-5 py-2 rounded-t hover:bg-blue-950 select-none cursor-pointer transition duration-200 ease-in">
-          Account
-        </li>
-        <li className="w-full px-5 py-2 hover:bg-blue-950 select-none cursor-pointer transition duration-200 ease-in">
-          Orders
-        </li>
-        <li
-          className="w-full px-5 py-2 rounded-b hover:bg-blue-950 select-none cursor-pointer transition duration-200 ease-in"
-          onClick={() => {
-            removeCookie('jwt')
-            localStorage.removeItem('jwt')
-            router.push('/products')
-          }}
+    <MenuDropdown>
+      {accountMenuList.map(({ label, onClick }, index: number) => (
+        <DropdownItem
+          key={index}
+          onClick={onClick}
+          className={
+            index + 1 < accountMenuList.length
+              ? themeConfig.primaryBorderBottomColor
+              : ''
+          }
         >
-          Sign out
-        </li>
-      </ul>
-    </div>
+          {label}
+        </DropdownItem>
+      ))}
+    </MenuDropdown>
   )
 }
