@@ -3,6 +3,7 @@ export const themeConfig = {
   animationDuration: 'duration-300',
   animationEaseIn: 'ease-in',
 
+  radiusSmall: 'rounded-sm',
   radiusDefault: 'rounded',
   radiusMedium: 'rounded-md',
   radiusLarge: 'rounded-lg',
@@ -14,13 +15,15 @@ export const themeConfig = {
 
   badgeBackgroundColor: 'bg-rose-500',
 
-  boxBackgroundColor: 'bg-gray-900',
+  boxBackgroundColor: 'bg-gray-300 border border-gray-400',
   boxBlur: 'backdrop-filter backdrop-blur-lg',
-  boxShadow: 'shadow-xl',
-  boxOpacity: 'bg-opacity-30',
-  boxPadding: 'py-8',
+  boxShadow: 'shadow-md',
+  boxOpacity: 'bg-opacity-10',
+  boxPadding: 'py-8 px-4 my-10',
 
+  headerHeight: 'h-18',
   headerBackgroundColor: 'bg-gradient-to-tr from-slate-950 to-zinc-950',
+  headerShadow: 'shadow-xl',
 
   footerDivider: 'bg-slate-800',
   footerDividerBorder: 'border-slate-800',
