@@ -1,13 +1,13 @@
-import { SignInForm } from '@src/features/auth/components/sign-in.form'
 import { useCookies } from 'react-cookie'
 import { useEffect } from 'react'
 import Image from 'next/image'
 import { Container } from '@components/Layout/Container'
+import { SignUpForm } from '@src/features/auth/components/sign-up.form'
 import { pushUri } from '@util/router.util'
 import { Box } from '@components/Layout/Box'
 import { themeConfig } from '@src/config/theme.config'
 
-export const SignInView = () => {
+export const SignUpView = () => {
   const [cookies] = useCookies(['jwt'])
 
   useEffect(() => {
@@ -29,7 +29,7 @@ export const SignInView = () => {
             className={themeConfig.radiusMedium}
           />
         </div>
-        <SignInForm />
+        <SignUpForm />
       </Box>
     </Container>
   )

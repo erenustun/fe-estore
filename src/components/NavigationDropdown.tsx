@@ -4,6 +4,7 @@ import { Url } from 'url'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ReactNode } from 'react'
+import { themeConfig } from '@src/config/theme.config'
 
 interface DropdownListProps {
   href: Url | string
@@ -20,11 +21,12 @@ interface DropdownProps {
 const DropdownButton = tw.span`
   flex
   items-center
-  text-slate-50
-  hover:text-blue-300
-  transition
-  ease-in
-  duration-200
+  ${() => themeConfig.mainTextColor}
+  ${() => themeConfig.navLinkTextHover}
+  ${() => themeConfig.navLinkTextActive}
+  ${() => themeConfig.animationTransition}
+  ${() => themeConfig.animationDuration200}
+  ${() => themeConfig.animationEaseIn}
 `
 
 const Label = tw.p`
@@ -79,7 +81,7 @@ export const NavigationDropdown = ({
       </Label>
       <ChevronDownIcon className="h-5 ml-1" />
     </DropdownButton>
-    <div className="dropdown-content">
+    <div className="dropdown-content bg-zinc-950">
       <List>
         {list?.map((item, i) => {
           return (

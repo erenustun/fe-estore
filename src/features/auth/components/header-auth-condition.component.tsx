@@ -12,7 +12,7 @@ export const HeaderAuthConditionComponent = () => {
     </div>
   ) : (
     <Link href={'/auth/sign-in'}>
-      <Button $style="info">Sign in</Button>
+      <Button>Sign in</Button>
     </Link>
   )
 }

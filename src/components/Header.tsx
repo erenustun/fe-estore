@@ -12,12 +12,13 @@ import Link from 'next/link'
 import tw from 'tailwind-styled-components'
 import { Badge } from '@components/Badge'
 import { NavigationDropdown } from '@components/NavigationDropdown'
-import { Container } from '@components/Container'
+import { Container } from '@components/Layout/Container'
 import { HeaderAuthConditionComponent } from '@src/features/auth/components/header-auth-condition.component'
+import { themeConfig } from '@src/config/theme.config'
 
 const HeaderTW = tw.div`
   h-18
-  bg-slate-900
+  ${() => themeConfig.headerBackgroundColor}
 `
 
 const NavTW = tw.div`
@@ -30,7 +31,7 @@ const NavTW = tw.div`
 export const Header = () => (
   <HeaderTW>
     <Container className="flex flex-row items-center justify-between">
-      <Link href="/">
+      <Link href="/" as="/home">
         <Image
           src="/images/web_store_hub_logo_info-blue.png"
           alt="e-commerce store logo"
@@ -41,7 +42,8 @@ export const Header = () => (
       <NavTW>
         <NavLink
           label="Home"
-          href="/products"
+          href="/"
+          as="/home"
           icon={<HomeIcon className="h-4 mr-1" />}
         />
         <NavLink

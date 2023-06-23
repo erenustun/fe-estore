@@ -1,9 +1,11 @@
-export default function Home() {
-  return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-6xl items-center justify-between lg:flex">
-        Home
-      </div>
-    </main>
-  )
-}
+import { Button } from '@src/components'
+import { Container } from '@components/Layout/Container'
+
+const Home = () => (
+  <Container className="py-20">
+    <span>Home</span>
+    <Button>Home</Button>
+  </Container>
+)
+
+export default Home
