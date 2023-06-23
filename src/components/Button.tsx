@@ -3,7 +3,7 @@ import { themeConfig } from '@src/config/theme.config'
 import { PropsWithChildren } from 'react'
 
 interface ButtonProps {
-  style?: 'primary' | 'success' | 'warning' | 'danger' | 'secondary'
+  style?: 'primary' | 'success' | 'info' | 'warning' | 'danger' | 'secondary'
   primary?: boolean
 }
 
@@ -11,7 +11,7 @@ const ButtonBase = tw.button`
   ${() => themeConfig.buttonText}
   ${() => themeConfig.buttonPadding}
   ${() => themeConfig.animationTransition}
-  ${() => themeConfig.animationDuration200}
+  ${() => themeConfig.animationDuration}
   ${() => themeConfig.animationEaseIn}
   ${() => themeConfig.radiusMedium}
   cursor-pointer
@@ -24,7 +24,61 @@ const PrimarySolidButton = tw(ButtonBase)<ButtonProps>`
 `
 
 const PrimaryOutlinedButton = tw(ButtonBase)<ButtonProps>`
-  ${() => themeConfig.primaryBackgroundColor}
+  ${() => themeConfig.primaryBorderColor}
+  ${() => themeConfig.primaryBorderActive}
+  ${() => themeConfig.primaryTextColor}
+  ${() => themeConfig.primaryBackgroundActive}
+`
+const SuccessSolidButton = tw(ButtonBase)<ButtonProps>`
+  ${() => themeConfig.successBackgroundColor}
+  ${() => themeConfig.successBackgroundHover}
+  ${() => themeConfig.successBackgroundActive}
+`
+
+const SuccessOutlinedButton = tw(ButtonBase)<ButtonProps>`
+  ${() => themeConfig.successBorderColor}
+  ${() => themeConfig.successBorderActive}
+  ${() => themeConfig.successTextColor}
+  ${() => themeConfig.successBackgroundActive}
+`
+
+const InfoSolidButton = tw(ButtonBase)<ButtonProps>`
+  ${() => themeConfig.infoBackgroundColor}
+  ${() => themeConfig.infoBackgroundHover}
+  ${() => themeConfig.infoBackgroundActive}
+`
+
+const InfoOutlinedButton = tw(ButtonBase)<ButtonProps>`
+  ${() => themeConfig.infoBorderColor}
+  ${() => themeConfig.infoBorderActive}
+  ${() => themeConfig.infoTextColor}
+  ${() => themeConfig.infoBackgroundActive}
+`
+
+const WarningSolidButton = tw(ButtonBase)<ButtonProps>`
+  ${() => themeConfig.warningBackgroundColor}
+  ${() => themeConfig.warningBackgroundHover}
+  ${() => themeConfig.warningBackgroundActive}
+`
+
+const WarningOutlinedButton = tw(ButtonBase)<ButtonProps>`
+  ${() => themeConfig.warningBorderColor}
+  ${() => themeConfig.warningBorderActive}
+  ${() => themeConfig.warningTextColor}
+  ${() => themeConfig.warningBackgroundActive}
+`
+
+const DangerSolidButton = tw(ButtonBase)<ButtonProps>`
+  ${() => themeConfig.dangerBackgroundColor}
+  ${() => themeConfig.dangerBackgroundHover}
+  ${() => themeConfig.dangerBackgroundActive}
+`
+
+const DangerOutlinedButton = tw(ButtonBase)<ButtonProps>`
+  ${() => themeConfig.dangerBorderColor}
+  ${() => themeConfig.dangerBorderActive}
+  ${() => themeConfig.dangerTextColor}
+  ${() => themeConfig.dangerBackgroundActive}
 `
 
 /*const Button = tw(ButtonBase)<ButtonProps>`
@@ -90,10 +144,30 @@ const Button = ({
     switch (style) {
       case 'primary':
         return <PrimarySolidButton>{children}</PrimarySolidButton>
+      case 'success':
+        return <SuccessSolidButton>{children}</SuccessSolidButton>
+      case 'info':
+        return <InfoSolidButton>{children}</InfoSolidButton>
+      case 'warning':
+        return <WarningSolidButton>{children}</WarningSolidButton>
+      case 'danger':
+        return <DangerSolidButton>{children}</DangerSolidButton>
+      default:
+        return <PrimarySolidButton>{children}</PrimarySolidButton>
     }
   } else {
     switch (style) {
       case 'primary':
+        return <PrimaryOutlinedButton>{children}</PrimaryOutlinedButton>
+      case 'success':
+        return <SuccessOutlinedButton>{children}</SuccessOutlinedButton>
+      case 'info':
+        return <InfoOutlinedButton>{children}</InfoOutlinedButton>
+      case 'warning':
+        return <WarningOutlinedButton>{children}</WarningOutlinedButton>
+      case 'danger':
+        return <DangerOutlinedButton>{children}</DangerOutlinedButton>
+      default:
         return <PrimaryOutlinedButton>{children}</PrimaryOutlinedButton>
     }
   }
