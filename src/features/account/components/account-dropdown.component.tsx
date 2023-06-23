@@ -11,15 +11,15 @@ export const AccountDropdownComponent = () => {
   const toggleDropdown = () => setVisibility(!isVisible)
 
   const dropdownAppears = useSpring({
-    transform: isVisible ? 'translate3D(0,0,0)' : 'translate3D(0,-40px,0)',
+    transform: isVisible ? 'translate3D(0,16px,0)' : 'translate3D(0,-74px,0)',
     opacity: isVisible ? 1 : 0,
   })
 
   return (
-    <div className="relative">
+    <div className="relative z-50">
       <AccountIcon isVisible={isVisible} onClick={toggleDropdown} />
       <animated.div style={dropdownAppears} className="-ml-20">
-        {isVisible ? <DropdownContent /> : null}
+        {isVisible ? <DropdownContent toggleDropdown={toggleDropdown} /> : null}
       </animated.div>
     </div>
   )
@@ -29,7 +29,6 @@ const MenuDropdown = tw.ul`
   absolute
   flex
   flex-col
-  mt-5
   w-28
   rounded
   ${() => themeConfig.primaryBackgroundColorAlt}
@@ -49,23 +48,35 @@ const DropdownItem = tw.ul`
   ${() => themeConfig.animationEaseIn}
 `
 
-const DropdownContent: FC = () => {
+interface DropdownContentProps {
+  toggleDropdown: () => void
+}
+const DropdownContent: FC<DropdownContentProps> = ({
+  toggleDropdown,
+}: DropdownContentProps) => {
   const [, , removeCookie] = useCookies(['jwt'])
 
   const signOut = async () => {
     removeCookie('jwt', { path: '/' })
     if (localStorage) localStorage.removeItem('jwt')
     await pushUri('/', '/home')
+    toggleDropdown()
   }
 
   const accountMenuList = [
     {
       label: 'Account',
-      onClick: async () => await pushUri('account'),
+      onClick: async () => {
+        await pushUri('account')
+        toggleDropdown()
+      },
     },
     {
       label: 'Orders',
-      onClick: async () => await pushUri('account/orders'),
+      onClick: async () => {
+        await pushUri('account/orders')
+        toggleDropdown()
+      },
     },
     {
       label: 'Sign out',
