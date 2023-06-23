@@ -15,6 +15,7 @@ import { NavigationDropdown } from '@components/NavigationDropdown'
 import { Container } from '@components/Layout/Container'
 import { HeaderAuthConditionComponent } from '@src/features/auth/components/header-auth-condition.component'
 import { themeConfig } from '@src/config/theme.config'
+import cn from 'classnames'
 
 const HeaderTW = tw.div`
   h-18
@@ -76,11 +77,29 @@ export const Header = () => (
       <div className="flex items-center">
         <section className="flex space-x-5 items-center">
           <div className="relative cursor-pointer">
-            <BookmarkIcon className="h-6 text-slate-50 hover:text-blue-300 active:text-blue-500" />
+            <BookmarkIcon
+              className={cn(
+                'h-6 w-6',
+                themeConfig.navLinkTextHover,
+                themeConfig.navLinkTextActive,
+                themeConfig.animationTransition,
+                themeConfig.animationDuration200,
+                themeConfig.animationEaseIn
+              )}
+            />
             <Badge>9</Badge>
           </div>
           <div className="relative cursor-pointer">
-            <ShoppingCartIcon className="h-6 text-slate-50 hover:text-blue-300 active:text-blue-500" />
+            <ShoppingCartIcon
+              className={cn(
+                'h-6 w-6',
+                themeConfig.navLinkTextHover,
+                themeConfig.navLinkTextActive,
+                themeConfig.animationTransition,
+                themeConfig.animationDuration200,
+                themeConfig.animationEaseIn
+              )}
+            />
             <Badge>2</Badge>
           </div>
           <HeaderAuthConditionComponent />

@@ -12,6 +12,8 @@ export const themeConfig = {
 
   mainContainerMaxWidth: 'max-w-7xl',
 
+  badgeBackgroundColor: 'bg-rose-500',
+
   boxBackgroundColor: 'bg-gray-900',
   boxBlur: 'backdrop-filter backdrop-blur-lg',
   boxShadow: 'shadow-xl',
