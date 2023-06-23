@@ -22,6 +22,9 @@ export const themeConfig = {
 
   headerBackgroundColor: 'bg-gradient-to-tr from-slate-950 to-zinc-950',
 
+  footerDivider: 'bg-slate-800',
+  footerDividerBorder: 'border-slate-800',
+
   navLinkTextHover: 'hover:text-blue-300',
   navLinkTextActive: 'active:text-blue-400',
 

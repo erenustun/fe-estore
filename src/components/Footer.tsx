@@ -4,15 +4,22 @@ import { Slogan } from '@components/Branding/Slogan'
 import { InstagramIcon } from '@components/Branding/Social/InstagramIcon'
 import { WhatsappIcon } from '@components/Branding/Social/WhatsappIcon'
 import { MetaIcon } from '@components/Branding/Social/MetaIcon'
+import cn from 'classnames'
+import { themeConfig } from '@src/config/theme.config'
 
 export const Footer = () => {
   const date = new Date()
 
   return (
-    <div className="flex flex-col w-full min-h-[30rem] shadow sm:py-12 md:py-2 font-inter text-slate-50 border-t-2 border-slate-900">
+    <div
+      className={cn(
+        'flex flex-col w-full justify-center shadow sm:py-12 md:py-2 font-inter text-slate-50 border-t-2',
+        themeConfig.footerDividerBorder
+      )}
+    >
       <div
         className={
-          'py-6 sm:py-8 md:py-4 flex items-center w-full justify-center'
+          'py-6 sm:py-8 md:py-8 flex items-center w-full justify-center'
         }
       >
         <Link href={'/'}>
@@ -23,7 +30,7 @@ export const Footer = () => {
         </Link>
       </div>
 
-      <div className={'h-[2px] w-full bg-slate-900'}></div>
+      <div className={cn('h-[2px] w-full', themeConfig.footerDivider)}></div>
 
       <ul className="flex flex-wrap items-center justify-center gap-5 md:gap-10 py-8 md:py-8">
         <Link href={'/'}>
@@ -43,7 +50,7 @@ export const Footer = () => {
         </Link>
       </ul>
 
-      <div className={'h-[2px] w-full bg-slate-900'}></div>
+      <div className={cn('h-[2px] w-full', themeConfig.footerDivider)}></div>
 
       <div className="flex flex-wrap items-center justify-center gap-4 py-7 md:py-6">
         <MetaIcon />
@@ -51,9 +58,9 @@ export const Footer = () => {
         <WhatsappIcon />
       </div>
 
-      <div className={'h-[2px] w-full bg-slate-900'}></div>
+      <div className={cn('h-[2px] w-full', themeConfig.footerDivider)}></div>
 
-      <div className="flex items-center md:flex-nowrap flex-wrap justify-center gap-3 py-8 md:py-5 text-sm text-slate-50 select-none">
+      <div className="flex items-center md:flex-nowrap flex-wrap justify-center gap-3 py-8 md:py-6 text-sm text-slate-50 select-none">
         <p>&copy; {date.getFullYear()} All Rights Reserved</p>
         <p>Terms & Conditions</p>
         <p>Blogs</p>
