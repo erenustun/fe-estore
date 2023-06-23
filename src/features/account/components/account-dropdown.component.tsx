@@ -45,7 +45,7 @@ const DropdownItem = tw.ul`
   ${() => themeConfig.primaryBackgroundHoverAlt}
   ${() => themeConfig.primaryBackgroundActiveAlt}
   ${() => themeConfig.animationTransition}
-  ${() => themeConfig.animationDuration200}
+  ${() => themeConfig.animationDuration}
   ${() => themeConfig.animationEaseIn}
 `
 

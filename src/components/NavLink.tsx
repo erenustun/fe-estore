@@ -18,7 +18,7 @@ const LinkWrapper = tw.span`
   ${() => themeConfig.navLinkTextHover}
   ${() => themeConfig.navLinkTextActive}
   ${() => themeConfig.animationTransition}
-  ${() => themeConfig.animationDuration200}
+  ${() => themeConfig.animationDuration}
   ${() => themeConfig.animationEaseIn}
 `
 

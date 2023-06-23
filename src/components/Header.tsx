@@ -83,7 +83,7 @@ export const Header = () => (
                 themeConfig.navLinkTextHover,
                 themeConfig.navLinkTextActive,
                 themeConfig.animationTransition,
-                themeConfig.animationDuration200,
+                themeConfig.animationDuration,
                 themeConfig.animationEaseIn
               )}
             />
@@ -96,7 +96,7 @@ export const Header = () => (
                 themeConfig.navLinkTextHover,
                 themeConfig.navLinkTextActive,
                 themeConfig.animationTransition,
-                themeConfig.animationDuration200,
+                themeConfig.animationDuration,
                 themeConfig.animationEaseIn
               )}
             />

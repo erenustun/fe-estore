@@ -1,6 +1,6 @@
 export const themeConfig = {
   animationTransition: 'transition',
-  animationDuration200: 'duration-200',
+  animationDuration: 'duration-300',
   animationEaseIn: 'ease-in',
 
   radiusDefault: 'rounded',
