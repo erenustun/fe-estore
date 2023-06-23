@@ -29,7 +29,7 @@ const Label = tw.label<{ error: string }>`
 const StyledInput = tw.input<InputProps>`
   ${() => themeConfig.mainTextColor}
   ${() => themeConfig.inputFieldBorder}
-  ${() => themeConfig.primaryBorderFocused}
+  ${() => themeConfig.primaryBorderActive}
   ${() => themeConfig.radiusDefault}
   ${p => p.error && themeConfig.errorBorderFocus}
   bg-transparent
