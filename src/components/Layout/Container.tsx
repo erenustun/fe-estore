@@ -10,8 +10,6 @@ const Container = tw.span<ContainerProps>`
   mx-auto
   flex
   flex-col
-  justify-center
-  items-center
   px-1
   md:px-2
   2xl:px-0

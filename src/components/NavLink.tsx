@@ -3,9 +3,12 @@ import { ReactNode } from 'react'
 import tw from 'tailwind-styled-components'
 import { Url } from 'url'
 import { themeConfig } from '@src/config/theme.config'
+import { useRouter } from 'next/router'
+import cn from 'classnames'
 
 interface NavLinkProps {
   as?: string
+  className?: string
   href: Url | string
   icon?: ReactNode | string | null
   label: string | ReactNode
@@ -14,6 +17,9 @@ interface NavLinkProps {
 const LinkWrapper = tw.span`
   flex
   items-center
+  space-x-1
+  font-semibold
+  select-none
   ${() => themeConfig.mainTextColor}
   ${() => themeConfig.navLinkTextHover}
   ${() => themeConfig.navLinkTextActive}
@@ -22,24 +28,24 @@ const LinkWrapper = tw.span`
   ${() => themeConfig.animationEaseIn}
 `
 
-const LinkLabel = tw.p`
-  font-semibold
-  select-none
-  flex
-  items-center
-`
+export const NavLink = ({ as, className, href, icon, label }: NavLinkProps) => {
+  const router = useRouter()
 
-export const NavLink = ({ as, href, icon, label }: NavLinkProps) => {
   return (
     <Link
       href={href}
       as={as}
-      className="flex items-center cursor-pointer select-none"
+      className={'flex items-center cursor-pointer select-none'}
     >
-      <LinkWrapper>
-        <LinkLabel>
-          {icon && icon} {label}
-        </LinkLabel>
+      <LinkWrapper
+        className={cn(
+          router.pathname === href && themeConfig.navLinkCurrentPage,
+          router.pathname === href && 'font-extrabold',
+          className
+        )}
+      >
+        <div>{icon && icon}</div>
+        <div>{label}</div>
       </LinkWrapper>
     </Link>
   )

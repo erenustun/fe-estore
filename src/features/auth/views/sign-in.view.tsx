@@ -16,7 +16,7 @@ export const SignInView = () => {
 
   return (
     <Container
-      className="min-h-[55rem] bg-[url(/images/wallpaper.png)] bg-cover"
+      className="min-h-[55rem] bg-[url(/images/account-bg.jpg)] bg-cover"
       fluid
     >
       <Box className="flex justify-evenly -space-x-6">
@@ -26,7 +26,7 @@ export const SignInView = () => {
             width="500"
             height="1000"
             alt="login image"
-            className={themeConfig.radiusMedium}
+            className={themeConfig.radiusDefault}
           />
         </div>
         <SignInForm />
