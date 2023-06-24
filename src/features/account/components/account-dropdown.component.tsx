@@ -5,6 +5,11 @@ import { useCookies } from 'react-cookie'
 import { pushUri } from '@util/router.util'
 import tw from 'tailwind-styled-components'
 import { themeConfig } from '@src/config/theme.config'
+import {
+  UserIcon,
+  ListBulletIcon,
+  ArrowLeftOnRectangleIcon,
+} from '@heroicons/react/20/solid'
 
 export const AccountDropdownComponent = () => {
   const [isVisible, setVisibility] = useState(false)
@@ -36,11 +41,16 @@ const MenuDropdown = tw.ul`
 
 const DropdownItem = tw.ul`
   w-full
-  px-5
+  flex
+  items-center
+  space-x-1
+  px-3
   py-2
   rounded-t
   select-none
   cursor-pointer
+  hover:transform
+  hover:scale-110
   ${() => themeConfig.primaryBackgroundHoverAlt}
   ${() => themeConfig.primaryBackgroundActiveAlt}
   ${() => themeConfig.animationTransition}
@@ -66,27 +76,30 @@ const DropdownContent: FC<DropdownContentProps> = ({
   const accountMenuList = [
     {
       label: 'Account',
+      icon: () => <UserIcon className="w-4 h-4" />,
       onClick: async () => {
-        await pushUri('account')
+        await pushUri('/account/details')
         toggleDropdown()
       },
     },
     {
       label: 'Orders',
+      icon: () => <ListBulletIcon className="w-4 h-4" />,
       onClick: async () => {
-        await pushUri('account/orders')
+        await pushUri('/account/orders')
         toggleDropdown()
       },
     },
     {
       label: 'Sign out',
+      icon: () => <ArrowLeftOnRectangleIcon className="w-4 h-4" />,
       onClick: signOut,
     },
   ]
 
   return (
     <MenuDropdown>
-      {accountMenuList.map(({ label, onClick }, index: number) => (
+      {accountMenuList.map(({ label, icon, onClick }, index: number) => (
         <DropdownItem
           key={index}
           onClick={onClick}
@@ -96,7 +109,8 @@ const DropdownContent: FC<DropdownContentProps> = ({
               : ''
           }
         >
-          {label}
+          <div>{icon()}</div>
+          <div>{label}</div>
         </DropdownItem>
       ))}
     </MenuDropdown>

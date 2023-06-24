@@ -1,6 +1,6 @@
 export const themeConfig = {
   animationTransition: 'transition',
-  animationDuration: 'duration-300',
+  animationDuration: 'duration-200',
   animationEaseIn: 'ease-in',
 
   radiusSmall: 'rounded-sm',
@@ -19,9 +19,10 @@ export const themeConfig = {
   boxBlur: 'backdrop-filter backdrop-blur-lg',
   boxShadow: 'shadow-md',
   boxOpacity: 'bg-opacity-10',
-  boxPadding: 'py-8 px-4 my-10',
+  boxPadding: 'py-6 px-4',
+  boxMargin: 'mt-5',
 
-  headerHeight: 'h-18',
+  headerHeight: 'h-24 border-b border-gray-800',
   headerBackgroundColor: 'bg-gradient-to-tr from-slate-950 to-zinc-950',
   headerShadow: 'shadow-xl',
 
@@ -30,6 +31,7 @@ export const themeConfig = {
 
   navLinkTextHover: 'hover:text-blue-300',
   navLinkTextActive: 'active:text-blue-400',
+  navLinkCurrentPage: 'text-blue-400 underline underline-offset-2',
 
   textLinkTextHover: 'hover:text-blue-300',
   textLinkTextActive: 'active:text-blue-500',
@@ -38,6 +40,9 @@ export const themeConfig = {
 
   textSizeH1: 'text-3xl md:text-4xl',
   textSizeH2: 'text-2xl md:text-3xl',
+  textSizeH3: 'text-xl md:text-2xl',
+  textSizeH4: 'text-lg md:text-xl',
+  textSizeH5: 'text-base',
 
   buttonPadding: 'px-3.5 py-1.5',
   buttonText: 'font-medium tracking-wide',
@@ -87,7 +92,6 @@ export const themeConfig = {
   warningTextColor: 'text-orange-400 active:text-orange-50',
   dangerTextColor: 'text-rose-400 active:text-rose-50',
 
-  errorBackgroundColor: 'bg-rose-400',
-  errorTextColor: 'text-rose-400',
-  errorBorderFocus: 'border border-rose-400 focus:border-rose-400',
+  primaryIconColor: 'text-slate-200 hover:text-blue-500 active:text-blue-700',
+  dangerIconColor: 'text-slate-200 hover:text-rose-500 active:text-rose-700',
 }
