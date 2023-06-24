@@ -4,6 +4,7 @@ import { PropsWithChildren, useCallback } from 'react'
 
 interface ButtonProps {
   style?: 'primary' | 'success' | 'info' | 'warning' | 'danger' | 'secondary'
+  className?: string
   primary?: boolean
 }
 
@@ -29,6 +30,7 @@ const PrimaryOutlinedButton = tw(ButtonBase)<ButtonProps>`
   ${() => themeConfig.primaryTextColor}
   ${() => themeConfig.primaryBackgroundActive}
 `
+
 const SuccessSolidButton = tw(ButtonBase)<ButtonProps>`
   ${() => themeConfig.successBackgroundColor}
   ${() => themeConfig.successBackgroundHover}
@@ -81,62 +83,9 @@ const DangerOutlinedButton = tw(ButtonBase)<ButtonProps>`
   ${() => themeConfig.dangerBackgroundActive}
 `
 
-/*const Button = tw(ButtonBase)<ButtonProps>`
-  ${p => {
-    switch (p.style) {
-      case 'primary':
-        return themeConfig.primaryBackgroundColor
-      case 'success':
-        return 'bg-green-700'
-      case 'warning':
-        return 'bg-orange-600'
-      case 'danger':
-        return 'bg-rose-600'
-      case 'secondary':
-        return 'bg-slate-600'
-      default:
-        return 'bg-sky-700'
-    }
-  }}
-  ${p => {
-    switch (p.style) {
-      case 'primary':
-        return `hover:bg-blue-400`
-      case 'success':
-        return 'hover:bg-green-600'
-      case 'warning':
-        return 'hover:bg-orange-500'
-      case 'danger':
-        return 'hover:bg-rose-400'
-      case 'secondary':
-        return 'hover:bg-slate-500'
-      default:
-        return 'hover:bg-sky-500'
-    }
-  }}
-  ${p => !p.primary && 'bg-transparent border'}
-  ${p => {
-    if (!p.primary) {
-      switch (p.style) {
-        case 'primary':
-          return `bg-transparent ${themeConfig.primaryBorderColor}`
-        case 'success':
-          return 'border-green-500'
-        case 'warning':
-          return 'border-orange-400'
-        case 'danger':
-          return 'border-rose-400'
-        case 'secondary':
-          return 'border-slate-400'
-        default:
-          return 'border-sky-400'
-      }
-    }
-  }}
-`*/
-
 const Button = ({
   children,
+  className,
   primary,
   style,
 }: PropsWithChildren<ButtonProps>) => {
@@ -144,35 +93,81 @@ const Button = ({
     if (primary) {
       switch (style) {
         case 'primary':
-          return <PrimarySolidButton>{children}</PrimarySolidButton>
+          return (
+            <PrimarySolidButton className={className}>
+              {children}
+            </PrimarySolidButton>
+          )
         case 'success':
-          return <SuccessSolidButton>{children}</SuccessSolidButton>
+          return (
+            <SuccessSolidButton className={className}>
+              {children}
+            </SuccessSolidButton>
+          )
         case 'info':
-          return <InfoSolidButton>{children}</InfoSolidButton>
+          return (
+            <InfoSolidButton className={className}>{children}</InfoSolidButton>
+          )
         case 'warning':
-          return <WarningSolidButton>{children}</WarningSolidButton>
+          return (
+            <WarningSolidButton className={className}>
+              {children}
+            </WarningSolidButton>
+          )
         case 'danger':
-          return <DangerSolidButton>{children}</DangerSolidButton>
+          return (
+            <DangerSolidButton className={className}>
+              {children}
+            </DangerSolidButton>
+          )
         default:
-          return <PrimarySolidButton>{children}</PrimarySolidButton>
+          return (
+            <PrimarySolidButton className={className}>
+              {children}
+            </PrimarySolidButton>
+          )
       }
     } else {
       switch (style) {
         case 'primary':
-          return <PrimaryOutlinedButton>{children}</PrimaryOutlinedButton>
+          return (
+            <PrimaryOutlinedButton className={className}>
+              {children}
+            </PrimaryOutlinedButton>
+          )
         case 'success':
-          return <SuccessOutlinedButton>{children}</SuccessOutlinedButton>
+          return (
+            <SuccessOutlinedButton className={className}>
+              {children}
+            </SuccessOutlinedButton>
+          )
         case 'info':
-          return <InfoOutlinedButton>{children}</InfoOutlinedButton>
+          return (
+            <InfoOutlinedButton className={className}>
+              {children}
+            </InfoOutlinedButton>
+          )
         case 'warning':
-          return <WarningOutlinedButton>{children}</WarningOutlinedButton>
+          return (
+            <WarningOutlinedButton className={className}>
+              {children}
+            </WarningOutlinedButton>
+          )
         case 'danger':
-          return <DangerOutlinedButton>{children}</DangerOutlinedButton>
+          return (
+            <DangerOutlinedButton className={className}>
+              {children}
+            </DangerOutlinedButton>
+          )
         default:
-          return <PrimaryOutlinedButton>{children}</PrimaryOutlinedButton>
+          return (
+            <PrimaryOutlinedButton className={className}>
+              {children}
+            </PrimaryOutlinedButton>
+          )
       }
     }
-  }, [children, primary, style])
+  }, [children, className, primary, style])
 
   return renderButton()
 }
