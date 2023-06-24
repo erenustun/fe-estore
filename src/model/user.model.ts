@@ -1,5 +1,5 @@
 import { BaseEntity } from '@src/models/base.model'
-//import { Address } from '@src/model/address.model'
+import { Address } from '@src/model/address.model'
 //import { CreditCard } from '@src/model/credit-card.model'
 //import { Order } from '@src/model/order.model'
 //import { ProductRating } from '@src/model/product/rating.model'
@@ -24,7 +24,7 @@ export class User extends BaseEntity {
   passwordTokenCreated?: Date | null
   emailToken?: string | null
   emailTokenCreated?: Date | null
-  //address?: Address[]
+  address?: Address[]
   //creditCards?: CreditCard[]
   //order?: Order[]
   //rating?: ProductRating[]

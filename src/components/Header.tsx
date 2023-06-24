@@ -89,7 +89,9 @@ export const Header = () => (
                 themeConfig.animationEaseIn
               )}
             />
-            <Badge>9</Badge>
+            <Badge className="absolute top-0 right-0 -mt-2 -mr-2 h-4 w-4">
+              9
+            </Badge>
           </div>
           <div className="relative cursor-pointer">
             <ShoppingCartIcon
@@ -102,7 +104,9 @@ export const Header = () => (
                 themeConfig.animationEaseIn
               )}
             />
-            <Badge>2</Badge>
+            <Badge className="absolute top-0 right-0 -mt-2 -mr-2 h-4 w-4">
+              2
+            </Badge>
           </div>
           <HeaderAuthConditionComponent />
         </section>
