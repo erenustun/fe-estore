@@ -9,6 +9,7 @@ export const Box = tw.section`
   ${() => themeConfig.boxBackgroundColor}
   ${() => themeConfig.boxOpacity}
   ${() => themeConfig.boxPadding}
+  ${() => themeConfig.boxMargin}
   ${() => themeConfig.boxShadow}
   ${() => themeConfig.radiusMedium}
 `
