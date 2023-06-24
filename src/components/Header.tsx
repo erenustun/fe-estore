@@ -2,7 +2,6 @@ import Image from 'next/image'
 import {
   BookmarkIcon,
   ShoppingCartIcon,
-  TagIcon,
   HashtagIcon,
   BuildingStorefrontIcon,
   HomeIcon,
