@@ -73,7 +73,7 @@ export const NavigationDropdown = ({
   list = [],
   icon,
 }: DropdownProps) => (
-  <div className="dropdown z-50 cursor-pointer py-6">
+  <div className="dropdown cursor-pointer py-10">
     <DropdownButton>
       <Label>
         {icon && icon}
@@ -81,7 +81,8 @@ export const NavigationDropdown = ({
       </Label>
       <ChevronDownIcon className="h-5 ml-1" />
     </DropdownButton>
-    <div className="dropdown-content bg-zinc-950">
+    <div className="dropdown-content">
+      {/*bg-zinc-950*/}
       <List>
         {list?.map((item, i) => {
           return (

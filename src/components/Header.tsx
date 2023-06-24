@@ -16,9 +16,14 @@ import { Container } from '@components/Layout/Container'
 import { HeaderAuthConditionComponent } from '@src/features/auth/components/header-auth-condition.component'
 import { themeConfig } from '@src/config/theme.config'
 import cn from 'classnames'
+import { LanguageChange } from '@components/LanguageChange'
 
 const HeaderTW = tw.div`
-  h-18
+  flex
+  items-center
+  justify-center
+  ${() => themeConfig.headerHeight}
+  ${() => themeConfig.headerShadow}
   ${() => themeConfig.headerBackgroundColor}
 `
 
@@ -30,6 +35,8 @@ const NavTW = tw.div`
 `
 
 export const Header = () => (
+  // TODO: add useSpring for mobile navigation like --> transform: isVisible ? 'translate3D(0,10px,0)' : 'translate3D(0,120px,0)',
+
   <HeaderTW>
     <Container className="flex flex-row items-center justify-between">
       <Link href="/" as="/home">
@@ -47,13 +54,8 @@ export const Header = () => (
           as="/home"
           icon={<HomeIcon className="h-4 mr-1" />}
         />
-        <NavLink
-          label="Shop"
-          href="/products"
-          icon={<BuildingStorefrontIcon className="h-4 mr-1" />}
-        />
         <NavigationDropdown
-          label="Categories"
+          label="Shop"
           list={[
             { label: 'Laptops', href: 'products/category/laptop' },
             {
@@ -61,7 +63,7 @@ export const Header = () => (
               href: 'products/category/smartphone',
             },
           ]}
-          icon={<TagIcon className="h-4 mr-1" />}
+          icon={<BuildingStorefrontIcon className="h-4 mr-1" />}
         />
         <NavigationDropdown
           label="Brands"
@@ -76,6 +78,7 @@ export const Header = () => (
       </NavTW>
       <div className="flex items-center">
         <section className="flex space-x-5 items-center">
+          <LanguageChange />
           <div className="relative cursor-pointer">
             <BookmarkIcon
               className={cn(
