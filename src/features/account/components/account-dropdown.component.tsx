@@ -10,7 +10,7 @@ import {
   ArrowLeftOnRectangleIcon,
 } from '@heroicons/react/20/solid'
 import { routeConfig, themeConfig } from '@shared/config'
-import { tokenExpiresKey, tokenKey } from '@shared/constant'
+import { tokenKey } from '@shared/constant'
 
 export const AccountDropdownComponent = () => {
   const [isVisible, setVisibility] = useState(false)
