@@ -1,0 +1,680 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+input AddProductToOrderInput {
+  productId: String!
+  quantity: Int!
+}
+
+type Address {
+  companyName: String
+  countryCode: Country!
+  created: DateTime
+  deleted: DateTime
+  firstName: String!
+  id: String
+  lastName: String!
+  line1: String!
+  phone: String
+  primary: Boolean
+  state: String!
+  title: String
+  type: AddressType!
+  updated: DateTime
+  user: User!
+  zipCode: String!
+}
+
+input AddressFilterArgsInput {
+  primary: Boolean
+  type: String
+  userId: String
+}
+
+input AddressInput {
+  companyName: String
+  countryCode: Country!
+  firstName: String!
+  lastName: String!
+  line1: String!
+  phone: String
+  primary: Boolean
+  state: String!
+  title: String
+  type: AddressType!
+  user: UserInput!
+  zipCode: String!
+}
+
+enum AddressType {
+  BILLING
+  SHIPPING
+}
+
+input BrandInput {
+  name: String!
+  product: ProductInput
+}
+
+input CategoryInput {
+  name: String!
+  product: ProductInput
+}
+
+input ChangeEmailInput {
+  email: String!
+  token: String!
+}
+
+input ChangePasswordInput {
+  password: String!
+  token: String!
+}
+
+enum Country {
+  AT
+  CH
+  DE
+  ES
+  FR
+  IT
+  NL
+  PL
+  UK
+}
+
+input CreateAddressInput {
+  companyName: String
+  countryCode: Country!
+  firstName: String!
+  lastName: String!
+  line1: String!
+  phone: String
+  primary: Boolean
+  state: String!
+  title: String
+  type: AddressType!
+  user: UserInput!
+  zipCode: String!
+}
+
+input CreateCreditCardInput {
+  ccv: Int!
+  creditCardNumber: String!
+  expirationDate: DateTime!
+  main: Boolean
+}
+
+input CreateOrderInput {
+  billingTo: String
+  products: [AddProductToOrderInput!]!
+  shippingTo: String
+  total: Float!
+}
+
+input CreateProductInput {
+  batteryId: String!
+  brandId: String!
+  categoryId: String!
+  connectivityId: String!
+  cpuId: String!
+  description: String
+  discount: Float
+  displayId: String!
+  imageArray: [String!]
+  name: String!
+  price: Float!
+  ram: Int
+  stock: Int!
+  thumbnail: String
+}
+
+input CreateRatingInput {
+  productId: String!
+  star: Int!
+  text: String!
+}
+
+type CreditCard {
+  cardType: String!
+  ccv: Int!
+  created: DateTime
+  creditCardNumber: String!
+  deleted: DateTime
+  expirationDate: DateTime!
+  expirationDateFormatted: String
+  id: String
+  main: Boolean
+  updated: DateTime
+  user: User
+}
+
+input CreditCardInput {
+  cardType: String!
+  ccv: Int!
+  creditCardNumber: String!
+  expirationDate: DateTime!
+  expirationDateFormatted: String
+  main: Boolean
+  user: UserInput
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type DeleteResult {
+  affected: Int!
+  raw: [String!]!
+}
+
+type EmailResponse {
+  rejected: [String!]!
+  success: Boolean!
+}
+
+type FilterArgs {
+  brand: [String]
+  category: [String]
+  priceMax: Float
+  priceMin: Float
+  ram: [Int]
+  search: String
+  storage: [Int]
+}
+
+input FilterArgsInput {
+  brand: [String]
+  category: [String]
+  priceMax: Float
+  priceMin: Float
+  ram: [Int]
+  search: String
+  storage: [Int]
+}
+
+type LoginResponse {
+  accessToken: String!
+  user: User!
+}
+
+input LoginUserInput {
+  email: String!
+  password: String!
+}
+
+type Mutation {
+  activateCustomer(token: String!): User!
+  cancelOrder(id: String!): UpdateResult!
+  changeEmail(data: ChangeEmailInput!): UpdateResult!
+  changePassword(data: ChangePasswordInput!): UpdateResult!
+  createAddress(data: CreateAddressInput!): Address!
+  createBrand(name: String!): ProductBrand!
+  createCategory(name: String!): ProductCategory!
+  createCreditCard(data: CreateCreditCardInput!): CreditCard!
+  createOrder(data: CreateOrderInput!): Order!
+  createProduct(data: CreateProductInput!): Product!
+  createRating(data: CreateRatingInput!): ProductRating!
+  deleteAddress(id: String!): DeleteResult!
+  deleteBrand(id: String!): DeleteResult!
+  deleteCategory(id: String!): DeleteResult!
+  deleteCreditCard(id: String!): DeleteResult!
+  deleteCustomer: DeleteResult!
+  deleteProduct(id: String!): DeleteResult!
+  deleteUser(id: String!): DeleteResult!
+  restoreAddress(id: String!): UpdateResult!
+  restoreBrand(id: String!): UpdateResult!
+  restoreCategory(id: String!): UpdateResult!
+  restoreCustomer: UpdateResult!
+  restoreProduct(id: String!): UpdateResult!
+  restoreUser(id: String!): UpdateResult!
+  signIn(data: LoginUserInput!): LoginResponse
+  signUp(data: RegisterUserInput!): RegisterResponse!
+  swapPrimaryAddress(addressId: String!): UpdateResult!
+  updateAddress(data: UpdateAddressInput!, id: String!): UpdateResult!
+  updateBrand(id: String!, name: String!): UpdateResult!
+  updateCategory(id: String!, name: String!): UpdateResult!
+  updateCustomer(data: UpdateUserInput!): User!
+  updateCustomerAddress(data: UpdateAddressInput!, id: String!): UpdateResult!
+  updateProduct(data: UpdateProductInput!, id: String!): UpdateResult!
+  updateUser(data: UpdateUserInput!, id: String!): User!
+}
+
+type Order {
+  billingAddress: Address
+  cancelled: DateTime
+  created: DateTime
+  deleted: DateTime
+  id: String
+  pending: Boolean!
+  products: [OrderHasProduct!]!
+  shippingAddress: Address
+  total: Float!
+  updated: DateTime
+  user: User
+}
+
+type OrderHasProduct {
+  id: String!
+  order: Order!
+  product: Product!
+  quantity: Int!
+}
+
+input OrderHasProductInput {
+  id: String!
+  order: OrderInput!
+  product: ProductInput!
+  quantity: Int!
+}
+
+input OrderInput {
+  billingAddress: AddressInput
+  cancelled: DateTime
+  pending: Boolean!
+  products: [OrderHasProductInput!]!
+  shippingAddress: AddressInput
+  total: Float!
+  user: UserInput
+}
+
+input PaginationArgsInput {
+  limit: Int!
+  page: Int!
+}
+
+type Product {
+  brand: ProductBrand!
+  category: ProductCategory!
+  created: DateTime
+  deleted: DateTime
+  description: String
+  discount: Float
+  id: String
+  image: [ProductImage!]
+  name: String!
+  order: [OrderHasProduct!]
+  osUpgradable: Float
+  price: Float!
+  rating: [ProductRating!]
+  ratingAverage: Float
+  sku: String!
+  specification: ProductSpecification!
+  stock: Int!
+  thumbnail: String
+  updated: DateTime
+  warranty: Int
+}
+
+type ProductBrand {
+  created: DateTime
+  deleted: DateTime
+  id: String
+  name: String!
+  product: Product
+  updated: DateTime
+}
+
+type ProductCategory {
+  created: DateTime
+  deleted: DateTime
+  id: String
+  name: String!
+  product: Product
+  updated: DateTime
+}
+
+type ProductImage {
+  created: DateTime
+  deleted: DateTime
+  id: String
+  product: Product
+  updated: DateTime
+  url: String!
+}
+
+input ProductImageInput {
+  product: ProductInput
+  url: String!
+}
+
+input ProductInput {
+  brand: BrandInput!
+  category: CategoryInput!
+  description: String
+  discount: Float
+  image: [ProductImageInput!]
+  name: String!
+  order: [OrderHasProductInput!]
+  osUpgradable: Float
+  price: Float!
+  rating: [RatingInput!]
+  ratingAverage: Float
+  sku: String!
+  specification: SpecificationInput!
+  stock: Int!
+  thumbnail: String
+  warranty: Int
+}
+
+type ProductRating {
+  created: DateTime
+  deleted: DateTime
+  id: String
+  product: Product!
+  star: Int!
+  text: String!
+  updated: DateTime
+  user: User!
+}
+
+type ProductSpecification {
+  battery: SpecificationBattery!
+  connectivity: SpecificationConnectivity!
+  cpu: SpecificationCPU!
+  created: DateTime
+  dataRam: Int!
+  dataStorage: [Int!]!
+  deleted: DateTime
+  dimensionDepth: Float!
+  dimensionLength: Float!
+  dimensionUnit: String
+  dimensionWeight: Float!
+  dimensionWidth: Float!
+  display: SpecificationDisplay!
+  id: String
+  product: Product
+  updated: DateTime
+}
+
+type ProductsFetchResponse {
+  count: Int!
+  data: [Product!]!
+  filter: FilterArgs
+  limit: Int!
+  page: Int!
+}
+
+input ProductsFetchResponseInput {
+  count: Int!
+  data: [ProductInput!]!
+  filter: FilterArgsInput
+  limit: Int!
+  page: Int!
+}
+
+type Query {
+  address(filterArgs: AddressFilterArgsInput, id: String!): Address!
+  addresses(filterArgs: AddressFilterArgsInput): [Address!]!
+  brands: [ProductBrand!]!
+  categories: [ProductCategory!]!
+  creditCards: [CreditCard!]!
+  currentOrders: [Order!]!
+  fetchCustomer: User!
+  order(id: String!): Order!
+  product(id: String!): Product!
+  products(
+    filterArgs: FilterArgsInput
+    paginationArgs: PaginationArgsInput
+    sortArgs: SortArgsInput
+  ): ProductsFetchResponse!
+  ratings(productId: String!): [ProductRating!]!
+  requestEmailChange(email: String!): EmailResponse!
+  requestPasswordChange(email: String!): EmailResponse!
+  user(id: String!): User!
+  users: [User!]!
+  verifyToken(token: String!, tokenOption: String!): TokenVerificationResponse!
+}
+
+input RatingInput {
+  product: ProductInput!
+  star: Int!
+  text: String!
+  user: UserInput!
+}
+
+type RegisterResponse {
+  message: String!
+  success: Boolean!
+}
+
+input RegisterUserInput {
+  activated: DateTime
+  activationToken: String
+  address: [AddressInput!]
+  authExpiresAt: DateTime
+  avatar: String
+  creditCards: [CreditCardInput!]
+  email: String!
+  emailToken: String
+  firstName: String!
+  lastName: String!
+  order: [OrderInput!]
+  password: String!
+  passwordToken: String
+  phone: String
+  rating: [RatingInput!]
+  role: Role
+}
+
+enum Role {
+  ADMIN
+  CUSTOMER
+  PRODUCT_MANAGEMENT
+}
+
+input SortArgsInput {
+  sortBy: String!
+  sortDir: String!
+}
+
+type SpecificationBattery {
+  capacity: Int!
+  chargingSpeed: Int
+  created: DateTime
+  deleted: DateTime
+  id: String
+  productSpecification: ProductSpecification
+  reverseCharging: Float
+  type: String!
+  updated: DateTime
+  wirelessCharging: Int
+}
+
+input SpecificationBatteryInput {
+  capacity: Int!
+  chargingSpeed: Int
+  productSpecification: SpecificationInput
+  reverseCharging: Float
+  type: String!
+  wirelessCharging: Int
+}
+
+type SpecificationCPU {
+  cores: [Int!]
+  created: DateTime
+  deleted: DateTime
+  frequency: [Float!]
+  id: String
+  name: String!
+  productSpecification: ProductSpecification
+  updated: DateTime
+}
+
+input SpecificationCPUInput {
+  cores: [Int!]
+  frequency: [Float!]
+  name: String!
+  productSpecification: SpecificationInput
+}
+
+type SpecificationConnectivity {
+  audio: String
+  bluetoothVersion: Float
+  connectivity: [String!]
+  created: DateTime
+  deleted: DateTime
+  id: String
+  mobileStandard: String
+  productSpecification: ProductSpecification
+  updated: DateTime
+  wifiStandard: String
+}
+
+input SpecificationConnectivityInput {
+  audio: String
+  bluetoothVersion: Float
+  connectivity: [String!]
+  mobileStandard: String
+  productSpecification: SpecificationInput
+  wifiStandard: String
+}
+
+type SpecificationDisplay {
+  aspectRatio: String
+  created: DateTime
+  deleted: DateTime
+  id: String
+  pixelDensity: Int
+  productSpecification: ProductSpecification
+  refreshRate: Int
+  resolution: String
+  screenToBody: Float
+  size: Float!
+  updated: DateTime
+}
+
+input SpecificationDisplayInput {
+  aspectRatio: String
+  pixelDensity: Int
+  productSpecification: SpecificationInput
+  refreshRate: Int
+  resolution: String
+  screenToBody: Float
+  size: Float!
+}
+
+input SpecificationInput {
+  battery: SpecificationBatteryInput!
+  connectivity: SpecificationConnectivityInput!
+  cpu: SpecificationCPUInput!
+  dataRam: Int!
+  dataStorage: [Int!]!
+  dimensionDepth: Float!
+  dimensionLength: Float!
+  dimensionUnit: String
+  dimensionWeight: Float!
+  dimensionWidth: Float!
+  display: SpecificationDisplayInput!
+  product: ProductInput
+}
+
+type TokenVerificationResponse {
+  valid: Boolean!
+}
+
+input UpdateAddressInput {
+  companyName: String
+  countryCode: Country
+  created: DateTime
+  deleted: DateTime
+  firstName: String
+  id: String
+  lastName: String
+  line1: String
+  phone: String
+  primary: Boolean
+  state: String
+  title: String
+  type: AddressType
+  updated: DateTime
+  user: UserInput
+  zipCode: String
+}
+
+input UpdateProductInput {
+  batteryId: String
+  brandId: String
+  categoryId: String
+  connectivityId: String
+  cpuId: String
+  description: String
+  discount: Float
+  displayId: String
+  imageArray: [String!]
+  name: String
+  price: Float
+  ram: Int
+  stock: Int
+  thumbnail: String
+}
+
+type UpdateResult {
+  affected: Int!
+  generatedMaps: [String!]!
+  raw: [String!]!
+}
+
+input UpdateUserInput {
+  activated: DateTime
+  activationToken: String
+  address: [AddressInput!]
+  authExpiresAt: DateTime
+  avatar: String
+  created: DateTime
+  creditCards: [CreditCardInput!]
+  deleted: DateTime
+  email: String
+  emailToken: String
+  firstName: String
+  id: String
+  lastName: String
+  order: [OrderInput!]
+  passwordToken: String
+  phone: String
+  rating: [RatingInput!]
+  role: Role
+  updated: DateTime
+}
+
+type User {
+  activated: DateTime
+  activationToken: String
+  address: [Address!]
+  authExpiresAt: DateTime
+  avatar: String
+  created: DateTime
+  creditCards: [CreditCard!]
+  deleted: DateTime
+  email: String!
+  emailToken: String
+  firstName: String!
+  id: String
+  lastName: String!
+  order: [Order!]
+  passwordToken: String
+  phone: String
+  rating: [ProductRating!]
+  role: Role
+  updated: DateTime
+}
+
+input UserInput {
+  activated: DateTime
+  activationToken: String
+  address: [AddressInput!]
+  authExpiresAt: DateTime
+  avatar: String
+  creditCards: [CreditCardInput!]
+  email: String!
+  emailToken: String
+  firstName: String!
+  lastName: String!
+  order: [OrderInput!]
+  passwordToken: String
+  phone: String
+  rating: [RatingInput!]
+  role: Role
+}

@@ -1,25 +1,24 @@
-import { Input } from '@components/Form/Input'
 import { AtSymbolIcon, LockClosedIcon } from '@heroicons/react/24/solid'
 import * as Yup from 'yup'
-import {
-  VALIDATION_EMAIL,
-  VALIDATION_PASSWORD,
-} from '@src/features/auth/constant'
+import { VALIDATION_EMAIL, VALIDATION_PASSWORD } from '@feature/auth/constant'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { ApolloError, useMutation } from '@apollo/client'
+import { ApolloError } from '@apollo/client'
 import { useCookies } from 'react-cookie'
-import SignInMutation from '@src/features/auth/graphql/sign-in.graphql'
-import { pushUri } from '@util/router.util'
+import { pushUri } from '@shared/util'
 import { useRouter } from 'next/router'
 import {
   Button,
   Form,
   FormSub,
   FormTitle,
+  Input,
   Notification,
   TextLink,
-} from '@src/components'
+} from '@component'
+import { routeConfig } from '@shared/config'
+import { useAuthHook } from '@shared/hook/auth.hook'
+import { tokenKey } from '@shared/constant'
 
 type LoginFormInputs = {
   apiErrors?: any
@@ -28,17 +27,11 @@ type LoginFormInputs = {
 }
 
 export const SignInForm = () => {
-  const [, setCookie] = useCookies(['jwt'])
+  const [, setCookie] = useCookies([tokenKey])
   const {
     query: { message },
   } = useRouter()
-
-  const [signIn] = useMutation(SignInMutation, {
-    onCompleted: data => {
-      if (localStorage) localStorage.setItem('jwt', data?.signIn?.accessToken)
-      setCookie('jwt', data?.signIn?.accessToken, { path: '/' })
-    },
-  })
+  const { signIn } = useAuthHook()
 
   const validationSchema = Yup.object().shape({
     ...VALIDATION_EMAIL,
@@ -63,17 +56,17 @@ export const SignInForm = () => {
   const onSubmit: SubmitHandler<LoginFormInputs> = data => {
     const { email, password } = data
 
-    signIn({
-      variables: {
-        data: {
-          email,
-          password,
-        },
-      },
-    })
-      .then(async () => {
+    signIn({ email, password })
+      .then(async data => {
+        const {
+          accessToken,
+          user: { authExpiresAt },
+        } = data.data?.signIn
+        setCookie(tokenKey, accessToken, {
+          expires: new Date(authExpiresAt),
+        })
         reset()
-        await pushUri('/', '/home')
+        await pushUri(routeConfig.ACCOUNT.ADDRESS.INDEX)
       })
       .catch((error: ApolloError) =>
         setError('apiErrors', { message: error.message })

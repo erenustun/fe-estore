@@ -1,4 +1,3 @@
-import { Input } from '@components/Form/Input'
 import {
   AtSymbolIcon,
   LockClosedIcon,
@@ -11,15 +10,14 @@ import {
   VALIDATION_LAST_NAME,
   VALIDATION_PASSWORD,
   VALIDATION_PASSWORD_REPEAT,
-} from '@src/features/auth/constant'
+} from '@feature/auth/constant'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { ApolloError, useMutation } from '@apollo/client'
-import SignUpMutation from '@src/features/auth/graphql/sign-up.graphql'
-import { pushUri } from '@util/router.util'
+import SignUpMutation from '@feature/auth/graphql/sign-up.graphql'
+import { pushUri } from '@shared/util'
 import * as Yup from 'yup'
-import { Button, Form, FormSub, FormTitle } from '@src/components'
-import { TextLink } from '@components/TextLink'
+import { Button, Form, FormSub, FormTitle, Input, TextLink } from '@component'
 
 type RegisterFormInputs = {
   apiErrors?: any
