@@ -6,6 +6,7 @@ mutation SignIn($data: LoginUserInput!) {
       email
       phone
       avatar
+      authExpiresAt
     }
     accessToken
   }

@@ -1,11 +1,12 @@
-import { Button } from '@src/components'
-import { Container } from '@components/Layout/Container'
+import { Button, Container } from '@component'
 
-const Home = () => (
-  <Container className="py-20">
-    <span>Home</span>
-    <Button>Home</Button>
-  </Container>
-)
+const Home = () => {
+  return (
+    <Container className="py-20">
+      <span>Home</span>
+      <Button>Home</Button>
+    </Container>
+  )
+}
 
 export default Home

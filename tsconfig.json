@@ -28,20 +28,17 @@
       "@/*": [
         "./*"
       ],
+      "@shared/*": [
+        "./shared/*"
+      ],
+      "@component": [
+        "./shared/component/"
+      ],
       "@src/*": [
         "./src/*"
       ],
-      "@components/*": [
-        "./src/components/*"
-      ],
-      "@lib/*": [
-        "./src/lib/*"
-      ],
-      "@service/*": [
-        "./src/service/*"
-      ],
-      "@util/*": [
-        "./src/util/*"
+      "@feature/*": [
+        "./src/features/*"
       ]
     }
   },
@@ -50,7 +47,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/@types/**/*.ts"
+    "shared/@types/**/*.ts"
   ],
   "exclude": [
     "node_modules"

@@ -1,15 +1,16 @@
 import { FC, useState } from 'react'
 import { useSpring, animated } from '@react-spring/web'
-import { AccountIcon } from '@src/features/account/components/account-icon.component'
+import { AccountIcon } from '@feature/account/components/account-icon.component'
 import { useCookies } from 'react-cookie'
-import { pushUri } from '@util/router.util'
+import { pushUri } from '@shared/util'
 import tw from 'tailwind-styled-components'
-import { themeConfig } from '@src/config/theme.config'
 import {
   UserIcon,
   ListBulletIcon,
   ArrowLeftOnRectangleIcon,
 } from '@heroicons/react/20/solid'
+import { routeConfig, themeConfig } from '@shared/config'
+import { tokenExpiresKey, tokenKey } from '@shared/constant'
 
 export const AccountDropdownComponent = () => {
   const [isVisible, setVisibility] = useState(false)
@@ -64,16 +65,22 @@ interface DropdownContentProps {
 const DropdownContent: FC<DropdownContentProps> = ({
   toggleDropdown,
 }: DropdownContentProps) => {
-  const [, , removeCookie] = useCookies(['jwt'])
+  const [, , removeCookie] = useCookies([tokenKey])
 
-  const signOut = async () => {
-    removeCookie('jwt', { path: '/' })
-    if (localStorage) localStorage.removeItem('jwt')
-    await pushUri('/', '/home')
-    toggleDropdown()
+  const signOut = () => {
+    removeCookie(tokenKey)
+    pushUri(routeConfig.HOME).then(toggleDropdown)
   }
 
   const accountMenuList = [
+    {
+      label: 'Login',
+      icon: () => <UserIcon className="w-4 h-4" />,
+      onClick: async () => {
+        await pushUri(routeConfig.ACCOUNT.AUTH.SIGN_IN)
+        toggleDropdown()
+      },
+    },
     {
       label: 'Account',
       icon: () => <UserIcon className="w-4 h-4" />,
