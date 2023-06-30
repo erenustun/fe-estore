@@ -33,7 +33,7 @@ export const themeConfig = {
 
   navLinkTextHover: 'hover:text-blue-300',
   navLinkTextActive: 'active:text-blue-400',
-  navLinkCurrentPage: 'text-blue-400 underline underline-offset-2',
+  navLinkCurrentPage: 'text-blue-400',
 
   textLinkTextHover: 'hover:text-blue-300',
   textLinkTextActive: 'active:text-blue-500',

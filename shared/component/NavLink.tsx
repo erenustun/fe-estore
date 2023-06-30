@@ -18,7 +18,7 @@ const LinkWrapper = tw.span`
   flex
   items-center
   space-x-1
-  font-semibold
+  font-medium
   select-none
   ${() => themeConfig.mainTextColor}
   ${() => themeConfig.navLinkTextHover}
@@ -40,7 +40,7 @@ export const NavLink = ({ as, className, href, icon, label }: NavLinkProps) => {
       <LinkWrapper
         className={cn(
           router.pathname === href && themeConfig.navLinkCurrentPage,
-          router.pathname === href && 'font-extrabold',
+          router.pathname === href && 'font-semibold',
           className
         )}
       >
