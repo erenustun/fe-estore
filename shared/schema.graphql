@@ -415,7 +415,11 @@ type Query {
   fetchCustomer: User!
   order(id: String!): Order!
   product(id: String!): Product!
-  products(filterArgs: FilterArgsInput, paginationArgs: PaginationArgsInput, sortArgs: SortArgsInput): ProductsFetchResponse!
+  products(
+    filterArgs: FilterArgsInput
+    paginationArgs: PaginationArgsInput
+    sortArgs: SortArgsInput
+  ): ProductsFetchResponse!
   ratings(productId: String!): [ProductRating!]!
   requestEmailChange(email: String!): EmailResponse!
   requestPasswordChange(email: String!): EmailResponse!

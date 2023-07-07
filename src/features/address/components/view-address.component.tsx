@@ -1,5 +1,4 @@
 import { H1, H2 } from '@component'
-import { useEffect, useState } from 'react'
 import { useQuery } from '@apollo/client'
 import FetchAddresses from '@src/features/address/graphql/fetch-addresses.graphql'
 import {
