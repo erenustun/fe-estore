@@ -5,6 +5,28 @@
 
   "intl_en": "English",
 
+  "account_navigation_address": "Manage addresses",
+
+  "address_index": "Manage addresses ({count})",
+  "address_view_name": "Name",
+  "address_view_address": "Address",
+  "address_view_options": "Options",
+  "address_view_main_address": "Main address",
+  "address_form_update": "Update address",
+  "address_form_update_country": "Country",
+  "address_form_update_firstName": "First name",
+  "address_form_update_lastName": "Last name",
+  "address_form_update_phone": "Phone",
+  "address_form_update_save": "Update address",
+  "address_form_update_state": "State",
+  "address_form_update_street_address": "Street address",
+  "address_form_update_title": "Title",
+  "address_form_update_title_mr": "Mr.",
+  "address_form_update_title_mrs": "Mrs.",
+  "address_form_update_title_ms": "Ms.",
+  "address_form_update_title_mx": "Mx.",
+  "address_form_update_zip_code": "Zip Code",
+
   "AT": "Austria",
   "DE": "Germany",
   "FR": "France",

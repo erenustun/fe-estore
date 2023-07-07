@@ -6,6 +6,7 @@ import { themeConfig } from '@shared/config'
 interface OptionsProps extends OptionHTMLAttributes<HTMLOptionElement> {
   value: string | number
   name?: string | ReactNode
+  selected: boolean
 }
 
 interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
@@ -13,7 +14,7 @@ interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
   error?: any
   errors?: any
   icon?: ReactNode
-  label: string
+  label: ReactNode | string
   name: string
   noIcon?: boolean
   options: OptionsProps[]
@@ -79,6 +80,7 @@ export const Select = ({
             key={option.value}
             className="bg-gray-700 font-sans"
             value={option.value}
+            selected={option.selected}
           >
             {option.name ? option.name : option.value}
           </option>

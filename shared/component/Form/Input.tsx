@@ -10,8 +10,9 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   error?: any
   noIcon?: boolean
   icon?: ReactNode
-  label: string
+  label: ReactNode | string
   name: string
+  placeholder: string
   register: any
   required?: boolean
   secretField?: boolean
@@ -56,6 +57,7 @@ export const Input = ({
   label,
   name,
   noIcon = false,
+  placeholder,
   register,
   required = false,
   secretField = false,
@@ -88,6 +90,7 @@ export const Input = ({
           error={errors[name]}
           {...register(name, validationSchema)}
           noIcon={noIcon}
+          placeholder={placeholder}
         />
         {secretField && !fieldVisible && (
           <EyeSlashIcon
