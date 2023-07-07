@@ -1,5 +1,5 @@
 import { H1, H2 } from '@component'
-import { useQuery } from '@apollo/client'
+import { useMutation, useQuery } from '@apollo/client'
 import FetchAddresses from '@src/features/address/graphql/fetch-addresses.graphql'
 import {
   PencilSquareIcon as EditIcon,
@@ -10,6 +10,7 @@ import Link from 'next/link'
 import { Address, AddressType } from '@shared/model'
 import { routeConfig, themeConfig } from '@shared/config'
 import { FormattedMessage } from 'react-intl'
+import DeleteAddressMutation from '@feature/address/graphql/remove-address.graphql'
 
 export const AccountAddress = () => {
   const { data, loading, error } = useQuery(FetchAddresses, {
@@ -19,6 +20,10 @@ export const AccountAddress = () => {
       },
     },
     fetchPolicy: 'cache-and-network',
+  })
+
+  const [deleteAddress] = useMutation(DeleteAddressMutation, {
+    refetchQueries: [FetchAddresses],
   })
 
   if (loading) return <H1>Loading</H1>
@@ -59,9 +64,7 @@ export const AccountAddress = () => {
               }`}
             >
               <div className="w-52">
-                <FormattedMessage
-                  id={`address_form_update_title_${address?.title}`}
-                />{' '}
+                <FormattedMessage id={`address_form_title_${address?.title}`} />{' '}
                 {address.firstName} {address.lastName}
               </div>
               <div className="w-80">{`${address.line1}, ${address.zipCode}, ${address.countryCode}`}</div>
@@ -74,6 +77,9 @@ export const AccountAddress = () => {
                   />
                 </Link>
                 <DeleteIcon
+                  onClick={() =>
+                    deleteAddress({ variables: { id: address?.id } })
+                  }
                   className={`w-5 h-5 cursor-pointer ${themeConfig.dangerIconColor} ${themeConfig.animationTransition} ${themeConfig.animationDuration} ${themeConfig.animationEaseIn}`}
                 />
               </div>
