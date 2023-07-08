@@ -28,7 +28,3 @@ export const VALIDATION_PASSWORD_REPEAT = {
     .max(96, "Password can't contain more than 96 characters")
     .oneOf([Yup.ref('password')], 'Passwords must match'),
 }
-
-export const VALIDATION_PHONE = {
-  phone: Yup.string().notRequired(),
-}
