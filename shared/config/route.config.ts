@@ -12,4 +12,27 @@ export const routeConfig = {
       ADDRESS_EDIT: '/account/address/edit',
     },
   },
+  PRODUCT: {
+    INDEX: '/products',
+    CATEGORY: '/products/category',
+    BRAND: '/products/brand',
+  },
+}
+
+export const middlewareRouteConfig = {
+  protectedRoutes: [
+    routeConfig.ACCOUNT.INDEX,
+    routeConfig.ACCOUNT.ADDRESS.INDEX,
+    routeConfig.ACCOUNT.ADDRESS.ADDRESS_EDIT,
+    routeConfig.ACCOUNT.ADDRESS.ADDRESS_NEW,
+  ],
+  authRoutes: [
+    routeConfig.ACCOUNT.AUTH.SIGN_IN,
+    routeConfig.ACCOUNT.AUTH.SIGN_UP,
+  ],
+  publicRoutes: [
+    routeConfig.PRODUCT.INDEX,
+    routeConfig.PRODUCT.BRAND,
+    routeConfig.PRODUCT.CATEGORY,
+  ],
 }
