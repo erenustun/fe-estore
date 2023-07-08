@@ -116,7 +116,7 @@ export const SignInForm = () => {
           onClick={() => {
             unregister('email')
             unregister('password')
-            pushUri('/auth/sign-up')
+            pushUri(routeConfig.ACCOUNT.AUTH.SIGN_UP)
           }}
           className="self-end mr-auto"
           label="No account yet? Create account now."

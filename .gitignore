@@ -39,3 +39,6 @@ next-env.d.ts
 
 # build
 /.idea/
+
+# git
+*.patch

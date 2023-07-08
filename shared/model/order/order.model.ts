@@ -1,4 +1,5 @@
-import { Address, BaseEntity, OrderHasProduct, User } from '@shared/model'
+import { BaseEntity, OrderHasProduct, User } from '@shared/model'
+import { Address } from '@feature/address'
 
 export class Order extends BaseEntity {
   total: number

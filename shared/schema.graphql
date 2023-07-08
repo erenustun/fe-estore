@@ -22,7 +22,7 @@ type Address {
   title: String
   type: AddressType!
   updated: DateTime
-  user: User!
+  user: User
   zipCode: String!
 }
 
@@ -43,7 +43,7 @@ input AddressInput {
   state: String!
   title: String
   type: AddressType!
-  user: UserInput!
+  user: UserInput
   zipCode: String!
 }
 
@@ -95,7 +95,7 @@ input CreateAddressInput {
   state: String!
   title: String
   type: AddressType!
-  user: UserInput!
+  user: UserInput
   zipCode: String!
 }
 

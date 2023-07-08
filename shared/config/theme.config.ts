@@ -15,7 +15,7 @@ export const themeConfig = {
 
   badgeBackgroundColor: 'bg-rose-500',
 
-  boxBackgroundColor: 'bg-gray-300 border border-gray-400',
+  boxBackgroundColor: 'bg-gray-300 border',
   boxBlur: 'backdrop-filter backdrop-blur-lg',
   boxShadow: 'shadow-md',
   boxOpacity: 'bg-opacity-10',
@@ -31,9 +31,12 @@ export const themeConfig = {
   footerDivider: 'bg-slate-800',
   footerDividerBorder: 'border-slate-800',
 
+  loadingAnimation:
+    'animate-[pulse_1500ms_ease-in-out_infinite] cursor-not-allowed',
+
   navLinkTextHover: 'hover:text-blue-300',
   navLinkTextActive: 'active:text-blue-400',
-  navLinkCurrentPage: 'text-blue-400 underline underline-offset-2',
+  navLinkCurrentPage: 'text-blue-400',
 
   textLinkTextHover: 'hover:text-blue-300',
   textLinkTextActive: 'active:text-blue-500',

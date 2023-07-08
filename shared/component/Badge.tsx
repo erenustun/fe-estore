@@ -1,7 +1,7 @@
 import tw from 'tailwind-styled-components'
 import { themeConfig } from '@shared/config'
 
-const Badge = tw.div<{ rounded?: boolean }>`
+const Badge = tw.div<{ rounded?: boolean; wide?: boolean }>`
   font-semibold
   text-xs
   flex
@@ -9,11 +9,13 @@ const Badge = tw.div<{ rounded?: boolean }>`
   justify-center
   select-none
   ${() => themeConfig.badgeBackgroundColor}
-  ${props => (props.rounded ? 'rounded-full' : 'rounded-md')}
+  ${props => (props.rounded ? 'rounded-full' : 'rounded-lg')}
+  ${props => (props.wide ? 'w-[2rm]' : '')}
 `
 
 Badge.defaultProps = {
   rounded: true,
+  wide: false,
 }
 
 export { Badge }

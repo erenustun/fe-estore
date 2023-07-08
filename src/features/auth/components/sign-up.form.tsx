@@ -18,6 +18,7 @@ import SignUpMutation from '@feature/auth/graphql/sign-up.graphql'
 import { pushUri } from '@shared/util'
 import * as Yup from 'yup'
 import { Button, Form, FormSub, FormTitle, Input, TextLink } from '@component'
+import { routeConfig } from '@shared/config'
 
 type RegisterFormInputs = {
   apiErrors?: any
@@ -170,7 +171,7 @@ export const SignUpForm = () => {
             unregister('lastName')
             unregister('password')
             unregister('phone')
-            pushUri('/auth/sign-in')
+            pushUri(routeConfig.ACCOUNT.AUTH.SIGN_IN)
           }}
           className="self-end mr-auto"
           label="Already have an account? Login"

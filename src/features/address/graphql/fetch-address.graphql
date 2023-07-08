@@ -1,5 +1,5 @@
-query FetchAddresses($filterArgs: AddressFilterArgsInput) {
-  addresses(filterArgs: $filterArgs) {
+query FetchAddress($id: String!, $filterArgs: AddressFilterArgsInput) {
+  address(id: $id, filterArgs: $filterArgs) {
     id
     companyName
     title
@@ -11,6 +11,5 @@ query FetchAddresses($filterArgs: AddressFilterArgsInput) {
     countryCode
     primary
     phone
-    updated
   }
 }
