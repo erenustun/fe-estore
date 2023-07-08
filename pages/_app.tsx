@@ -21,7 +21,7 @@ export default function App({ Component, pageProps }: AppProps) {
   const [cookies, setCookie] = useCookies(['locale'])
 
   useEffect(() => {
-    setCookie('locale', locale ? locale.split('-')[0] : 'en')
+    setCookie('locale', locale ? locale.split('-')[0] : 'en', { path: '/' })
   }, [locale])
 
   return hasMounted ? (

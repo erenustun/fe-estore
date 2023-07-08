@@ -27,7 +27,7 @@ type LoginFormInputs = {
 }
 
 export const SignInForm = () => {
-  const [, setCookie] = useCookies([tokenKey])
+  const [cookies, setCookie, removeCookie] = useCookies([tokenKey])
   const {
     query: { message },
   } = useRouter()
@@ -62,8 +62,11 @@ export const SignInForm = () => {
           accessToken,
           user: { authExpiresAt },
         } = data.data?.signIn
+        if (cookies[tokenKey]) removeCookie(tokenKey)
         setCookie(tokenKey, accessToken, {
           expires: new Date(authExpiresAt),
+          sameSite: 'none',
+          path: '/',
         })
         reset()
         await pushUri(routeConfig.ACCOUNT.ADDRESS.INDEX)
