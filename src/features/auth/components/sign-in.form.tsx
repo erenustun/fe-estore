@@ -13,6 +13,7 @@ import {
   FormSub,
   FormTitle,
   Input,
+  Loader,
   Notification,
   TextLink,
 } from '@component'
@@ -27,7 +28,7 @@ type LoginFormInputs = {
 }
 
 export const SignInForm = () => {
-  const [, setCookie] = useCookies([tokenKey])
+  const [cookies, setCookie, removeCookie] = useCookies([tokenKey])
   const {
     query: { message },
   } = useRouter()
@@ -49,7 +50,7 @@ export const SignInForm = () => {
     handleSubmit,
     setError,
     reset,
-    formState: { errors },
+    formState: { errors, isSubmitting },
     unregister,
   } = useForm<LoginFormInputs>(formOptions)
 
@@ -62,8 +63,11 @@ export const SignInForm = () => {
           accessToken,
           user: { authExpiresAt },
         } = data.data?.signIn
+        if (cookies[tokenKey]) removeCookie(tokenKey)
         setCookie(tokenKey, accessToken, {
           expires: new Date(authExpiresAt),
+          sameSite: 'none',
+          path: '/',
         })
         reset()
         await pushUri(routeConfig.ACCOUNT.ADDRESS.INDEX)
@@ -74,54 +78,57 @@ export const SignInForm = () => {
   }
 
   return (
-    <Form onSubmit={handleSubmit(onSubmit)}>
-      <div className="flex flex-col space-y-1">
-        <FormTitle>Sign in</FormTitle>
-        <FormSub>Login to manage your orders.</FormSub>
-        {message && (
-          <Notification className="mt-2 -mb-5">{message}</Notification>
-        )}
-        {errors['apiErrors'] && (
-          <span className="text-rose-400 -mt-5">
-            {errors?.apiErrors?.message as string}
-          </span>
-        )}
-      </div>
+    <section>
+      <Form onSubmit={handleSubmit(onSubmit)} loading={isSubmitting}>
+        <div className="flex flex-col space-y-1">
+          <FormTitle>Sign in</FormTitle>
+          <FormSub>Login to manage your orders.</FormSub>
+          {message && (
+            <Notification className="mt-2 -mb-5">{message}</Notification>
+          )}
+          {errors['apiErrors'] && (
+            <span className="text-rose-400 -mt-5">
+              {errors?.apiErrors?.message as string}
+            </span>
+          )}
+        </div>
 
-      <Input
-        autoFocus
-        errors={errors}
-        icon={<AtSymbolIcon className="w-5 h-5" />}
-        label="E-Mail"
-        name="email"
-        placeholder="E-Mail"
-        register={register}
-        type="email"
-      />
-      <Input
-        errors={errors}
-        icon={<LockClosedIcon className="w-5 h-5" />}
-        label="Password"
-        name="password"
-        placeholder="Password"
-        register={register}
-        type="password"
-        secretField
-      />
-
-      <div className="flex flex-row-reverse">
-        <Button>Sign in</Button>
-
-        <TextLink
-          onClick={() => {
-            unregister('email')
-            unregister('password')
-            pushUri(routeConfig.ACCOUNT.AUTH.SIGN_UP)
-          }}
-          className="self-end mr-auto"
-          label="No account yet? Create account now."
+        <Input
+          autoFocus
+          errors={errors}
+          icon={<AtSymbolIcon className="w-5 h-5" />}
+          label="E-Mail"
+          name="email"
+          placeholder="E-Mail"
+          register={register}
+          type="email"
         />
-      </div>
-    </Form>
+        <Input
+          errors={errors}
+          icon={<LockClosedIcon className="w-5 h-5" />}
+          label="Password"
+          name="password"
+          placeholder="Password"
+          register={register}
+          type="password"
+          secretField
+        />
+
+        <div className="flex flex-row-reverse">
+          <Button>Sign in</Button>
+
+          <TextLink
+            onClick={() => {
+              unregister('email')
+              unregister('password')
+              pushUri(routeConfig.ACCOUNT.AUTH.SIGN_UP)
+            }}
+            className="self-end mr-auto"
+            label="No account yet? Create account now."
+          />
+        </div>
+      </Form>
+      <Loader loading={isSubmitting} message="Signing in" />
+    </section>
   )
 }
