@@ -6,7 +6,7 @@ import { themeConfig } from '@shared/config'
 interface OptionsProps extends OptionHTMLAttributes<HTMLOptionElement> {
   value: string | number
   name?: string | ReactNode
-  selected: boolean
+  selected?: boolean
 }
 
 interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {

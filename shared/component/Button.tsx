@@ -8,13 +8,14 @@ interface ButtonProps {
   primary?: boolean
 }
 
-const ButtonBase = tw.button`
+const ButtonBase = tw.button<ButtonProps>`
   ${() => themeConfig.buttonText}
   ${() => themeConfig.buttonPadding}
   ${() => themeConfig.animationTransition}
   ${() => themeConfig.animationDuration}
   ${() => themeConfig.animationEaseIn}
   ${() => themeConfig.radiusMedium}
+  transform hover:scale-105
   cursor-pointer
 `
 
