@@ -16,6 +16,3 @@ export * from './product/specification/specification.model'
 
 export * from './user/credit-card.model'
 export * from './user/user.model'
-
-export * from './user/address.model'
-export * from './user/address/create-address.input'

@@ -1,33 +1,33 @@
 import { BaseEntity, User } from '@shared/model'
 
 export enum AddressType {
-  SHIPPING = 'shipping',
   BILLING = 'billing',
+  SHIPPING = 'shipping',
 }
 
 export enum Country {
   AT = 'AT',
+  CH = 'CH',
   DE = 'DE',
+  ES = 'ES',
   FR = 'FR',
   IT = 'IT',
   NL = 'NL',
   PL = 'PL',
-  ES = 'ES',
-  CH = 'CH',
   UK = 'UK',
 }
 
 export class Address extends BaseEntity {
-  title?: string
+  companyName?: string
+  countryCode: Country
   firstName: string
   lastName: string
-  companyName?: string
   line1: string
-  zipCode: string
-  state: string
   phone?: string
-  countryCode: Country
   primary?: boolean
+  state: string
+  title?: string
   type: AddressType
-  user: User
+  user?: User
+  zipCode: string
 }

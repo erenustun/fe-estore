@@ -1,6 +1,11 @@
 import tw from 'tailwind-styled-components'
+import { FormHTMLAttributes } from 'react'
 
-export const Form = tw.form`
+interface FormProps extends FormHTMLAttributes<HTMLFormElement> {
+  loading?: boolean
+}
+
+const Form = tw.form<FormProps>`
   flex
   flex-col
   self-start
@@ -10,4 +15,11 @@ export const Form = tw.form`
   mx-auto
   relative
   px-5
+  ${props => props.loading && 'blur-sm'}
  `
+
+Form.defaultProps = {
+  loading: false,
+}
+
+export { Form }

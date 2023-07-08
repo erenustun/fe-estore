@@ -1,4 +1,5 @@
-import { AddressType, BaseEntity, Country } from '@shared/model'
+import { BaseEntity } from '@shared/model'
+import { AddressType, Country } from '@feature/address'
 
 export class UpdateAddressInput extends BaseEntity {
   title?: string

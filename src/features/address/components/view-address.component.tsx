@@ -1,4 +1,4 @@
-import { H1, H2 } from '@component'
+import { Button, H1, H2 } from '@component'
 import { useMutation, useQuery } from '@apollo/client'
 import FetchAddresses from '@src/features/address/graphql/fetch-addresses.graphql'
 import {
@@ -7,10 +7,10 @@ import {
   CheckIcon as CheckIcon,
 } from '@heroicons/react/20/solid'
 import Link from 'next/link'
-import { Address, AddressType } from '@shared/model'
 import { routeConfig, themeConfig } from '@shared/config'
 import { FormattedMessage } from 'react-intl'
 import DeleteAddressMutation from '@feature/address/graphql/remove-address.graphql'
+import { Address, AddressType } from '@feature/address'
 
 export const AccountAddress = () => {
   const { data, loading, error } = useQuery(FetchAddresses, {
@@ -90,6 +90,11 @@ export const AccountAddress = () => {
           )
         })}
       </div>
+      <Link href={routeConfig.ACCOUNT.ADDRESS.ADDRESS_NEW} className="self-end">
+        <Button>
+          <FormattedMessage id="address_view_create_address" />
+        </Button>
+      </Link>
     </div>
   )
 }

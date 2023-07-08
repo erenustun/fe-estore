@@ -1,5 +1,13 @@
-import { Box, Button, Container, Form, H2, Input, Select } from '@component'
-import { AddressType, Country } from '@shared/model'
+import {
+  Box,
+  Button,
+  Container,
+  Form,
+  H2,
+  Input,
+  Loader,
+  Select,
+} from '@component'
 import {
   ArrowLongLeftIcon as BackIcon,
   UserIcon,
@@ -9,13 +17,14 @@ import {
 } from '@heroicons/react/20/solid'
 import { useRouter } from 'next/router'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { FormattedMessage } from 'react-intl'
+import { FormattedMessage, useIntl } from 'react-intl'
 import cn from 'classnames'
 import { themeConfig } from '@shared/config'
 import { useMutation, useQuery } from '@apollo/client'
 import UpdateAddressMutation from '@feature/address/graphql/update-address.graphql'
 import FetchAddresses from '@feature/address/graphql/fetch-addresses.graphql'
 import FetchAddress from '@feature/address/graphql/fetch-address.graphql'
+import { AddressType, Country } from '@feature/address'
 
 type AddressInputs = {
   apiErrors?: any
@@ -32,23 +41,19 @@ type AddressInputs = {
   zipCode?: string
 }
 
-export const AccountAddressEdit = () => {
+export const UpdateAddress = () => {
   const {
     back,
     query: { id },
   } = useRouter()
+  const intl = useIntl()
 
   const [editAddress] = useMutation(UpdateAddressMutation, {
     refetchQueries: [FetchAddresses],
     onCompleted: () => back(),
   })
 
-  const { data } = useQuery(FetchAddress, {
-    variables: { id },
-    onCompleted: () => {
-      console.log(data?.address?.firstName)
-    },
-  })
+  const { data } = useQuery(FetchAddress, { variables: { id } })
 
   const formOptions = {
     name: 'address.edit',
@@ -57,8 +62,7 @@ export const AccountAddressEdit = () => {
   const {
     register,
     handleSubmit,
-    reset,
-    formState: { errors },
+    formState: { errors, isSubmitting, isLoading },
   } = useForm<AddressInputs>(formOptions)
 
   const onSubmit: SubmitHandler<AddressInputs> = data => {
@@ -87,19 +91,16 @@ export const AccountAddressEdit = () => {
           ...(state && { state }),
           ...(countryCode && countryCode !== '0' && { countryCode }),
           ...(phone && { phone }),
-          ...(primary && { primary }),
+          primary,
           ...(type && type !== '0' && { type }),
         },
       },
       refetchQueries: [FetchAddresses],
     })
-
-    reset()
   }
 
   return (
-    <Container className="flex-row min-h-[62rem] border">
-      <div className="flex w-64 self-start"></div>
+    <Container className="flex-row min-h-[62rem]">
       <div className="flex flex-col">
         <div className="flex items-center">
           <BackIcon
@@ -111,11 +112,15 @@ export const AccountAddressEdit = () => {
           </H2>
         </div>
 
-        <Box className="flex px-1 bg-opacity-5">
-          <Form onSubmit={handleSubmit(onSubmit)} className="mx-auto px-0">
+        <Box className="flex px-1 bg-opacity-5" darkborder>
+          <Form
+            onSubmit={handleSubmit(onSubmit)}
+            className="px-2"
+            loading={isSubmitting && isLoading}
+          >
             <Select
               name="title"
-              label={<FormattedMessage id="address_form_update_title" />}
+              label={<FormattedMessage id="address_form_title" />}
               register={register}
               options={[
                 {
@@ -146,7 +151,7 @@ export const AccountAddressEdit = () => {
               <Input
                 autoFocus
                 errors={errors}
-                label={<FormattedMessage id="address_form_update_firstName" />}
+                label={<FormattedMessage id="address_form_firstName" />}
                 name="firstName"
                 placeholder={data?.address?.firstName}
                 register={register}
@@ -156,7 +161,7 @@ export const AccountAddressEdit = () => {
               />
               <Input
                 errors={errors}
-                label={<FormattedMessage id="address_form_update_lastName" />}
+                label={<FormattedMessage id="address_form_lastName" />}
                 name="lastName"
                 placeholder={data?.address?.lastName}
                 register={register}
@@ -168,7 +173,7 @@ export const AccountAddressEdit = () => {
             <Input
               errors={errors}
               icon={<DevicePhoneMobileIcon className="w-5 h-5" />}
-              label={<FormattedMessage id="address_form_update_phone" />}
+              label={<FormattedMessage id="address_form_phone" />}
               name="phone"
               placeholder={data?.address?.phone}
               register={register}
@@ -177,9 +182,7 @@ export const AccountAddressEdit = () => {
             <Input
               errors={errors}
               icon={<HomeIcon className="w-5 h-5" />}
-              label={
-                <FormattedMessage id="address_form_update_street_address" />
-              }
+              label={<FormattedMessage id="address_form_street_address" />}
               name="line1"
               placeholder={data?.address?.line1}
               register={register}
@@ -190,7 +193,7 @@ export const AccountAddressEdit = () => {
               <Input
                 className="w-11/12"
                 errors={errors}
-                label={<FormattedMessage id="address_form_update_state" />}
+                label={<FormattedMessage id="address_form_state" />}
                 name="state"
                 placeholder={data?.address?.state}
                 register={register}
@@ -200,7 +203,7 @@ export const AccountAddressEdit = () => {
               />
               <Input
                 errors={errors}
-                label={<FormattedMessage id="address_form_update_zip_code" />}
+                label={<FormattedMessage id="address_form_zip_code" />}
                 name="zipCode"
                 placeholder={data?.address?.zipCode}
                 register={register}
@@ -209,65 +212,78 @@ export const AccountAddressEdit = () => {
                 noIcon
               />
             </section>
-            <Select
-              name="countryCode"
-              label={<FormattedMessage id="address_form_update_country" />}
-              register={register}
-              required
-              options={[
-                {
-                  value: 'AT',
-                  name: <FormattedMessage id="AT" />,
-                  selected: data?.address?.countryCode === 'AT',
-                },
-                {
-                  value: 'DE',
-                  name: <FormattedMessage id="DE" />,
-                  selected: data?.address?.countryCode === 'DE',
-                },
-                {
-                  value: 'FR',
-                  name: <FormattedMessage id="FR" />,
-                  selected: data?.address?.countryCode === 'FR',
-                },
-                {
-                  value: 'IT',
-                  name: <FormattedMessage id="IT" />,
-                  selected: data?.address?.countryCode === 'IT',
-                },
-                {
-                  value: 'NL',
-                  name: <FormattedMessage id="NL" />,
-                  selected: data?.address?.countryCode === 'NL',
-                },
-                {
-                  value: 'PL',
-                  name: <FormattedMessage id="PL" />,
-                  selected: data?.address?.countryCode === 'PL',
-                },
-                {
-                  value: 'ES',
-                  name: <FormattedMessage id="ES" />,
-                  selected: data?.address?.countryCode === 'ES',
-                },
-                {
-                  value: 'CH',
-                  name: <FormattedMessage id="CH" />,
-                  selected: data?.address?.countryCode === 'CH',
-                },
-                {
-                  value: 'UK',
-                  name: <FormattedMessage id="UK" />,
-                  selected: data?.address?.countryCode === 'UK',
-                },
-              ]}
-              errors={errors}
-              icon={<GlobeAltIcon className="w-5 h-5" />}
-            />
-            <Button>
-              <FormattedMessage id="address_form_update_save" />
+            <section className="flex flex-col gap-y-5">
+              <Select
+                name="countryCode"
+                label={<FormattedMessage id="address_form_country" />}
+                register={register}
+                required
+                options={[
+                  {
+                    name: 'Please choose',
+                    value: 0,
+                  },
+                  {
+                    value: 'AT',
+                    name: <FormattedMessage id="AT" />,
+                  },
+                  {
+                    value: 'DE',
+                    name: <FormattedMessage id="DE" />,
+                  },
+                  {
+                    value: 'FR',
+                    name: <FormattedMessage id="FR" />,
+                  },
+                  {
+                    value: 'IT',
+                    name: <FormattedMessage id="IT" />,
+                  },
+                  {
+                    value: 'NL',
+                    name: <FormattedMessage id="NL" />,
+                  },
+                  {
+                    value: 'PL',
+                    name: <FormattedMessage id="PL" />,
+                  },
+                  {
+                    value: 'ES',
+                    name: <FormattedMessage id="ES" />,
+                  },
+                  {
+                    value: 'CH',
+                    name: <FormattedMessage id="CH" />,
+                  },
+                  {
+                    value: 'UK',
+                    name: <FormattedMessage id="UK" />,
+                  },
+                ]}
+                errors={errors}
+                icon={<GlobeAltIcon className="w-5 h-5" />}
+              />
+              <Input
+                defaultChecked={data?.address?.primary}
+                className="flex flex-row-reverse self-start gap-x-2 ml-1"
+                errors={errors}
+                label={<FormattedMessage id="address_form_primary" />}
+                name="primary"
+                register={register}
+                type="checkbox"
+              />
+            </section>
+            <Button className="self-end">
+              <input
+                type="submit"
+                value={intl.formatMessage({ id: 'address_form_update_save' })}
+              />
             </Button>
           </Form>
+          <Loader
+            message={<FormattedMessage id="address_form_update_saving" />}
+            loading={isSubmitting && isLoading}
+          />
         </Box>
       </div>
       <div className="flex w-64 self-start"></div>

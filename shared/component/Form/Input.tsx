@@ -6,13 +6,14 @@ import { themeConfig } from '@shared/config'
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   className?: string
+  defaultChecked?: boolean
   errors?: any
   error?: any
   noIcon?: boolean
   icon?: ReactNode
   label: ReactNode | string
   name: string
-  placeholder: string
+  placeholder?: string
   register: any
   required?: boolean
   secretField?: boolean
@@ -52,12 +53,13 @@ const StyledInputError = tw.p`
 
 export const Input = ({
   className,
+  defaultChecked = false,
   errors,
   icon,
   label,
   name,
   noIcon = false,
-  placeholder,
+  placeholder = '',
   register,
   required = false,
   secretField = false,
@@ -84,6 +86,7 @@ export const Input = ({
           </span>
         )}
         <StyledInput
+          defaultChecked={defaultChecked}
           id={name}
           name={name}
           type={!secretField ? type : fieldVisible ? 'text' : 'password'}

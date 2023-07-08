@@ -1,10 +1,5 @@
-import {
-  Address,
-  BaseEntity,
-  CreditCard,
-  Order,
-  ProductRating,
-} from '@shared/model'
+import { BaseEntity, CreditCard, Order, ProductRating } from '@shared/model'
+import { Address } from '@feature/address'
 
 enum Role {
   ADMIN = 'admin',

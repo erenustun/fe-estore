@@ -1,5 +1,5 @@
-import { AccountAddressEdit } from '@feature/address/components/update-address.component'
+import { UpdateAddressView } from '@feature/address'
 
-const EditAddressPage = () => <AccountAddressEdit />
+const UpdateAddressPage = () => <UpdateAddressView />
 
-export default EditAddressPage
+export default UpdateAddressPage
