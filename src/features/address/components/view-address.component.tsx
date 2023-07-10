@@ -12,7 +12,7 @@ import { FormattedMessage } from 'react-intl'
 import DeleteAddressMutation from '@feature/address/graphql/remove-address.graphql'
 import { Address, AddressType } from '@feature/address'
 
-export const AccountAddress = () => {
+export const ViewAddress = () => {
   const { data, loading, error } = useQuery(FetchAddresses, {
     variables: {
       filterArgs: {
@@ -32,13 +32,6 @@ export const AccountAddress = () => {
 
   return (
     <div className="flex flex-col">
-      <H2>
-        <FormattedMessage
-          id="address_index"
-          values={{ count: data?.addresses?.length }}
-        />
-      </H2>
-
       <div className="flex px-1 font-medium">
         <div className="w-52">
           <FormattedMessage id="address_view_name" />

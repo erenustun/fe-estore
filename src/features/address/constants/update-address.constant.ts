@@ -1,15 +1,28 @@
 import * as Yup from 'yup'
-import { AddressType, Country } from '@feature/address'
 
-export const countries = Object.values(Country)
-export const addressTypes = Object.values(AddressType)
+enum Country {
+  AT = 'AT',
+  CH = 'CH',
+  DE = 'DE',
+  ES = 'ES',
+  FR = 'FR',
+  IT = 'IT',
+  NL = 'NL',
+  PL = 'PL',
+  UK = 'UK',
+}
+
+enum AddressType {
+  BILLING = 'billing',
+  SHIPPING = 'shipping',
+}
 
 export const VALIDATION_COMPANY_NAME_OPTIONAL = {
   companyName: Yup.string().notRequired(),
 }
 
 export const VALIDATION_COUNTRY_OPTIONAL = {
-  countryCode: Yup.mixed<Country>().oneOf(countries).notRequired(),
+  countryCode: Yup.mixed<Country>().oneOf(Object.values(Country)).notRequired(),
 }
 
 export const VALIDATION_FIRST_NAME_OPTIONAL = {
@@ -41,7 +54,9 @@ export const VALIDATION_TITLE_OPTIONAL = {
 }
 
 export const VALIDATION_TYPE_OPTIONAL = {
-  countryCode: Yup.mixed<AddressType>().oneOf(addressTypes).notRequired(),
+  type: Yup.mixed<AddressType>()
+    .oneOf(Object.values(AddressType))
+    .notRequired(),
 }
 
 export const VALIDATION_ZIP_CODE_OPTIONAL = {

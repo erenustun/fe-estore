@@ -2,7 +2,7 @@ import { Container, H2 } from '@component'
 import { routeConfig, themeConfig } from '@shared/config'
 import { useCallback } from 'react'
 import { useRouter } from 'next/router'
-import { AccountAddress } from '@feature/address/components/view-address.component'
+import { AddressView } from '@feature/address'
 import cn from 'classnames'
 import { AccountNavigation } from '@feature/account/components/navigation.component'
 
@@ -15,7 +15,7 @@ export const AccountView = () => {
   const renderSection = useCallback(() => {
     switch (pathname) {
       case routeConfig.ACCOUNT.ADDRESS.INDEX:
-        return <AccountAddress />
+        return <AddressView />
       default:
         return <H2>MVP</H2>
     }
