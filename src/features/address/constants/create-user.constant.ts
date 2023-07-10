@@ -1,10 +1,20 @@
 import * as Yup from 'yup'
-import { countries } from '@feature/address/constants/update-address.constant'
-import { Country } from '@feature/address'
+
+enum Country {
+  AT = 'AT',
+  CH = 'CH',
+  DE = 'DE',
+  ES = 'ES',
+  FR = 'FR',
+  IT = 'IT',
+  NL = 'NL',
+  PL = 'PL',
+  UK = 'UK',
+}
 
 export const VALIDATION_COUNTRY = {
   countryCode: Yup.mixed<Country>()
-    .oneOf(countries, 'Please select a country.')
+    .oneOf(Object.values(Country), 'Please select a country.')
     .required(),
 }
 

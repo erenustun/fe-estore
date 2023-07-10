@@ -1,21 +1,5 @@
 import { BaseEntity, User } from '@shared/model'
-
-export enum AddressType {
-  BILLING = 'billing',
-  SHIPPING = 'shipping',
-}
-
-export enum Country {
-  AT = 'AT',
-  CH = 'CH',
-  DE = 'DE',
-  ES = 'ES',
-  FR = 'FR',
-  IT = 'IT',
-  NL = 'NL',
-  PL = 'PL',
-  UK = 'UK',
-}
+import { AddressType, Country } from '@feature/address'
 
 export class Address extends BaseEntity {
   companyName?: string
