@@ -13,10 +13,12 @@ export * from './Loader'
 export * from './NavLink'
 export * from './NavigationDropdown'
 export * from './Notification'
+export * from './SimpleTable'
 export * from './TextLink'
 
 export * from './Layout/Box'
 export * from './Layout/Container'
+export * from './Layout/FlexBox'
 export * from './Layout/Layout'
 
 export * from './Form/FieldError'

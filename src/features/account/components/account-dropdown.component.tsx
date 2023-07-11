@@ -77,7 +77,7 @@ const DropdownContent: FC<DropdownContentProps> = ({
       label: 'Account',
       icon: () => <UserIcon className="w-4 h-4" />,
       onClick: async () => {
-        await pushUri(routeConfig.ACCOUNT.ADDRESS.INDEX)
+        await pushUri(routeConfig.ACCOUNT.INDEX)
         toggleDropdown()
       },
     },

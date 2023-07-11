@@ -8,11 +8,11 @@ export function middleware(request: NextRequest) {
     request.cookies.get('token')?.value
 
   if (
-    middlewareRouteConfig.protectedRoutes.includes(request.nextUrl.pathname) &&
-    !hasToken
+    (middlewareRouteConfig.protectedRoutes.includes(request.nextUrl.pathname) &&
+      !hasToken) ||
+    request?.nextUrl?.pathname === routeConfig.ACCOUNT.UNAUTHORIZED
   ) {
     request.cookies.delete('token')
-    console.log(request.url)
     const response = NextResponse.redirect(
       new URL(routeConfig.ACCOUNT.AUTH.SIGN_IN, request.url)
     )
@@ -25,7 +25,7 @@ export function middleware(request: NextRequest) {
     hasToken
   )
     return NextResponse.redirect(
-      new URL(routeConfig.ACCOUNT.ADDRESS.INDEX, request.url)
+      new URL(routeConfig.ACCOUNT.INDEX, request.url)
     )
 }
 

@@ -70,7 +70,7 @@ export const SignInForm = () => {
           path: '/',
         })
         reset()
-        await pushUri(routeConfig.ACCOUNT.ADDRESS.INDEX)
+        await pushUri(routeConfig.ACCOUNT.INDEX)
       })
       .catch((error: ApolloError) =>
         setError('apiErrors', { message: error.message })

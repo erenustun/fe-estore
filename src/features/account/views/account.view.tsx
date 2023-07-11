@@ -5,6 +5,7 @@ import { useRouter } from 'next/router'
 import { AddressView } from '@feature/address'
 import cn from 'classnames'
 import { AccountNavigation } from '@feature/account/components/navigation.component'
+import { DetailsView } from '@feature/account/views/details/details.view'
 
 export const AccountView = () => {
   const { pathname } = useRouter()
@@ -14,6 +15,8 @@ export const AccountView = () => {
 
   const renderSection = useCallback(() => {
     switch (pathname) {
+      case routeConfig.ACCOUNT.INDEX:
+        return <DetailsView />
       case routeConfig.ACCOUNT.ADDRESS.INDEX:
         return <AddressView />
       default:
