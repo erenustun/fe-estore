@@ -39,16 +39,16 @@ export const ViewAddress = () => {
   return (
     <FlexBox direction="col">
       <div className="flex px-1 font-medium">
-        <div className="w-52 border">
+        <div className="w-52">
           <FormattedMessage id="address_view_name" />
         </div>
-        <div className="w-80 border">
+        <div className="w-80">
           <FormattedMessage id="address_view_address" />
         </div>
-        <div className="w-28 border">
+        <div className="w-28">
           <FormattedMessage id="address_view_options" />
         </div>
-        <div className="border">
+        <div>
           <FormattedMessage id="address_view_main_address" />
         </div>
       </div>
@@ -62,12 +62,12 @@ export const ViewAddress = () => {
                 'border-b border-b-gray-500'
               }`}
             >
-              <div className="w-52 border">
+              <div className="w-52">
                 <FormattedMessage id={`address_form_title_${address?.title}`} />{' '}
                 {address.firstName} {address.lastName}
               </div>
-              <div className="w-80 border">{`${address.line1}, ${address.zipCode}, ${address.countryCode}`}</div>
-              <div className="w-28 border flex items-center space-x-2">
+              <div className="w-80">{`${address.line1}, ${address.zipCode}, ${address.countryCode}`}</div>
+              <div className="w-28 flex items-center space-x-2">
                 <Link
                   href={`${routeConfig.ACCOUNT.ADDRESS.EDIT}/${address.id}`}
                 >
@@ -82,7 +82,7 @@ export const ViewAddress = () => {
                   className={`w-5 h-5 cursor-pointer ${themeConfig.dangerIconColor} ${themeConfig.animationTransition} ${themeConfig.animationDuration} ${themeConfig.animationEaseIn}`}
                 />
               </div>
-              <div className="w-6 border">
+              <div className="w-6">
                 {address.primary && <CheckIcon className="w-5 h-5" />}
               </div>
             </div>
