@@ -1,4 +1,4 @@
-import { Button, H1, H2 } from '@component'
+import { Button, FlexBox, H1, H2, Loader } from '@component'
 import { useMutation, useQuery } from '@apollo/client'
 import FetchAddresses from '@src/features/address/graphql/fetch-addresses.graphql'
 import {
@@ -26,23 +26,29 @@ export const ViewAddress = () => {
     refetchQueries: [FetchAddresses],
   })
 
-  if (loading) return <H1>Loading</H1>
+  if (loading)
+    return (
+      <Loader
+        loading={loading}
+        message={<FormattedMessage id="address_view_fetching" />}
+      />
+    )
 
   if (error) return <h1>Error: {error.message}</h1>
 
   return (
-    <div className="flex flex-col">
+    <FlexBox direction="col">
       <div className="flex px-1 font-medium">
-        <div className="w-52">
+        <div className="w-52 border">
           <FormattedMessage id="address_view_name" />
         </div>
-        <div className="w-80">
+        <div className="w-80 border">
           <FormattedMessage id="address_view_address" />
         </div>
-        <div className="w-28">
+        <div className="w-28 border">
           <FormattedMessage id="address_view_options" />
         </div>
-        <div>
+        <div className="border">
           <FormattedMessage id="address_view_main_address" />
         </div>
       </div>
@@ -56,14 +62,14 @@ export const ViewAddress = () => {
                 'border-b border-b-gray-500'
               }`}
             >
-              <div className="w-52">
+              <div className="w-52 border">
                 <FormattedMessage id={`address_form_title_${address?.title}`} />{' '}
                 {address.firstName} {address.lastName}
               </div>
-              <div className="w-80">{`${address.line1}, ${address.zipCode}, ${address.countryCode}`}</div>
-              <div className="w-28 flex items-center space-x-2">
+              <div className="w-80 border">{`${address.line1}, ${address.zipCode}, ${address.countryCode}`}</div>
+              <div className="w-28 border flex items-center space-x-2">
                 <Link
-                  href={`${routeConfig.ACCOUNT.ADDRESS.ADDRESS_EDIT}/${address.id}`}
+                  href={`${routeConfig.ACCOUNT.ADDRESS.EDIT}/${address.id}`}
                 >
                   <EditIcon
                     className={`w-5 h-5 cursor-pointer ${themeConfig.primaryIconColor} ${themeConfig.animationTransition} ${themeConfig.animationDuration} ${themeConfig.animationEaseIn}`}
@@ -76,18 +82,18 @@ export const ViewAddress = () => {
                   className={`w-5 h-5 cursor-pointer ${themeConfig.dangerIconColor} ${themeConfig.animationTransition} ${themeConfig.animationDuration} ${themeConfig.animationEaseIn}`}
                 />
               </div>
-              <div className="w-80">
+              <div className="w-6 border">
                 {address.primary && <CheckIcon className="w-5 h-5" />}
               </div>
             </div>
           )
         })}
       </div>
-      <Link href={routeConfig.ACCOUNT.ADDRESS.ADDRESS_NEW} className="self-end">
+      <Link href={routeConfig.ACCOUNT.ADDRESS.NEW} className="self-end">
         <Button>
           <FormattedMessage id="address_view_create_address" />
         </Button>
       </Link>
-    </div>
+    </FlexBox>
   )
 }

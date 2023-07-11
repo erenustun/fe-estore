@@ -1,16 +1,21 @@
 import { ReactNode } from 'react'
+import cn from 'classnames'
 
 interface LoaderProps {
   message?: ReactNode
   loading?: boolean
+  className?: string
 }
 
-const Loader = ({ message, loading }: LoaderProps) => {
+const Loader = ({ message, loading, className = '' }: LoaderProps) => {
   if (loading)
     return (
       <div
         role="status"
-        className="flex flex-col items-center gap-y-1 absolute -translate-x-1/2 -translate-y-1/2 top-2/4 left-1/2"
+        className={cn(
+          'flex flex-col items-center gap-y-1 absolute -translate-x-1/2 -translate-y-1/2 top-2/4 left-1/2',
+          className
+        )}
       >
         <svg
           aria-hidden="true"
