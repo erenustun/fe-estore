@@ -1,4 +1,4 @@
-import { Button, FlexBox, H1, H2, Loader } from '@component'
+import { Button, FlexBox, Loader } from '@component'
 import { useMutation, useQuery } from '@apollo/client'
 import FetchAddresses from '@src/features/address/graphql/fetch-addresses.graphql'
 import {
