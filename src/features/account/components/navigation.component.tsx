@@ -9,17 +9,10 @@ import { FormattedMessage } from 'react-intl'
 import { routeConfig } from '@shared/config'
 
 export const AccountNavigation = () => (
-  <Box className="flex flex-col space-y-5 w-60 self-start">
+  <Box className="flex flex-col space-y-5 w-60 self-start mt-[4.3rem]">
     <NavLink
-      href="/account/details"
-      label={
-        <div className="flex">
-          <span>Account details</span>
-          <Badge wide rounded={false} className="ml-2 h-6 w-7">
-            <FormattedMessage id="app_wip" />
-          </Badge>
-        </div>
-      }
+      href={routeConfig.ACCOUNT.INDEX}
+      label={<FormattedMessage id="account_navigation_details" />}
       icon={<UserIcon className="h-4 w-4" />}
     />
     <NavLink

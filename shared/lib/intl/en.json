@@ -12,8 +12,20 @@
   "intl_en": "English",
 
 
+  "account_navigation_details": "Account details",
   "account_navigation_address": "Manage addresses",
   "account_navigation_orders": "My orders",
+
+
+  "account_index": "User account - {username}",
+  "account_view_email": "E-Mail",
+  "account_view_first_name": "First name",
+  "account_view_last_name": "Last name",
+  "account_view_phone": "Phone",
+  "account_view_salutation": "Salutation",
+  "account_view_username": "Username",
+  "account_view_edit_user": "Edit my details",
+  "account_view_fetching": "Fetching user details...",
 
 
   "address_index": "Manage addresses ({count})",
@@ -22,13 +34,14 @@
   "address_view_options": "Options",
   "address_view_main_address": "Main address",
   "address_view_create_address": "Create new address",
+  "address_view_fetching": "Fetching user addresses...",
 
   "address_form_update": "Update address",
   "address_form_update_save": "Update",
-  "address_form_update_saving": "Updating address",
+  "address_form_update_saving": "Updating address...",
   "address_form_create": "Create address",
   "address_form_create_save": "Create",
-  "address_form_create_saving": "Creating address",
+  "address_form_create_saving": "Creating address...",
   "address_form_country": "Country",
   "address_form_firstName": "First name",
   "address_form_lastName": "Last name",
