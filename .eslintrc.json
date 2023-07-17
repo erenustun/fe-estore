@@ -1,8 +1,0 @@
-{
-  "extends": ["next", "plugin:@typescript-eslint/recommended", "prettier"],
-  "rules": {
-    "no-unused-expressions": "error",
-    "prefer-const": "error",
-    "@typescript-eslint/ban-ts-comment": "off"
-  }
-}
