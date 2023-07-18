@@ -62,16 +62,6 @@ input CategoryInput {
   product: ProductInput
 }
 
-input ChangeEmailInput {
-  email: String!
-  token: String!
-}
-
-input ChangePasswordInput {
-  password: String!
-  token: String!
-}
-
 enum Country {
   AT
   CH
@@ -165,14 +155,9 @@ A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date
 """
 scalar DateTime
 
-type DeleteResult {
-  affected: Int!
-  raw: [String!]!
-}
-
-type EmailResponse {
-  rejected: [String!]!
-  success: Boolean!
+input EmailChangeInput {
+  email: String!
+  token: String!
 }
 
 type FilterArgs {
@@ -195,21 +180,41 @@ input FilterArgsInput {
   storage: [Int]
 }
 
-type LoginResponse {
-  accessToken: String!
+type IDeleteResponse {
+  affected: Int!
+  raw: [String!]!
+}
+
+type IEmailResponse {
+  rejected: [String!]!
+  success: Boolean!
+}
+
+type ILoginResponse {
+  token: String!
   user: User!
 }
 
-input LoginUserInput {
+type IRegisterResponse {
+  success: Boolean!
+}
+
+type IUpdateResponse {
+  affected: Int!
+  generatedMaps: [String!]!
+  raw: [String!]!
+}
+
+input LoginInput {
   email: String!
   password: String!
 }
 
 type Mutation {
   activateCustomer(token: String!): User!
-  cancelOrder(id: String!): UpdateResult!
-  changeEmail(data: ChangeEmailInput!): UpdateResult!
-  changePassword(data: ChangePasswordInput!): UpdateResult!
+  cancelOrder(id: String!): IUpdateResponse!
+  changeEmail(input: EmailChangeInput!): IUpdateResponse!
+  changePassword(input: PasswordChangeInput!): IUpdateResponse!
   createAddress(data: CreateAddressInput!): Address!
   createBrand(name: String!): ProductBrand!
   createCategory(name: String!): ProductCategory!
@@ -217,28 +222,31 @@ type Mutation {
   createOrder(data: CreateOrderInput!): Order!
   createProduct(data: CreateProductInput!): Product!
   createRating(data: CreateRatingInput!): ProductRating!
-  deleteAddress(id: String!): DeleteResult!
-  deleteBrand(id: String!): DeleteResult!
-  deleteCategory(id: String!): DeleteResult!
-  deleteCreditCard(id: String!): DeleteResult!
-  deleteCustomer: DeleteResult!
-  deleteProduct(id: String!): DeleteResult!
-  deleteUser(id: String!): DeleteResult!
-  restoreAddress(id: String!): UpdateResult!
-  restoreBrand(id: String!): UpdateResult!
-  restoreCategory(id: String!): UpdateResult!
-  restoreCustomer: UpdateResult!
-  restoreProduct(id: String!): UpdateResult!
-  restoreUser(id: String!): UpdateResult!
-  signIn(data: LoginUserInput!): LoginResponse
-  signUp(data: RegisterUserInput!): RegisterResponse!
-  swapPrimaryAddress(addressId: String!): UpdateResult!
-  updateAddress(data: UpdateAddressInput!, id: String!): UpdateResult!
-  updateBrand(id: String!, name: String!): UpdateResult!
-  updateCategory(id: String!, name: String!): UpdateResult!
+  deleteAddress(id: String!): IDeleteResponse!
+  deleteBrand(id: String!): IDeleteResponse!
+  deleteCategory(id: String!): IDeleteResponse!
+  deleteCreditCard(id: String!): IDeleteResponse!
+  deleteCustomer: IDeleteResponse!
+  deleteProduct(id: String!): IDeleteResponse!
+  deleteUser(id: String!): IDeleteResponse!
+  restoreAddress(id: String!): IUpdateResponse!
+  restoreBrand(id: String!): IUpdateResponse!
+  restoreCategory(id: String!): IUpdateResponse!
+  restoreCustomer: IUpdateResponse!
+  restoreProduct(id: String!): IUpdateResponse!
+  restoreUser(id: String!): IUpdateResponse!
+  signIn(input: LoginInput!): ILoginResponse
+  signUp(input: RegisterInput!): IRegisterResponse!
+  swapPrimaryAddress(addressId: String!): IUpdateResponse!
+  updateAddress(data: UpdateAddressInput!, id: String!): IUpdateResponse!
+  updateBrand(id: String!, name: String!): IUpdateResponse!
+  updateCategory(id: String!, name: String!): IUpdateResponse!
   updateCustomer(data: UpdateUserInput!): User!
-  updateCustomerAddress(data: UpdateAddressInput!, id: String!): UpdateResult!
-  updateProduct(data: UpdateProductInput!, id: String!): UpdateResult!
+  updateCustomerAddress(
+    data: UpdateAddressInput!
+    id: String!
+  ): IUpdateResponse!
+  updateProduct(data: UpdateProductInput!, id: String!): IUpdateResponse!
   updateUser(data: UpdateUserInput!, id: String!): User!
 }
 
@@ -283,6 +291,11 @@ input OrderInput {
 input PaginationArgsInput {
   limit: Int!
   page: Int!
+}
+
+input PasswordChangeInput {
+  password: String!
+  token: String!
 }
 
 type Product {
@@ -421,11 +434,11 @@ type Query {
     sortArgs: SortArgsInput
   ): ProductsFetchResponse!
   ratings(productId: String!): [ProductRating!]!
-  requestEmailChange(email: String!): EmailResponse!
-  requestPasswordChange(email: String!): EmailResponse!
+  requestEmailChange(email: String!): IEmailResponse!
+  requestPasswordChange(email: String!): IEmailResponse!
   user(id: String!): User!
   users: [User!]!
-  verifyToken(token: String!, tokenOption: String!): TokenVerificationResponse!
+  verifyToken(input: TokenVerifyInput!): TokenVerificationResponse!
 }
 
 input RatingInput {
@@ -435,16 +448,10 @@ input RatingInput {
   user: UserInput!
 }
 
-type RegisterResponse {
-  message: String!
-  success: Boolean!
-}
-
-input RegisterUserInput {
+input RegisterInput {
   activated: DateTime
   activationToken: String
   address: [AddressInput!]
-  authExpiresAt: DateTime
   avatar: String
   creditCards: [CreditCardInput!]
   email: String!
@@ -575,6 +582,11 @@ type TokenVerificationResponse {
   valid: Boolean!
 }
 
+input TokenVerifyInput {
+  token: String!
+  tokenOption: String!
+}
+
 input UpdateAddressInput {
   companyName: String
   countryCode: Country
@@ -611,17 +623,10 @@ input UpdateProductInput {
   thumbnail: String
 }
 
-type UpdateResult {
-  affected: Int!
-  generatedMaps: [String!]!
-  raw: [String!]!
-}
-
 input UpdateUserInput {
   activated: DateTime
   activationToken: String
   address: [AddressInput!]
-  authExpiresAt: DateTime
   avatar: String
   created: DateTime
   creditCards: [CreditCardInput!]
@@ -643,7 +648,6 @@ type User {
   activated: DateTime
   activationToken: String
   address: [Address!]
-  authExpiresAt: DateTime
   avatar: String
   created: DateTime
   creditCards: [CreditCard!]
@@ -665,7 +669,6 @@ input UserInput {
   activated: DateTime
   activationToken: String
   address: [AddressInput!]
-  authExpiresAt: DateTime
   avatar: String
   creditCards: [CreditCardInput!]
   email: String!

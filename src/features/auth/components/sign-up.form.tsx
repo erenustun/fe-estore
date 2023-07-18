@@ -13,12 +13,13 @@ import {
 } from '@feature/auth/constant'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { ApolloError, useMutation } from '@apollo/client'
-import SignUpMutation from '@feature/auth/graphql/sign-up.graphql'
+import { ApolloError } from '@apollo/client'
 import { pushUri } from '@shared/util'
 import * as Yup from 'yup'
 import { Button, Form, FormSub, FormTitle, Input, TextLink } from '@component'
-import { routeConfig } from '@shared/config'
+import { routeConfig, themeConfig } from '@shared/config'
+import useAuthStore from '@feature/auth/state/auth.store'
+import cn from 'classnames'
 
 type RegisterFormInputs = {
   apiErrors?: any
@@ -31,7 +32,7 @@ type RegisterFormInputs = {
 }
 
 export const SignUpForm = () => {
-  const [signUp] = useMutation(SignUpMutation)
+  const { error, setError: setStoreError, signUp } = useAuthStore()
 
   const validationSchema = Yup.object().shape({
     ...VALIDATION_EMAIL,
@@ -57,27 +58,15 @@ export const SignUpForm = () => {
   } = useForm<RegisterFormInputs>(formOptions)
 
   const onSubmit: SubmitHandler<RegisterFormInputs> = data => {
-    const { email, firstName, lastName, password, phone } = data
-
-    signUp({
-      variables: {
-        data: {
-          email,
-          firstName,
-          lastName,
-          password,
-          ...(phone && { phone }),
-        },
-      },
-    })
-      .then(data => {
-        reset()
+    setStoreError(undefined)
+    reset()
+    const { apiErrors, passwordRepeat, phone, ...rest } = data
+    signUp({ ...rest, ...(phone && { phone }) })
+      .then(() =>
         pushUri(
-          `/auth/sign-in?message=${
-            data?.data?.signUp && data.data?.signUp?.message
-          }`
+          `${routeConfig.ACCOUNT.AUTH.SIGN_IN}?message=Account was created`
         )
-      })
+      )
       .catch((error: ApolloError) =>
         setError('apiErrors', { message: error.message })
       )
@@ -161,6 +150,7 @@ export const SignUpForm = () => {
           type="password"
         />
       </div>
+      <div className={cn(themeConfig.dangerTextColor)}>{error}</div>
       <div className="flex flex-row-reverse">
         <Button>Sign up</Button>
 

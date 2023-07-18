@@ -1,14 +1,14 @@
 import Link from 'next/link'
 import { Button } from '@component'
-import { useCookies } from 'react-cookie'
 import { AccountDropdownComponent } from '@feature/account/components/account-dropdown.component'
 import { routeConfig } from '@shared/config'
-import { tokenKey } from '@shared/constant'
+import useAuthStore from '@feature/auth/state/auth.store'
+import { getCookie } from 'react-use-cookie'
 
 export const HeaderAuthConditionComponent = () => {
-  const [cookies, ,] = useCookies([tokenKey])
+  const { token } = useAuthStore(state => state)
 
-  return !cookies[tokenKey] ? (
+  return !getCookie('token') && getCookie('token').length === 0 && !token ? (
     <Link href={routeConfig.ACCOUNT.AUTH.SIGN_IN}>
       <Button>Sign in</Button>
     </Link>
