@@ -20,6 +20,7 @@ import { Button, Form, FormSub, FormTitle, Input, TextLink } from '@component'
 import { routeConfig, themeConfig } from '@shared/config'
 import useAuthStore from '@feature/auth/state/auth.store'
 import cn from 'classnames'
+import { FormattedMessage, useIntl } from 'react-intl'
 
 type RegisterFormInputs = {
   apiErrors?: any
@@ -31,8 +32,9 @@ type RegisterFormInputs = {
   phone?: string
 }
 
-export const SignUpForm = () => {
+export const SignUp = () => {
   const { error, setError: setStoreError, signUp } = useAuthStore()
+  const intl = useIntl()
 
   const validationSchema = Yup.object().shape({
     ...VALIDATION_EMAIL,
@@ -75,8 +77,12 @@ export const SignUpForm = () => {
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
       <div className="flex flex-col space-y-1">
-        <FormTitle>Sign up</FormTitle>
-        <FormSub>Create an account to order products and such.</FormSub>
+        <FormTitle>
+          <FormattedMessage id="auth_form_register" />
+        </FormTitle>
+        <FormSub>
+          <FormattedMessage id="auth_form_register_sub" />
+        </FormSub>
         {errors['apiErrors'] && (
           <span className="text-rose-400 -mt-5">
             {errors?.apiErrors?.message as string}
@@ -87,9 +93,9 @@ export const SignUpForm = () => {
         autoFocus
         errors={errors}
         icon={<AtSymbolIcon className="w-5 h-5" />}
-        label="E-Mail"
+        label={intl.formatMessage({ id: 'auth_form_email' })}
         name="email"
-        placeholder="E-Mail"
+        placeholder={intl.formatMessage({ id: 'auth_form_email' })}
         register={register}
         required
         type="email"
@@ -98,9 +104,9 @@ export const SignUpForm = () => {
         <Input
           errors={errors}
           icon={<UserIcon className="w-5 h-5" />}
-          label="First Name"
+          label={intl.formatMessage({ id: 'auth_form_first_name' })}
           name="firstName"
-          placeholder="First Name"
+          placeholder={intl.formatMessage({ id: 'auth_form_first_name' })}
           register={register}
           required
           type="text"
@@ -108,9 +114,9 @@ export const SignUpForm = () => {
         <Input
           errors={errors}
           icon={<UserIcon className="w-5 h-5" />}
-          label="Last Name"
+          label={intl.formatMessage({ id: 'auth_form_last_name' })}
           name="lastName"
-          placeholder="Last Name"
+          placeholder={intl.formatMessage({ id: 'auth_form_last_name' })}
           register={register}
           required
           type="text"
@@ -120,9 +126,9 @@ export const SignUpForm = () => {
         autoFocus
         errors={errors}
         icon={<DevicePhoneMobileIcon className="w-5 h-5" />}
-        label="Phone"
+        label={intl.formatMessage({ id: 'auth_form_phone' })}
         name="phone"
-        placeholder="Phone #"
+        placeholder={intl.formatMessage({ id: 'auth_form_phone' })}
         register={register}
         type="text"
       />
@@ -130,9 +136,9 @@ export const SignUpForm = () => {
         <Input
           errors={errors}
           icon={<LockClosedIcon className="w-5 h-5" />}
-          label="Password"
+          label={intl.formatMessage({ id: 'auth_form_password' })}
           name="password"
-          placeholder="Password"
+          placeholder={intl.formatMessage({ id: 'auth_form_password' })}
           register={register}
           required
           secretField
@@ -141,9 +147,9 @@ export const SignUpForm = () => {
         <Input
           errors={errors}
           icon={<LockClosedIcon className="w-5 h-5" />}
-          label="Password (again)"
+          label={intl.formatMessage({ id: 'auth_form_password_repeat' })}
           name="passwordRepeat"
-          placeholder="Password (again)"
+          placeholder={intl.formatMessage({ id: 'auth_form_password_repeat' })}
           register={register}
           required
           secretField
@@ -152,7 +158,9 @@ export const SignUpForm = () => {
       </div>
       <div className={cn(themeConfig.dangerTextColor)}>{error}</div>
       <div className="flex flex-row-reverse">
-        <Button>Sign up</Button>
+        <Button>
+          <FormattedMessage id="auth_form_register_button" />
+        </Button>
 
         <TextLink
           onClick={() => {
@@ -164,7 +172,7 @@ export const SignUpForm = () => {
             pushUri(routeConfig.ACCOUNT.AUTH.SIGN_IN)
           }}
           className="self-end mr-auto"
-          label="Already have an account? Login"
+          label={intl.formatMessage({ id: 'auth_form_already_have_account' })}
         />
       </div>
     </Form>
