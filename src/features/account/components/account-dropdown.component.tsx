@@ -1,7 +1,6 @@
 import { FC, useState } from 'react'
 import { useSpring, animated } from '@react-spring/web'
 import { AccountIcon } from '@feature/account/components/account-icon.component'
-import { useCookies } from 'react-cookie'
 import { pushUri } from '@shared/util'
 import tw from 'tailwind-styled-components'
 import {
@@ -10,7 +9,7 @@ import {
   ArrowLeftOnRectangleIcon,
 } from '@heroicons/react/20/solid'
 import { routeConfig, themeConfig } from '@shared/config'
-import { tokenKey } from '@shared/constant'
+import useAuthStore from '@feature/auth/state/auth.store'
 
 export const AccountDropdownComponent = () => {
   const [isVisible, setVisibility] = useState(false)
@@ -62,15 +61,11 @@ const DropdownItem = tw.ul`
 interface DropdownContentProps {
   toggleDropdown: () => void
 }
+
 const DropdownContent: FC<DropdownContentProps> = ({
   toggleDropdown,
 }: DropdownContentProps) => {
-  const [, , removeCookie] = useCookies([tokenKey])
-
-  const signOut = () => {
-    removeCookie(tokenKey)
-    pushUri(routeConfig.HOME).then(toggleDropdown)
-  }
+  const { signOut } = useAuthStore()
 
   const accountMenuList = [
     {
@@ -92,7 +87,7 @@ const DropdownContent: FC<DropdownContentProps> = ({
     {
       label: 'Sign out',
       icon: () => <ArrowLeftOnRectangleIcon className="w-4 h-4" />,
-      onClick: signOut,
+      onClick: () => signOut().then(() => pushUri(routeConfig.HOME)),
     },
   ]
 

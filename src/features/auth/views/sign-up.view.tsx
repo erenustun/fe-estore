@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { Box, Container } from '@component'
-import { SignUpForm } from '@feature/auth/components/sign-up.form'
+import { SignUp } from '@feature/auth/components/sign-up.component'
 import { themeConfig } from '@shared/config'
 
 export const SignUpView = () => (
@@ -18,7 +18,7 @@ export const SignUpView = () => (
           className={themeConfig.radiusDefault}
         />
       </div>
-      <SignUpForm />
+      <SignUp />
     </Box>
   </Container>
 )

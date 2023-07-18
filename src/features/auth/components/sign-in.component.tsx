@@ -3,8 +3,6 @@ import * as Yup from 'yup'
 import { VALIDATION_EMAIL, VALIDATION_PASSWORD } from '@feature/auth/constant'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { ApolloError } from '@apollo/client'
-import { useCookies } from 'react-cookie'
 import { pushUri } from '@shared/util'
 import { useRouter } from 'next/router'
 import {
@@ -17,9 +15,11 @@ import {
   Notification,
   TextLink,
 } from '@component'
-import { routeConfig } from '@shared/config'
-import { useAuthHook } from '@shared/hook/auth.hook'
-import { tokenKey } from '@shared/constant'
+import { routeConfig, themeConfig } from '@shared/config'
+import useAuthStore from '@feature/auth/state/auth.store'
+import cn from 'classnames'
+import { ApolloError } from '@apollo/client'
+import { FormattedMessage, useIntl } from 'react-intl'
 
 type LoginFormInputs = {
   apiErrors?: any
@@ -27,18 +27,17 @@ type LoginFormInputs = {
   password: string
 }
 
-export const SignInForm = () => {
-  const [cookies, setCookie, removeCookie] = useCookies([tokenKey])
+export const SignIn = () => {
   const {
     query: { message },
   } = useRouter()
-  const { signIn } = useAuthHook()
+  const { error, setError: setStoreError, signIn } = useAuthStore()
+  const intl = useIntl()
 
   const validationSchema = Yup.object().shape({
     ...VALIDATION_EMAIL,
     ...VALIDATION_PASSWORD,
   })
-
   const formOptions = {
     name: 'auth.sign-in',
     resolver: yupResolver(validationSchema),
@@ -55,23 +54,11 @@ export const SignInForm = () => {
   } = useForm<LoginFormInputs>(formOptions)
 
   const onSubmit: SubmitHandler<LoginFormInputs> = data => {
-    const { email, password } = data
-
-    signIn({ email, password })
-      .then(async data => {
-        const {
-          accessToken,
-          user: { authExpiresAt },
-        } = data.data?.signIn
-        if (cookies[tokenKey]) removeCookie(tokenKey)
-        setCookie(tokenKey, accessToken, {
-          expires: new Date(authExpiresAt),
-          sameSite: 'none',
-          path: '/',
-        })
-        reset()
-        await pushUri(routeConfig.ACCOUNT.INDEX)
-      })
+    setStoreError(undefined)
+    reset()
+    const { apiErrors, ...rest } = data
+    signIn({ ...rest })
+      .then(() => pushUri(routeConfig.ACCOUNT.INDEX))
       .catch((error: ApolloError) =>
         setError('apiErrors', { message: error.message })
       )
@@ -81,8 +68,12 @@ export const SignInForm = () => {
     <section>
       <Form onSubmit={handleSubmit(onSubmit)} loading={isSubmitting}>
         <div className="flex flex-col space-y-1">
-          <FormTitle>Sign in</FormTitle>
-          <FormSub>Login to manage your orders.</FormSub>
+          <FormTitle>
+            <FormattedMessage id="auth_form_login" />
+          </FormTitle>
+          <FormSub>
+            <FormattedMessage id="auth_form_login_sub" />
+          </FormSub>
           {message && (
             <Notification className="mt-2 -mb-5">{message}</Notification>
           )}
@@ -92,30 +83,31 @@ export const SignInForm = () => {
             </span>
           )}
         </div>
-
         <Input
           autoFocus
           errors={errors}
           icon={<AtSymbolIcon className="w-5 h-5" />}
-          label="E-Mail"
+          label={intl.formatMessage({ id: 'auth_form_email' })}
           name="email"
-          placeholder="E-Mail"
+          placeholder={intl.formatMessage({ id: 'auth_form_email' })}
           register={register}
           type="email"
         />
         <Input
           errors={errors}
           icon={<LockClosedIcon className="w-5 h-5" />}
-          label="Password"
+          label={intl.formatMessage({ id: 'auth_form_password' })}
           name="password"
-          placeholder="Password"
+          placeholder={intl.formatMessage({ id: 'auth_form_password' })}
           register={register}
           type="password"
           secretField
         />
-
+        <div className={cn(themeConfig.dangerTextColor)}>{error}</div>
         <div className="flex flex-row-reverse">
-          <Button>Sign in</Button>
+          <Button>
+            <FormattedMessage id="auth_form_login_button" />
+          </Button>
 
           <TextLink
             onClick={() => {
@@ -124,11 +116,14 @@ export const SignInForm = () => {
               pushUri(routeConfig.ACCOUNT.AUTH.SIGN_UP)
             }}
             className="self-end mr-auto"
-            label="No account yet? Create account now."
+            label={intl.formatMessage({ id: 'auth_form_no_account_yet' })}
           />
         </div>
       </Form>
-      <Loader loading={isSubmitting} message="Signing in" />
+      <Loader
+        loading={isSubmitting}
+        message={intl.formatMessage({ id: 'auth_form_login_fetching' })}
+      />
     </section>
   )
 }
