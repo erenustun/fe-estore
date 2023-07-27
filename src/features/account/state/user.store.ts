@@ -1,21 +1,17 @@
-import { User } from '@shared/model'
 import { create } from 'zustand'
 import { createJSONStorage, devtools, persist } from 'zustand/middleware'
-
-export const appLanguages = ['en', 'de', 'fr']
+import { User } from '@feature/account'
 
 export interface IUserStore {
   user?: User
   settings?: ISettings
-  setLanguage: (language: ILanguage | string) => void
+  setLanguage: (language: string) => void
 }
 
 interface ISettings {
   darkMode?: boolean
-  language?: ILanguage | string
+  language?: string
 }
-
-export type ILanguage = 'en' | 'de' | 'fr'
 
 const initial = {
   user: undefined,
@@ -34,7 +30,7 @@ const useUserStore = create(
           set((state: IUserStore) => ({
             ...state,
             settings: {
-              language,
+              language: language,
               darkMode: state.settings?.darkMode,
             },
           }))

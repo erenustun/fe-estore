@@ -1,5 +1,6 @@
-import { BaseEntity, User } from '@shared/model'
+import { BaseEntity } from '@shared/model'
 import { AddressType, Country } from '@feature/address'
+import { User } from '@feature/account'
 
 export class Address extends BaseEntity {
   companyName?: string

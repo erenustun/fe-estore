@@ -1,4 +1,4 @@
-import { User } from '@shared/model'
+import { User } from '@feature/account'
 
 export interface IRegisterInput extends User {
   password: string

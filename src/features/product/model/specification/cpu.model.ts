@@ -1,4 +1,5 @@
-import { BaseEntity, ProductSpecification } from '@shared/model'
+import { BaseEntity } from '@shared/model'
+import { ProductSpecification } from '@feature/product'
 
 export class SpecificationCPU extends BaseEntity {
   cores?: number

@@ -1,6 +1,7 @@
 export * from './components/create-address.component'
 export * from './components/update-address.component'
 export * from './components/view-address.component'
+export * from './components/table-options.component'
 
 export * from './constants/create-user.constant'
 export * from './constants/update-address.constant'

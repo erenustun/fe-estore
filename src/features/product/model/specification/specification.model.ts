@@ -1,11 +1,11 @@
+import { BaseEntity } from '@shared/model'
 import {
-  BaseEntity,
   Product,
   SpecificationBattery,
   SpecificationConnectivity,
   SpecificationCPU,
   SpecificationDisplay,
-} from '@shared/model'
+} from '@feature/product'
 
 export class ProductSpecification extends BaseEntity {
   dataRam: number

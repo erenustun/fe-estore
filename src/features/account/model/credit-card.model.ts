@@ -1,4 +1,5 @@
-import { BaseEntity, User } from '@shared/model'
+import { BaseEntity } from '@shared/model'
+import { User } from '@feature/account'
 
 export class CreditCard extends BaseEntity {
   creditCardNumber: string
