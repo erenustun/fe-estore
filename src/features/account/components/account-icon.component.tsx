@@ -13,7 +13,7 @@ export const AccountIcon = ({ isVisible, onClick }: AccountIconProps) => {
 
   return (
     <animated.button
-      className="flex items-center justify-center rounded-full h-7 w-7 cursor-pointer"
+      className="flex h-7 w-7 cursor-pointer items-center justify-center rounded-full"
       style={{
         transform: y.to(y => `rotateY(${y}deg)`),
       }}
@@ -24,7 +24,7 @@ export const AccountIcon = ({ isVisible, onClick }: AccountIconProps) => {
         alt="user avatar"
         width="32"
         height="32"
-        className="bg-cover bg-center rounded-full"
+        className="rounded-full bg-cover bg-center"
       />
     </animated.button>
   )

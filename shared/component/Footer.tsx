@@ -9,17 +9,17 @@ export const Footer = () => {
   return (
     <div
       className={cn(
-        'flex flex-col w-full justify-center shadow sm:py-12 md:py-2 font-inter text-slate-50 border-t-2',
+        'font-inter flex w-full flex-col justify-center border-t-2 text-slate-50 shadow sm:py-12 md:py-2',
         themeConfig.footerDividerBorder
       )}
     >
       <div
         className={
-          'py-6 sm:py-8 md:py-8 flex items-center w-full justify-center'
+          'flex w-full items-center justify-center py-6 sm:py-8 md:py-8'
         }
       >
         <Link href={'/'}>
-          <div className="flex flex-col lg:flex-row space-y-2 lg:space-y-0 justify-center items-center lg:space-x-2">
+          <div className="flex flex-col items-center justify-center space-y-2 lg:flex-row lg:space-x-2 lg:space-y-0">
             <Logo />
             <Slogan />
           </div>
@@ -28,7 +28,7 @@ export const Footer = () => {
 
       <div className={cn('h-[2px] w-full', themeConfig.footerDivider)}></div>
 
-      <ul className="flex flex-wrap items-center justify-center gap-5 md:gap-10 py-8 md:py-8">
+      <ul className="flex flex-wrap items-center justify-center gap-5 py-8 md:gap-10 md:py-8">
         <Link href={'/'}>
           <li className={'nav-item-container uppercase'}>Home</li>
         </Link>
@@ -56,7 +56,7 @@ export const Footer = () => {
 
       <div className={cn('h-[2px] w-full', themeConfig.footerDivider)}></div>
 
-      <div className="flex items-center md:flex-nowrap flex-wrap justify-center gap-3 py-8 md:py-6 text-sm text-slate-50 select-none">
+      <div className="flex select-none flex-wrap items-center justify-center gap-3 py-8 text-sm text-slate-50 md:flex-nowrap md:py-6">
         <p>&copy; {date.getFullYear()} All Rights Reserved</p>
         <p>Terms & Conditions</p>
         <p>Blogs</p>

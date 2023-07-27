@@ -6,7 +6,7 @@ import { BRAND_NAME } from '@shared/component/Branding/constant'
 export const Logo = () => {
   return (
     <>
-      <div className={'font-inter text-3xl dark:text-white hidden md:block'}>
+      <div className={'font-inter hidden text-3xl dark:text-white md:block'}>
         <span className={'font-normal'}>{BRAND_NAME}</span>
       </div>
       <div className={'block md:hidden'}>

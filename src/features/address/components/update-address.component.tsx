@@ -100,11 +100,11 @@ export const UpdateAddress = () => {
   }
 
   return (
-    <Container className="flex-row min-h-[62rem]">
+    <Container className="min-h-[62rem] flex-row">
       <div className="flex flex-col">
         <div className="flex items-center">
           <BackIcon
-            className="w-5 h-5 mb-2 mr-2 cursor-pointer"
+            className="mb-2 mr-2 h-5 w-5 cursor-pointer"
             onClick={() => back()}
           />
           <H2>
@@ -112,7 +112,7 @@ export const UpdateAddress = () => {
           </H2>
         </div>
 
-        <Box className="flex px-1 bg-opacity-5" darkborder>
+        <Box className="flex bg-opacity-5 px-1" darkborder>
           <Form
             onSubmit={handleSubmit(onSubmit)}
             className="px-2"
@@ -145,7 +145,7 @@ export const UpdateAddress = () => {
                 },
               ]}
               errors={errors}
-              icon={<UserIcon className="w-5 h-5" />}
+              icon={<UserIcon className="h-5 w-5" />}
             />
             <div className="flex flex-row space-x-2">
               <Input
@@ -172,7 +172,7 @@ export const UpdateAddress = () => {
             </div>
             <Input
               errors={errors}
-              icon={<DevicePhoneMobileIcon className="w-5 h-5" />}
+              icon={<DevicePhoneMobileIcon className="h-5 w-5" />}
               label={<FormattedMessage id="address_form_phone" />}
               name="phone"
               placeholder={data?.address?.phone}
@@ -181,7 +181,7 @@ export const UpdateAddress = () => {
             />
             <Input
               errors={errors}
-              icon={<HomeIcon className="w-5 h-5" />}
+              icon={<HomeIcon className="h-5 w-5" />}
               label={<FormattedMessage id="address_form_street_address" />}
               name="line1"
               placeholder={data?.address?.line1}
@@ -261,11 +261,11 @@ export const UpdateAddress = () => {
                   },
                 ]}
                 errors={errors}
-                icon={<GlobeAltIcon className="w-5 h-5" />}
+                icon={<GlobeAltIcon className="h-5 w-5" />}
               />
               <Input
                 defaultChecked={data?.address?.primary}
-                className="flex flex-row-reverse self-start gap-x-2 ml-1"
+                className="ml-1 flex flex-row-reverse gap-x-2 self-start"
                 errors={errors}
                 label={<FormattedMessage id="address_form_primary" />}
                 name="primary"

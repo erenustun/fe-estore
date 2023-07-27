@@ -13,13 +13,13 @@ const Loader = ({ message, loading, className = '' }: LoaderProps) => {
       <div
         role="status"
         className={cn(
-          'flex flex-col items-center gap-y-1 absolute -translate-x-1/2 -translate-y-1/2 top-2/4 left-1/2',
+          'absolute left-1/2 top-2/4 flex -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-y-1',
           className
         )}
       >
         <svg
           aria-hidden="true"
-          className="w-6 h-6 mr-2 text-gray-200 animate-spin dark:text-gray-500 fill-blue-600"
+          className="mr-2 h-6 w-6 animate-spin fill-blue-600 text-gray-200 dark:text-gray-500"
           viewBox="0 0 100 101"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"

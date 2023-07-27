@@ -70,7 +70,7 @@ const DropdownContent: FC<DropdownContentProps> = ({
   const accountMenuList = [
     {
       label: 'Account',
-      icon: () => <UserIcon className="w-4 h-4" />,
+      icon: () => <UserIcon className="h-4 w-4" />,
       onClick: async () => {
         await pushUri(routeConfig.ACCOUNT.INDEX)
         toggleDropdown()
@@ -78,7 +78,7 @@ const DropdownContent: FC<DropdownContentProps> = ({
     },
     {
       label: 'Orders',
-      icon: () => <ListBulletIcon className="w-4 h-4" />,
+      icon: () => <ListBulletIcon className="h-4 w-4" />,
       onClick: async () => {
         await pushUri('/account/orders')
         toggleDropdown()
@@ -86,7 +86,7 @@ const DropdownContent: FC<DropdownContentProps> = ({
     },
     {
       label: 'Sign out',
-      icon: () => <ArrowLeftOnRectangleIcon className="w-4 h-4" />,
+      icon: () => <ArrowLeftOnRectangleIcon className="h-4 w-4" />,
       onClick: () => signOut().then(() => pushUri(routeConfig.HOME)),
     },
   ]

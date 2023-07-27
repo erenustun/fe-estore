@@ -28,7 +28,7 @@ export const Notification = ({
     <div className="relative">
       <TWNotification className={className}>{children}</TWNotification>
       <Icon
-        className="h-5 w-5 absolute right-1 top-3 cursor-pointer text-green-50 hover:text-green-200 active:text-green-700"
+        className="absolute right-1 top-3 h-5 w-5 cursor-pointer text-green-50 hover:text-green-200 active:text-green-700"
         onClick={hideNotification}
       />
     </div>

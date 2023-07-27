@@ -84,7 +84,7 @@ export const SignUp = () => {
           <FormattedMessage id="auth_form_register_sub" />
         </FormSub>
         {errors['apiErrors'] && (
-          <span className="text-rose-400 -mt-5">
+          <span className="-mt-5 text-rose-400">
             {errors?.apiErrors?.message as string}
           </span>
         )}
@@ -92,7 +92,7 @@ export const SignUp = () => {
       <Input
         autoFocus
         errors={errors}
-        icon={<AtSymbolIcon className="w-5 h-5" />}
+        icon={<AtSymbolIcon className="h-5 w-5" />}
         label={intl.formatMessage({ id: 'auth_form_email' })}
         name="email"
         placeholder={intl.formatMessage({ id: 'auth_form_email' })}
@@ -103,7 +103,7 @@ export const SignUp = () => {
       <div className="flex flex-row space-x-2">
         <Input
           errors={errors}
-          icon={<UserIcon className="w-5 h-5" />}
+          icon={<UserIcon className="h-5 w-5" />}
           label={intl.formatMessage({ id: 'auth_form_first_name' })}
           name="firstName"
           placeholder={intl.formatMessage({ id: 'auth_form_first_name' })}
@@ -113,7 +113,7 @@ export const SignUp = () => {
         />
         <Input
           errors={errors}
-          icon={<UserIcon className="w-5 h-5" />}
+          icon={<UserIcon className="h-5 w-5" />}
           label={intl.formatMessage({ id: 'auth_form_last_name' })}
           name="lastName"
           placeholder={intl.formatMessage({ id: 'auth_form_last_name' })}
@@ -125,7 +125,7 @@ export const SignUp = () => {
       <Input
         autoFocus
         errors={errors}
-        icon={<DevicePhoneMobileIcon className="w-5 h-5" />}
+        icon={<DevicePhoneMobileIcon className="h-5 w-5" />}
         label={intl.formatMessage({ id: 'auth_form_phone' })}
         name="phone"
         placeholder={intl.formatMessage({ id: 'auth_form_phone' })}
@@ -135,7 +135,7 @@ export const SignUp = () => {
       <div className="flex flex-row space-x-2">
         <Input
           errors={errors}
-          icon={<LockClosedIcon className="w-5 h-5" />}
+          icon={<LockClosedIcon className="h-5 w-5" />}
           label={intl.formatMessage({ id: 'auth_form_password' })}
           name="password"
           placeholder={intl.formatMessage({ id: 'auth_form_password' })}
@@ -146,7 +146,7 @@ export const SignUp = () => {
         />
         <Input
           errors={errors}
-          icon={<LockClosedIcon className="w-5 h-5" />}
+          icon={<LockClosedIcon className="h-5 w-5" />}
           label={intl.formatMessage({ id: 'auth_form_password_repeat' })}
           name="passwordRepeat"
           placeholder={intl.formatMessage({ id: 'auth_form_password_repeat' })}
@@ -171,7 +171,7 @@ export const SignUp = () => {
             unregister('phone')
             pushUri(routeConfig.ACCOUNT.AUTH.SIGN_IN)
           }}
-          className="self-end mr-auto"
+          className="mr-auto self-end"
           label={intl.formatMessage({ id: 'auth_form_already_have_account' })}
         />
       </div>

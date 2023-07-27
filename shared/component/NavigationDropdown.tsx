@@ -79,7 +79,7 @@ export const NavigationDropdown = ({
         {icon && icon}
         {label}
       </Label>
-      <ChevronDownIcon className="h-5 ml-1" />
+      <ChevronDownIcon className="ml-1 h-5" />
     </DropdownButton>
     <div className="dropdown-content">
       {/*bg-zinc-950*/}
