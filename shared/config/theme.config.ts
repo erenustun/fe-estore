@@ -95,7 +95,8 @@ export const themeConfig = {
   successTextColor: 'text-green-400 active:text-green-50',
   infoTextColor: 'text-sky-400 active:text-sky-50',
   warningTextColor: 'text-orange-400 active:text-orange-50',
-  dangerTextColor: 'text-rose-400 active:text-rose-50',
+  dangerTextColor:
+    'text-rose-400 active:text-rose-50 cursor-pointer hover:text-rose-500',
 
   primaryIconColor: 'text-slate-200 hover:text-blue-500 active:text-blue-700',
   dangerIconColor: 'text-slate-200 hover:text-rose-500 active:text-rose-700',
