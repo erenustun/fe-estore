@@ -9,7 +9,7 @@ export const SignInView = () => (
     fluid
   >
     <Box className="flex justify-evenly -space-x-6">
-      <div className="scale-95 -mt-4 h-full bg-cover bg-center">
+      <div className="-mt-4 h-full scale-95 bg-cover bg-center">
         <Image
           src="/images/1.jpg"
           width="500"
