@@ -1,4 +1,5 @@
-import { Order, Product } from '@shared/model'
+import { Order } from '@feature/order'
+import { Product } from '@feature/product'
 
 export class OrderHasProduct {
   id: string

@@ -1,12 +1,12 @@
+import { BaseEntity } from '@shared/model'
 import {
-  BaseEntity,
-  OrderHasProduct,
   ProductBrand,
   ProductCategory,
   ProductImage,
   ProductRating,
   ProductSpecification,
-} from '@shared/model'
+} from '@feature/product'
+import { OrderHasProduct } from '@feature/order'
 
 export class Product extends BaseEntity {
   description?: string

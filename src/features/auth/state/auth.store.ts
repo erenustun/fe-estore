@@ -1,12 +1,12 @@
 import { create } from 'zustand'
 import { ILoginInput } from '@feature/auth/dto/login.input'
 import { signIn, signUp } from '@feature/auth/service/auth.service'
-import { User } from '@shared/model'
 import { IRegisterInput } from '@feature/auth/dto/register.input'
 import { createJSONStorage, devtools, persist } from 'zustand/middleware'
 import { setCookie } from 'react-use-cookie'
 import { formatError } from '@shared/util'
 import { apolloClient } from '@shared/config'
+import { User } from '@feature/account'
 
 interface IToken {
   expires?: string
