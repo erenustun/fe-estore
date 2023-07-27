@@ -12,6 +12,10 @@ export const routeConfig = {
       NEW: '/account/address/new',
       EDIT: '/account/address/edit',
     },
+    ORDER: {
+      INDEX: '/account/orders',
+      VIEW: '/account/order/',
+    },
     UNAUTHORIZED: '/account/unauthorized',
   },
   PRODUCT: {
