@@ -1,4 +1,4 @@
-import { Box, FlexBox, H3, H4, H5, Loader } from '@component'
+import { Box, FlexBox, H4, H5, Loader } from '@component'
 import { useQuery } from '@apollo/client'
 import FetchOrders from '@src/features/order/graphql/fetch-orders.graphql'
 import { FormattedDate, FormattedMessage } from 'react-intl'
@@ -6,7 +6,7 @@ import { AddressType } from '@feature/address'
 import { Order } from '@feature/order'
 import Image from 'next/image'
 import cn from 'classnames'
-import { routeConfig, themeConfig } from '@shared/config'
+import { themeConfig } from '@shared/config'
 
 export const ViewOrders = () => {
   const { data, loading, error } = useQuery(FetchOrders, {
