@@ -1,3 +1,5 @@
+@import "shared/component/Dropdown/dropdown.module.scss";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -39,3 +41,4 @@ body {
 .dropdown:hover .dropdown-content {
   display: block;
 }
+
