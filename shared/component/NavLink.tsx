@@ -35,7 +35,7 @@ export const NavLink = ({ as, className, href, icon, label }: NavLinkProps) => {
     <Link
       href={href}
       as={as}
-      className={'flex items-center cursor-pointer select-none'}
+      className={'flex cursor-pointer select-none items-center'}
     >
       <LinkWrapper
         className={cn(

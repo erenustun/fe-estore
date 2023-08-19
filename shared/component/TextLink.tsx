@@ -47,7 +47,7 @@ export const TextLink = ({
       href={href}
       as={as}
       className={cn(
-        'flex items-center cursor-pointer hover:underline',
+        'flex cursor-pointer items-center hover:underline',
         className
       )}
     >
@@ -61,7 +61,7 @@ export const TextLink = ({
     <TextLinkWrapper
       onClick={onClick}
       className={cn(
-        'flex items-center cursor-pointer hover:underline',
+        'flex cursor-pointer items-center hover:underline',
         className
       )}
     >

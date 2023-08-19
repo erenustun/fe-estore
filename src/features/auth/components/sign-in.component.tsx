@@ -75,10 +75,10 @@ export const SignIn = () => {
             <FormattedMessage id="auth_form_login_sub" />
           </FormSub>
           {message && (
-            <Notification className="mt-2 -mb-5">{message}</Notification>
+            <Notification className="-mb-5 mt-2">{message}</Notification>
           )}
           {errors['apiErrors'] && (
-            <span className="text-rose-400 -mt-5">
+            <span className="-mt-5 text-rose-400">
               {errors?.apiErrors?.message as string}
             </span>
           )}
@@ -86,7 +86,7 @@ export const SignIn = () => {
         <Input
           autoFocus
           errors={errors}
-          icon={<AtSymbolIcon className="w-5 h-5" />}
+          icon={<AtSymbolIcon className="h-5 w-5" />}
           label={intl.formatMessage({ id: 'auth_form_email' })}
           name="email"
           placeholder={intl.formatMessage({ id: 'auth_form_email' })}
@@ -95,7 +95,7 @@ export const SignIn = () => {
         />
         <Input
           errors={errors}
-          icon={<LockClosedIcon className="w-5 h-5" />}
+          icon={<LockClosedIcon className="h-5 w-5" />}
           label={intl.formatMessage({ id: 'auth_form_password' })}
           name="password"
           placeholder={intl.formatMessage({ id: 'auth_form_password' })}
@@ -115,7 +115,7 @@ export const SignIn = () => {
               unregister('password')
               pushUri(routeConfig.ACCOUNT.AUTH.SIGN_UP)
             }}
-            className="self-end mr-auto"
+            className="mr-auto self-end"
             label={intl.formatMessage({ id: 'auth_form_no_account_yet' })}
           />
         </div>

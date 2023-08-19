@@ -11,7 +11,7 @@ import {
   Container,
   NavigationDropdown,
   NavLink,
-  LanguageChange,
+  LanguageChanger,
 } from '@component'
 import Link from 'next/link'
 import tw from 'tailwind-styled-components'
@@ -56,7 +56,7 @@ export const Header = () => {
           <NavLink
             label={intl.formatMessage({ id: 'header_navigation_home' })}
             href="/"
-            icon={<HomeIcon className="h-4 mr-1" />}
+            icon={<HomeIcon className="mr-1 h-4" />}
           />
           <NavigationDropdown
             label={intl.formatMessage({ id: 'header_navigation_shop' })}
@@ -70,7 +70,7 @@ export const Header = () => {
                 href: 'products/category/smartphone',
               },
             ]}
-            icon={<BuildingStorefrontIcon className="h-4 mr-1" />}
+            icon={<BuildingStorefrontIcon className="mr-1 h-4" />}
           />
           <NavigationDropdown
             label={intl.formatMessage({ id: 'header_navigation_brands' })}
@@ -80,12 +80,12 @@ export const Header = () => {
               { label: 'Xiaomi', href: 'products/brand/xiaomi' },
               { label: 'OnePlus', href: 'products/brand/oneplus' },
             ]}
-            icon={<HashtagIcon className="h-4 mr-1" />}
+            icon={<HashtagIcon className="mr-1 h-4" />}
           />
         </NavTW>
         <div className="flex items-center">
-          <section className="flex space-x-5 items-center">
-            <LanguageChange />
+          <section className="flex items-center space-x-5">
+            <LanguageChanger />
             <div className="relative cursor-pointer">
               <BookmarkIcon
                 className={cn(
@@ -97,7 +97,7 @@ export const Header = () => {
                   themeConfig.animationEaseIn
                 )}
               />
-              <Badge className="absolute top-0 right-0 -mt-2 -mr-2 h-4 w-4">
+              <Badge className="absolute right-0 top-0 -mr-2 -mt-2 h-4 w-4">
                 9
               </Badge>
             </div>
@@ -112,7 +112,7 @@ export const Header = () => {
                   themeConfig.animationEaseIn
                 )}
               />
-              <Badge className="absolute top-0 right-0 -mt-2 -mr-2 h-4 w-4">
+              <Badge className="absolute right-0 top-0 -mr-2 -mt-2 h-4 w-4">
                 2
               </Badge>
             </div>

@@ -5,10 +5,10 @@ export const Slogan = () => {
   return (
     <div
       className={
-        'font-inter text-base dark:text-white text-center lg:text-left'
+        'font-inter text-center text-base dark:text-white lg:text-left'
       }
     >
-      <span className={'font-light flex gap-x-2'}>
+      <span className={'flex gap-x-2 font-light'}>
         <span className={'hidden lg:block'}> | </span>
         {BRAND_SLOGAN}
       </span>

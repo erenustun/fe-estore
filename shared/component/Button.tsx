@@ -15,7 +15,7 @@ const ButtonBase = tw.button<ButtonProps>`
   ${() => themeConfig.animationDuration}
   ${() => themeConfig.animationEaseIn}
   ${() => themeConfig.radiusMedium}
-  transform hover:scale-105
+  transform hover:scale-[101%]
   cursor-pointer
 `
 

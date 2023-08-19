@@ -30,7 +30,7 @@ export const ViewDetails = () => {
         stripped
       />
 
-      <Link href={routeConfig.ACCOUNT.INDEX} className="self-end mt-3">
+      <Link href={routeConfig.ACCOUNT.INDEX} className="mt-3 self-end">
         <Button>
           <FormattedMessage id="account_view_edit_user" />
         </Button>

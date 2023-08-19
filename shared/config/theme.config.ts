@@ -8,7 +8,8 @@ export const themeConfig = {
   radiusMedium: 'rounded-md',
   radiusLarge: 'rounded-lg',
 
-  mainBackgroundColor: 'bg-gradient-to-tr from-gray-950 to-slate-900',
+  mainBackgroundColor: 'bg-[#00050D]',
+  //mainBackgroundColor: 'bg-gradient-to-tr from-gray-950 to-slate-900',
   mainTextColor: 'text-slate-200',
 
   mainContainerMaxWidth: 'max-w-7xl',
@@ -22,14 +23,15 @@ export const themeConfig = {
   boxPadding: 'py-6 px-4',
   boxMargin: 'mt-5',
 
-  headerHeight: 'h-24 border-b border-gray-800',
-  headerBackgroundColor: 'bg-gradient-to-tr from-slate-950 to-zinc-950',
+  headerHeight: 'h-24 border-b border-slate-900',
+  headerBackgroundColor: 'bg-[#00050D]',
+  //headerBackgroundColor: 'bg-gradient-to-tr from-slate-950 to-zinc-950',
   headerShadow: 'shadow-xl',
 
   formLabel: 'mb-1 select-none text-sm tracking-wide leading-5',
 
-  footerDivider: 'bg-slate-800',
-  footerDividerBorder: 'border-slate-800',
+  footerDivider: 'bg-slate-900',
+  footerDividerBorder: 'border-slate-900',
 
   loadingAnimation:
     'animate-[pulse_1500ms_ease-in-out_infinite] cursor-not-allowed',
@@ -52,8 +54,9 @@ export const themeConfig = {
   buttonPadding: 'px-3.5 py-1.5',
   buttonText: 'font-medium tracking-wide',
 
-  primaryBackgroundColor: 'bg-blue-500 border border-blue-400',
-  primaryBackgroundHover: `hover:bg-blue-600 hover:border-blue-500`,
+  primaryBackgroundColor: 'bg-[#0A52C7]',
+  //primaryBackgroundColor: 'bg-blue-500 border border-blue-400',
+  primaryBackgroundHover: `hover:bg-blue-500 hover:border-blue-500`,
   primaryBackgroundActive: `active:bg-blue-700`,
   primaryBackgroundColorAlt: 'bg-blue-700',
   primaryBackgroundHoverAlt: `hover:bg-blue-800`,

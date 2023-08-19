@@ -9,6 +9,9 @@
   "header_navigation_brands": "Brands",
   "header_navigation_laptops": "Notebooks",
   "header_navigation_phones": "Mobile Phones",
+  "header_navigation_user_account": "Account",
+  "header_navigation_user_orders": "Orders",
+  "header_navigation_user_sign_out": "Sign out",
 
 
   "en": "English",

@@ -80,7 +80,7 @@ export const Input = ({
       <div className="relative flex">
         {!noIcon && (
           <span
-            className={`absolute top-2 left-2 z-10 ${themeConfig.mainTextColor}`}
+            className={`absolute left-2 top-2 z-10 ${themeConfig.mainTextColor}`}
           >
             {icon}
           </span>
@@ -97,13 +97,13 @@ export const Input = ({
         />
         {secretField && !fieldVisible && (
           <EyeSlashIcon
-            className={`absolute w-5 h-5 right-2 top-2 cursor-pointer ${themeConfig.mainTextColor}`}
+            className={`absolute right-2 top-2 h-5 w-5 cursor-pointer ${themeConfig.mainTextColor}`}
             onClick={toggleFieldVisibility}
           />
         )}
         {secretField && fieldVisible && (
           <EyeIcon
-            className={`absolute w-5 h-5 right-2 top-2 cursor-pointer ${themeConfig.mainTextColor}`}
+            className={`absolute right-2 top-2 h-5 w-5 cursor-pointer ${themeConfig.mainTextColor}`}
             onClick={toggleFieldVisibility}
           />
         )}
