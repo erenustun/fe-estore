@@ -1,5 +1,4 @@
-import '@/public/styles/globals.css'
-import '@/shared/component/Dropdown/dropdown.module.scss'
+import '@/assets/styles/globals.scss'
 import { Inter } from 'next/font/google'
 import type { AppProps } from 'next/app'
 import { StyledComponentsRegistry } from '@shared/lib'
