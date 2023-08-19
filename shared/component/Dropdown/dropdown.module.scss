@@ -19,7 +19,7 @@
 }
 
 .dropdown-button-typography {
-  @apply font-inter text-sm font-medium uppercase dark:text-white;
+  @apply text-sm font-medium uppercase dark:text-white;
   @apply cursor-pointer select-none;
   @apply dropdown-button-animation;
 }

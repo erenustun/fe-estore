@@ -43,12 +43,11 @@ export const HeaderAuthConditionComponent = () => {
   return !getCookie('token') && getCookie('token').length === 0 && !token ? (
     <Link href={routeConfig.ACCOUNT.AUTH.SIGN_IN}>
       <Button>
-        <FormattedMessage id="auth_form_login" />
+        <FormattedMessage id="auth_form_login_button" />
       </Button>
     </Link>
   ) : (
     <div className="relative">
-      {/*<AccountDropdownComponent />*/}
       <Dropdown
         label={
           <span className="flex h-7 w-7 cursor-pointer items-center justify-center rounded-full">
