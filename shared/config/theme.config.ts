@@ -61,6 +61,9 @@ export const themeConfig = {
   primaryBackgroundColorAlt: 'bg-blue-700',
   primaryBackgroundHoverAlt: `hover:bg-blue-800`,
   primaryBackgroundActiveAlt: `active:bg-blue-900`,
+  primaryBackgroundColorDark: 'bg-[#03183b]',
+  primaryBackgroundHoverDark: `hover:bg-blue-950 hover:border-blue-950`,
+  primaryBackgroundActiveDark: `active:bg-blue-700`,
 
   primaryBorderColor: 'border border-blue-600',
   primaryBorderBottomColor: 'border-b border-b-blue-800',

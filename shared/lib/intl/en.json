@@ -94,6 +94,24 @@
   "order_view_expected": "Delivery expected at",
 
 
+  "product_index": "Products ({count})",
+  "product_view_add_to_cart": "Add to Cart",
+  "product_view_available": "Available",
+  "product_view_sold_out": "Out of stock",
+  "product_view_almost_sold_out": "Almost sold out",
+  "product_view_filter_select_brand": "Brand",
+  "product_view_filter_select_ram": "Ram",
+  "product_view_filter_ram_6": "6GB",
+  "product_view_filter_ram_8": "8GB",
+  "product_view_filter_ram_12": "12GB",
+  "product_view_filter_ram_16": "16GB",
+  "product_view_filter_select_storage": "Storage",
+  "product_view_filter_storage_128": "128GB",
+  "product_view_filter_storage_256": "256GB",
+  "product_view_filter_storage_512": "512GB",
+  "product_view_filter_storage_1": "1TB",
+
+
   "AT": "Austria",
   "DE": "Germany",
   "FR": "France",
@@ -130,7 +148,6 @@
 
   "address_addresses": "Addresses",
 
-  "product_addToCart": "Add to Cart",
   "product_displaySize": "Display size in inch",
   "product_cpu": "Processor",
   "product_ram": "RAM",
@@ -144,9 +161,6 @@
   "product_warranty": "24 months warranty",
   "product_loginToRate": "Please login to rate a product",
   "product_noRatings": "This product has no reviews yet",
-  "product_available": "Available",
-  "product_outOfStock": "Out of stock",
-  "product_soonOutOfStock": "Almost sold out",
 
   "cart_title": "Cart",
   "cart_title_products": "products",

@@ -2,21 +2,14 @@ import Image from 'next/image'
 import {
   BookmarkIcon,
   ShoppingCartIcon,
-  HashtagIcon,
   BuildingStorefrontIcon,
   HomeIcon,
 } from '@heroicons/react/24/outline'
-import {
-  Badge,
-  Container,
-  NavigationDropdown,
-  NavLink,
-  LanguageChanger,
-} from '@component'
+import { Badge, Container, NavLink, LanguageChanger } from '@component'
 import Link from 'next/link'
 import tw from 'tailwind-styled-components'
 import { HeaderAuthConditionComponent } from '@feature/auth/components/header-auth-condition.component'
-import { themeConfig } from '@shared/config'
+import { routeConfig, themeConfig } from '@shared/config'
 import cn from 'classnames'
 import { useIntl } from 'react-intl'
 
@@ -55,32 +48,13 @@ export const Header = () => {
         <NavTW>
           <NavLink
             label={intl.formatMessage({ id: 'header_navigation_home' })}
-            href="/"
+            href={routeConfig.HOME}
             icon={<HomeIcon className="mr-1 h-4" />}
           />
-          <NavigationDropdown
-            label={intl.formatMessage({ id: 'header_navigation_shop' })}
-            list={[
-              {
-                label: intl.formatMessage({ id: 'header_navigation_laptops' }),
-                href: 'products/category/laptop',
-              },
-              {
-                label: intl.formatMessage({ id: 'header_navigation_phones' }),
-                href: 'products/category/smartphone',
-              },
-            ]}
+          <NavLink
+            label={intl.formatMessage({ id: 'header_navigation_products' })}
+            href={routeConfig.PRODUCT.INDEX}
             icon={<BuildingStorefrontIcon className="mr-1 h-4" />}
-          />
-          <NavigationDropdown
-            label={intl.formatMessage({ id: 'header_navigation_brands' })}
-            list={[
-              { label: 'Apple', href: 'products/brand/apple' },
-              { label: 'Samsung', href: 'products/brand/samsung' },
-              { label: 'Xiaomi', href: 'products/brand/xiaomi' },
-              { label: 'OnePlus', href: 'products/brand/oneplus' },
-            ]}
-            icon={<HashtagIcon className="mr-1 h-4" />}
           />
         </NavTW>
         <div className="flex items-center">

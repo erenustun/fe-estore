@@ -180,6 +180,16 @@ input FilterArgsInput {
   storage: [Int]
 }
 
+type GroupedRamResponse {
+  label: String!
+  value: Int!
+}
+
+type GroupedStorageResponse {
+  label: String!
+  value: Int!
+}
+
 type IDeleteResponse {
   affected: Int!
   raw: [String!]!
@@ -426,6 +436,8 @@ type Query {
   creditCards: [CreditCard!]!
   currentOrders: [Order!]!
   fetchCustomer: User!
+  groupedRam: [GroupedRamResponse!]!
+  groupedStorage: [GroupedStorageResponse!]!
   order(id: String!): Order!
   product(id: String!): Product!
   products(
