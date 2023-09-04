@@ -17,7 +17,7 @@ export const ProductName = (product: Product) => {
 
   return (
     <div className="h-auto w-full">
-      <div className="text-lines-2 text-primary-700 dark:text-cool-gray-50 font-inter h-12 space-x-1 truncate pr-1 font-medium leading-6">
+      <div className="text-lines-2 text-primary-700 dark:text-cool-gray-50 font-inter h-12 space-x-1 pr-1 font-medium leading-6">
         <span className={'font-medium'}>{brandName && brandName}</span>
         <span>{`${productName} (${resolution && resolution}, ${
           cpuName && cpuName
