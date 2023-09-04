@@ -26,3 +26,13 @@ export class Product extends BaseEntity {
   rating?: ProductRating[]
   specification: ProductSpecification
 }
+
+export class GroupedRamResponse {
+  label: string
+  value: number
+}
+
+export class GroupedStorageResponse {
+  label: string
+  value: number
+}
