@@ -27,7 +27,9 @@ export default function App({ Component, pageProps }: AppProps) {
         <StyledComponentsRegistry>
           <Layout className={inter.className}>
             <Header />
-            <Component {...pageProps} />
+            <div className="p-5">
+              <Component {...pageProps} />
+            </div>
             <Footer />
           </Layout>
         </StyledComponentsRegistry>

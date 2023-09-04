@@ -1,6 +1,10 @@
 export * from './component/Card/card.component'
 export * from './component/Card/name.component'
 export * from './component/Card/stock.component'
+export * from './component/view-products.component'
+
+export * from './hook/constant'
+export * from './hook/filter.hook'
 
 export * from './model/product.model'
 export * from './model/brand.model'
@@ -12,3 +16,5 @@ export * from './model/specification/connectivity.model'
 export * from './model/specification/cpu.model'
 export * from './model/specification/display.model'
 export * from './model/specification/specification.model'
+
+export * from './view/products.view'

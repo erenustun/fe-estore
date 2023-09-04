@@ -1,9 +1,13 @@
-query Products {
-  products {
+query Products(
+  $filterArgs: FilterArgsInput
+  $paginationArgs: PaginationArgsInput!
+) {
+  products(filterArgs: $filterArgs, paginationArgs: $paginationArgs) {
     count
     page
     limit
     data {
+      id
       brand {
         name
       }
