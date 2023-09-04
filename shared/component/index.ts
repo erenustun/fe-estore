@@ -6,7 +6,7 @@ export * from './Branding/Social/WhatsappIcon'
 
 export * from './Badge'
 export * from './Button'
-export * from './Dropdown/Dropdown'
+export * from './Currency'
 export * from './Footer'
 export * from './Header'
 export * from './LanguageChanger'
