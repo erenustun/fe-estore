@@ -28,6 +28,7 @@
     "react-dom": "18.2.0",
     "react-hook-form": "^7.45.0",
     "react-intl": "^6.4.4",
+    "react-rater": "^6.0.5",
     "react-use-cookie": "^1.4.0",
     "sass": "^1.63.4",
     "styled-components": "^6.0.0-rc.3",
@@ -44,6 +45,7 @@
     "husky": "^8.0.3",
     "prettier": "^2.8.8",
     "prettier-plugin-tailwindcss": "^0.4.1",
+    "sass": "^1.66.1",
     "tailwind-styled-components": "^2.2.0"
   }
 }

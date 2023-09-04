@@ -14,6 +14,7 @@ export * from './Loader'
 export * from './NavLink'
 export * from './NavigationDropdown'
 export * from './Notification'
+export * from './Rating'
 export * from './SimpleTable'
 export * from './TextLink'
 
