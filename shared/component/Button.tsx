@@ -3,8 +3,16 @@ import { themeConfig } from '@shared/config'
 import { PropsWithChildren, useCallback } from 'react'
 
 interface ButtonProps {
-  style?: 'primary' | 'success' | 'info' | 'warning' | 'danger' | 'secondary'
+  style?:
+    | 'primary'
+    | 'primary-dark'
+    | 'success'
+    | 'info'
+    | 'warning'
+    | 'danger'
+    | 'secondary'
   className?: string
+  onClick?: () => void
   primary?: boolean
 }
 
@@ -15,7 +23,11 @@ const ButtonBase = tw.button<ButtonProps>`
   ${() => themeConfig.animationDuration}
   ${() => themeConfig.animationEaseIn}
   ${() => themeConfig.radiusMedium}
-  transform hover:scale-[101%]
+  flex 
+  items-center 
+  justify-center
+  transform 
+  hover:scale-[101%]
   cursor-pointer
 `
 
@@ -23,6 +35,12 @@ const PrimarySolidButton = tw(ButtonBase)<ButtonProps>`
   ${() => themeConfig.primaryBackgroundColor}
   ${() => themeConfig.primaryBackgroundHover}
   ${() => themeConfig.primaryBackgroundActive}
+`
+
+const PrimaryDarkButton = tw(ButtonBase)<ButtonProps>`
+  ${() => themeConfig.primaryBackgroundColorDark}
+  ${() => themeConfig.primaryBackgroundHoverDark}
+  ${() => themeConfig.primaryBackgroundActiveDark}
 `
 
 const PrimaryOutlinedButton = tw(ButtonBase)<ButtonProps>`
@@ -84,20 +102,27 @@ const DangerOutlinedButton = tw(ButtonBase)<ButtonProps>`
   ${() => themeConfig.dangerBackgroundActive}
 `
 
-const Button = ({
+export const Button = ({
   children,
   className,
-  primary,
-  style,
+  onClick,
+  primary = true,
+  style = 'primary',
 }: PropsWithChildren<ButtonProps>) => {
   const renderButton = useCallback(() => {
     if (primary) {
       switch (style) {
         case 'primary':
           return (
-            <PrimarySolidButton className={className}>
+            <PrimarySolidButton onClick={onClick} className={className}>
               {children}
             </PrimarySolidButton>
+          )
+        case 'primary-dark':
+          return (
+            <PrimaryDarkButton onClick={onClick} className={className}>
+              {children}
+            </PrimaryDarkButton>
           )
         case 'success':
           return (
@@ -172,10 +197,3 @@ const Button = ({
 
   return renderButton()
 }
-
-Button.defaultProps = {
-  style: 'primary',
-  primary: true,
-}
-
-export { Button }
