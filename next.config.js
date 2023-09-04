@@ -6,7 +6,16 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        hostname: 'localhost'
+        protocol: "http",
+        hostname: "**",
+      },
+      {
+        protocol: "https",
+        hostname: "**",
+      },
+      {
+        hostname: 'localhost',
+        port: '3000'
       },
       {
         hostname: 'i.pravatar.cc'

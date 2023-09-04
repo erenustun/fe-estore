@@ -95,6 +95,24 @@
   "order_view_expected": "Voraussichtliche Lieferung",
 
 
+  "product_index": "Produkte ({count})",
+  "product_view_add_to_cart": "In den Warenkorb",
+  "product_view_available": "Lieferbar",
+  "product_view_sold_out": "Nicht lieferbar",
+  "product_view_almost_sold_out": "Fast ausverkauft",
+  "product_view_filter_select_brand": "Brand wählen",
+  "product_view_filter_select_ram": "Ram wählen",
+  "product_view_filter_ram_6": "6GB",
+  "product_view_filter_ram_8": "8GB",
+  "product_view_filter_ram_12": "12GB",
+  "product_view_filter_ram_16": "16GB",
+  "product_view_filter_select_storage": "Speicher wählen",
+  "product_view_filter_storage_128": "128GB",
+  "product_view_filter_storage_256": "256GB",
+  "product_view_filter_storage_512": "512GB",
+  "product_view_filter_storage_1": "1TB",
+
+
   "form_cancel": "Abbrechen",
 
 
@@ -133,7 +151,6 @@
 
   "address_addresses": "Adressen",
 
-  "product_addToCart": "In den Warenkorb",
   "product_displaySize": "Bildschirmgrösse in Zoll",
   "product_cpu": "Prozessor",
   "product_ram": "Arbeitsspeicher",
@@ -147,9 +164,6 @@
   "product_warranty": "24 Monate Garantie",
   "product_loginToRate": "Bitte anmelden, um ein Produkt zu bewerten",
   "product_noRatings": "Dieses Produkt hat noch keine Bewertungen",
-  "product_available": "Lieferbar",
-  "product_outOfStock": "Nicht lieferbar",
-  "product_soonOutOfStock": "Fast ausverkauft",
 
   "cart_title": "Warenkorb",
   "cart_title_products": "produkte",
