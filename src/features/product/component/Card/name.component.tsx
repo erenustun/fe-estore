@@ -1,7 +1,7 @@
 import { useIntl } from 'react-intl'
 import { Product } from '@feature/product'
 
-export const Name = (product: Product) => {
+export const ProductName = (product: Product) => {
   const intl = useIntl()
 
   const {

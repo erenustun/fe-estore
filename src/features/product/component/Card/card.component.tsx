@@ -5,15 +5,8 @@ import Link from 'next/link'
 
 import { Button, Currency, Rating } from '@shared/component'
 import { FormattedMessage } from 'react-intl'
-import { Name, Product } from '@feature/product'
-import cn from 'classnames'
-import { themeConfig } from '@shared/config'
-import {
-  ShoppingBagIcon,
-  InformationCircleIcon,
-  CheckCircleIcon,
-  XCircleIcon,
-} from '@heroicons/react/24/solid'
+import { ProductName, Product, ProductStock } from '@feature/product'
+import { ShoppingBagIcon } from '@heroicons/react/24/solid'
 
 export const Card = (product: Product) => {
   return (
@@ -53,42 +46,9 @@ export const Card = (product: Product) => {
               className={'text-danger-default text-lg font-bold'}
               amount={product.price}
             />
-            {product.stock > 0 && product.stock <= 5 && (
-              <div
-                className={cn(
-                  '-mt-2 flex items-center px-1 py-0.5',
-                  themeConfig.warningTextColor
-                )}
-              >
-                <InformationCircleIcon className="mr-1 h-4" />
-                <FormattedMessage id={'product_view_almost_sold_out'} />
-              </div>
-            )}
-            {product.stock > 0 && product.stock > 5 && (
-              <div
-                className={cn(
-                  '-mt-2 flex items-center px-1 py-0.5',
-                  themeConfig.successTextColor
-                )}
-              >
-                <CheckCircleIcon className="mr-1 h-4" />
-                <FormattedMessage id={'product_view_available'} />
-              </div>
-            )}
-            {product.stock === 0 && (
-              <div
-                className={cn(
-                  '-mt-2 flex items-center px-1 py-0.5',
-                  themeConfig.dangerTextColor
-                )}
-              >
-                <XCircleIcon className="mr-1 h-4" />
-                <FormattedMessage id={'product_view_sold_out'} />
-              </div>
-            )}
+            <ProductStock stock={product?.stock} />
           </div>
-          {/* @ts-ignore */}
-          <Name
+          <ProductName
             brand={product.brand}
             name={product.name}
             stock={product.stock}
@@ -98,38 +58,10 @@ export const Card = (product: Product) => {
             sku={product.sku}
           />
           <div className={'mr-2 mt-2 flex items-center justify-end space-x-4'}>
-            <i
-              className={`bx bx-sm dark:hover:text-blue-gray-500 dark:active:text-blue-gray-500 ml-2 cursor-pointer transition duration-200 ease-in
-                ${
-                  {
-                    /*!foundInWishlist
-                  ? 'dark:text-cool-gray-400 bx-bookmark'
-                  : 'dark:text-blue-gray-300 bxs-bookmark'*/
-                  }
-                }
-              `}
-              onClick={e => {
-                e.preventDefault()
-                if (/*foundInWishlist*/ false) {
-                  //removeFromWishlist(id as string)
-                } else {
-                  //addToWishlist(product)
-                  //toggleWishlist()
-                }
-              }}
-            ></i>
+            <i className="bx bx-sm dark:hover:text-blue-gray-500 dark:active:text-blue-gray-500 ml-2 cursor-pointer transition duration-200 ease-in"></i>
             {product.stock > 0 && (
               <div className="mt-2">
-                <Button
-                /*onClick={(e: { preventDefault: () => void }) => {
-                        if (stock > 0) {
-                          e.preventDefault()
-                          //addToCart(product)
-                          //toggleCart()
-                        }
-                      }}*/
-                //disabled={stock === 0}
-                >
+                <Button>
                   <ShoppingBagIcon className="mr-1 h-5" />
                   <FormattedMessage id={'product_view_add_to_cart'} />
                 </Button>
