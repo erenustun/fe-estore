@@ -5,9 +5,7 @@ import {
   InMemoryCache,
 } from '@apollo/client'
 import { setContext } from '@apollo/client/link/context'
-import { getBearerToken, pushUri } from '@shared/util'
-import { onError } from '@apollo/client/link/error'
-import { routeConfig } from '@shared/config/route.config'
+import { getBearerToken } from '@shared/util'
 
 const httpLink = createHttpLink({
   uri:
@@ -26,12 +24,7 @@ const authLink = setContext((_, { headers }) => {
   }
 })
 
-const errorLink = onError(({ graphQLErrors }) => {
-  if (graphQLErrors?.filter(error => error.message === 'Unauthorized'))
-    pushUri(routeConfig.ACCOUNT.UNAUTHORIZED)
-})
-
 export const apolloClient = new ApolloClient({
-  link: ApolloLink.from([errorLink, authLink, httpLink]),
+  link: ApolloLink.from([authLink, httpLink]),
   cache: new InMemoryCache(),
 })
