@@ -25,6 +25,7 @@ export * from './Layout/Container'
 export * from './Layout/FlexBox'
 export * from './Layout/Layout'
 
+export * from './Form/CheckField'
 export * from './Form/FieldError'
 export * from './Form/Form'
 export * from './Form/FormSub'

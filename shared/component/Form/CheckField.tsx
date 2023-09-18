@@ -1,113 +1,33 @@
-import tw from 'tailwind-styled-components'
-import { InputHTMLAttributes, ReactNode, useState } from 'react'
-import { FormGroup } from '@component'
-import { EyeIcon, EyeSlashIcon } from '@heroicons/react/24/solid'
-import { themeConfig } from '@shared/config'
+import { ReactNode } from 'react'
+import { FlexBox } from '@shared/component'
+import { CheckCircleIcon } from '@heroicons/react/24/solid'
+import cn from 'classnames'
 
-interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+interface CheckFieldProps {
+  active: boolean
   className?: string
-  errors?: any
-  error?: any
-  noIcon?: boolean
-  icon?: ReactNode
-  label: ReactNode | string
-  name: string
-  placeholder: string
-  register: any
-  required?: boolean
-  secretField?: boolean
-  validationSchema?: never
+  label?: ReactNode | string | number
+  value: number | string
 }
-
-const Label = tw.label<{ error: string }>`
-  ${() => themeConfig.mainTextColor}
-  ${p => p.error && themeConfig.dangerTextColor}
-  mb-1
-  select-none
-  text-sm
-  tracking-wide
-  leading-5
-`
-
-export const StyledInput = tw.input<InputProps>`
-  ${() => themeConfig.mainTextColor}
-  ${() => themeConfig.inputFieldBorder}
-  ${() => themeConfig.primaryBorderActive}
-  ${() => themeConfig.radiusDefault}
-  ${p => p.error && themeConfig.dangerBorderActive}
-  bg-transparent
-  w-full
-  relative
-  py-1.5
-  outline-none
-  ${p => p.error && themeConfig.dangerBorderActive}
-  ${props => (!props.noIcon ? 'pl-8' : 'px-2')}
-`
-
-const StyledInputError = tw.p`
-  ${() => themeConfig.dangerTextColor}
-  text-sm
-  mt-2
-`
 
 export const CheckField = ({
+  active,
   className,
-  errors,
-  icon,
   label,
-  name,
-  noIcon = false,
-  placeholder,
-  register,
-  required = false,
-  secretField = false,
-  type,
-  validationSchema,
-}: InputProps) => {
-  const [fieldVisible, setFieldVisibility] = useState<boolean>(false)
-  const toggleFieldVisibility = () => setFieldVisibility(!fieldVisible)
-
-  return (
-    <FormGroup className={className}>
-      <Label htmlFor={name} error={errors[name]}>
-        {label}
-        {required && (
-          <span className={`ml-1 ${themeConfig.dangerTextColor}`}>*</span>
-        )}
-      </Label>
-      <div className="relative flex">
-        {!noIcon && (
-          <span
-            className={`absolute left-2 top-2 z-10 ${themeConfig.mainTextColor}`}
-          >
-            {icon}
-          </span>
-        )}
-        <StyledInput
-          id={name}
-          name={name}
-          type={!secretField ? type : fieldVisible ? 'text' : 'password'}
-          error={errors[name]}
-          {...register(name, validationSchema)}
-          noIcon={noIcon}
-          placeholder={placeholder}
-        />
-        {secretField && !fieldVisible && (
-          <EyeSlashIcon
-            className={`absolute right-2 top-2 h-5 w-5 cursor-pointer ${themeConfig.mainTextColor}`}
-            onClick={toggleFieldVisibility}
-          />
-        )}
-        {secretField && fieldVisible && (
-          <EyeIcon
-            className={`absolute right-2 top-2 h-5 w-5 cursor-pointer ${themeConfig.mainTextColor}`}
-            onClick={toggleFieldVisibility}
-          />
-        )}
-      </div>
-      {errors && errors[name]?.message && (
-        <StyledInputError>{errors[name]?.message}</StyledInputError>
+  value,
+}: CheckFieldProps) => (
+  <FlexBox
+    className={cn('w-full cursor-pointer select-none items-center', className)}
+  >
+    <FlexBox className="items-center">
+      {active ? (
+        <CheckCircleIcon className="h-5 w-5 text-teal-300" />
+      ) : (
+        <div className="ml-1 h-4 w-4 rounded-full border-2 border-slate-800 bg-transparent" />
       )}
-    </FormGroup>
-  )
-}
+    </FlexBox>
+    <p className="ml-2 mt-1 text-sm leading-normal text-white">
+      {label ?? value}
+    </p>
+  </FlexBox>
+)
