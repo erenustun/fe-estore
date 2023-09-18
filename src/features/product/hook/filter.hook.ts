@@ -13,6 +13,18 @@ const useFilterPrams = (query: any) => {
       : ([query[FILTER_OPTIONS.category]] as string[])
     : undefined
 
+  const color = query[FILTER_OPTIONS.color]
+    ? Array.isArray(query[FILTER_OPTIONS.color])
+      ? (query[FILTER_OPTIONS.color] as string[])
+      : ([query[FILTER_OPTIONS.color]] as string[])
+    : undefined
+
+  const cpu = query[FILTER_OPTIONS.cpu]
+    ? Array.isArray(query[FILTER_OPTIONS.cpu])
+      ? (query[FILTER_OPTIONS.cpu] as string[])
+      : ([query[FILTER_OPTIONS.cpu]] as string[])
+    : undefined
+
   const ram = query[FILTER_OPTIONS.ram]
     ? Array.isArray(query[FILTER_OPTIONS.ram])
       ? (query[FILTER_OPTIONS.ram] as string[]).map((value: string) =>
@@ -40,6 +52,8 @@ const useFilterPrams = (query: any) => {
   return {
     ...(brand && { brand }),
     ...(category && { category }),
+    ...(color && { color }),
+    ...(cpu && { cpu }),
     ...(ram && { ram }),
     ...(storage && { storage }),
     ...(priceMin && { priceMin }),

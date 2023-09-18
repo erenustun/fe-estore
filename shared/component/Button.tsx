@@ -22,7 +22,7 @@ const ButtonBase = tw.button<ButtonProps>`
   ${() => themeConfig.animationTransition}
   ${() => themeConfig.animationDuration}
   ${() => themeConfig.animationEaseIn}
-  ${() => themeConfig.radiusMedium}
+  ${() => themeConfig.radiusSmall}
   flex 
   items-center 
   justify-center
@@ -35,12 +35,14 @@ const PrimarySolidButton = tw(ButtonBase)<ButtonProps>`
   ${() => themeConfig.primaryBackgroundColor}
   ${() => themeConfig.primaryBackgroundHover}
   ${() => themeConfig.primaryBackgroundActive}
+  ${props => props.className}
 `
 
 const PrimaryDarkButton = tw(ButtonBase)<ButtonProps>`
   ${() => themeConfig.primaryBackgroundColorDark}
   ${() => themeConfig.primaryBackgroundHoverDark}
   ${() => themeConfig.primaryBackgroundActiveDark}
+  ${props => props.className}
 `
 
 const PrimaryOutlinedButton = tw(ButtonBase)<ButtonProps>`
@@ -48,12 +50,14 @@ const PrimaryOutlinedButton = tw(ButtonBase)<ButtonProps>`
   ${() => themeConfig.primaryBorderActive}
   ${() => themeConfig.primaryTextColor}
   ${() => themeConfig.primaryBackgroundActive}
+  ${props => props.className}
 `
 
 const SuccessSolidButton = tw(ButtonBase)<ButtonProps>`
   ${() => themeConfig.successBackgroundColor}
   ${() => themeConfig.successBackgroundHover}
   ${() => themeConfig.successBackgroundActive}
+  ${props => props.className}
 `
 
 const SuccessOutlinedButton = tw(ButtonBase)<ButtonProps>`
@@ -61,12 +65,14 @@ const SuccessOutlinedButton = tw(ButtonBase)<ButtonProps>`
   ${() => themeConfig.successBorderActive}
   ${() => themeConfig.successTextColor}
   ${() => themeConfig.successBackgroundActive}
+  ${props => props.className}
 `
 
 const InfoSolidButton = tw(ButtonBase)<ButtonProps>`
   ${() => themeConfig.infoBackgroundColor}
   ${() => themeConfig.infoBackgroundHover}
   ${() => themeConfig.infoBackgroundActive}
+  ${props => props.className}
 `
 
 const InfoOutlinedButton = tw(ButtonBase)<ButtonProps>`
@@ -74,12 +80,14 @@ const InfoOutlinedButton = tw(ButtonBase)<ButtonProps>`
   ${() => themeConfig.infoBorderActive}
   ${() => themeConfig.infoTextColor}
   ${() => themeConfig.infoBackgroundActive}
+  ${props => props.className}
 `
 
 const WarningSolidButton = tw(ButtonBase)<ButtonProps>`
   ${() => themeConfig.warningBackgroundColor}
   ${() => themeConfig.warningBackgroundHover}
   ${() => themeConfig.warningBackgroundActive}
+  ${props => props.className}
 `
 
 const WarningOutlinedButton = tw(ButtonBase)<ButtonProps>`
@@ -87,12 +95,14 @@ const WarningOutlinedButton = tw(ButtonBase)<ButtonProps>`
   ${() => themeConfig.warningBorderActive}
   ${() => themeConfig.warningTextColor}
   ${() => themeConfig.warningBackgroundActive}
+  ${props => props.className}
 `
 
 const DangerSolidButton = tw(ButtonBase)<ButtonProps>`
   ${() => themeConfig.dangerBackgroundColor}
   ${() => themeConfig.dangerBackgroundHover}
   ${() => themeConfig.dangerBackgroundActive}
+  ${props => props.className}
 `
 
 const DangerOutlinedButton = tw(ButtonBase)<ButtonProps>`
@@ -100,6 +110,7 @@ const DangerOutlinedButton = tw(ButtonBase)<ButtonProps>`
   ${() => themeConfig.dangerBorderActive}
   ${() => themeConfig.dangerTextColor}
   ${() => themeConfig.dangerBackgroundActive}
+  ${props => props.className}
 `
 
 export const Button = ({

@@ -180,6 +180,10 @@ input FilterArgsInput {
   storage: [Int]
 }
 
+type GroupedBrandResponse {
+  label: String!
+}
+
 type GroupedRamResponse {
   label: String!
   value: Int!
@@ -436,6 +440,7 @@ type Query {
   creditCards: [CreditCard!]!
   currentOrders: [Order!]!
   fetchCustomer: User!
+  groupedBrand: [GroupedBrandResponse!]!
   groupedRam: [GroupedRamResponse!]!
   groupedStorage: [GroupedStorageResponse!]!
   order(id: String!): Order!

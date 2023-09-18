@@ -3,6 +3,15 @@ export const themeConfig = {
   animationDuration: 'duration-200',
   animationEaseIn: 'ease-in',
 
+  animationStartToTop: '-translate-y-[4rem]',
+  animationEndToTop: 'translate-y-0',
+  animationStartToRight: 'translate-x-0',
+  animationEndToRight: '-translate-x-[10rem]',
+  animationStartToBottom: 'translate-y-0',
+  animationEndToBottom: '-translate-y-[1rem]',
+  animationStartToLeft: '-translate-x-[1rem]',
+  animationEndToLeft: 'translate-x-[10rem]',
+
   radiusSmall: 'rounded-sm',
   radiusDefault: 'rounded',
   radiusMedium: 'rounded-md',
@@ -12,7 +21,7 @@ export const themeConfig = {
   //mainBackgroundColor: 'bg-gradient-to-tr from-gray-950 to-slate-900',
   mainTextColor: 'text-slate-200',
 
-  mainContainerMaxWidth: 'max-w-7xl',
+  mainContainerMaxWidth: 'max-w-9xl',
 
   badgeBackgroundColor: 'bg-rose-500',
 
@@ -61,9 +70,14 @@ export const themeConfig = {
   primaryBackgroundColorAlt: 'bg-blue-700',
   primaryBackgroundHoverAlt: `hover:bg-blue-800`,
   primaryBackgroundActiveAlt: `active:bg-blue-900`,
+  primaryBackgroundColorDark: 'bg-transparent border border-slate-600',
+  primaryBackgroundHoverDark: `hover:border-slate-700`,
+  primaryBackgroundActiveDark: `active:border-blue-700`,
+  /*
   primaryBackgroundColorDark: 'bg-[#03183b]',
   primaryBackgroundHoverDark: `hover:bg-blue-950 hover:border-blue-950`,
   primaryBackgroundActiveDark: `active:bg-blue-700`,
+  */
 
   primaryBorderColor: 'border border-blue-600',
   primaryBorderBottomColor: 'border-b border-b-blue-800',

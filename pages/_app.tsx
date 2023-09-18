@@ -6,10 +6,12 @@ import { ApolloProvider } from '@apollo/client'
 import { hasHydrated } from '@shared/hook'
 import { IntlProvider } from 'react-intl'
 import { apolloClient } from '@shared/config'
-import { Layout, Footer, Header } from '@component'
+import { Layout, Footer, Header, GlobalTopBar } from '@component'
 import useUserStore from '@feature/account/state/user.store'
 import { messageByLocale } from '@shared/util/intl.util'
 import { useMemo } from 'react'
+import { QueryParamProvider } from 'use-query-params'
+import { NextAdapter } from 'next-query-params'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -22,18 +24,19 @@ export default function App({ Component, pageProps }: AppProps) {
   }, [settings?.language])
 
   return hasMounted ? (
-    <ApolloProvider client={apolloClient}>
-      <IntlProvider locale={settings?.language as string} messages={messages}>
-        <StyledComponentsRegistry>
-          <Layout className={inter.className}>
-            <Header />
-            <div className="p-5">
+    <QueryParamProvider adapter={NextAdapter}>
+      <ApolloProvider client={apolloClient}>
+        <IntlProvider locale={settings?.language as string} messages={messages}>
+          <StyledComponentsRegistry>
+            <Layout className={inter.className}>
+              <GlobalTopBar />
+              <Header />
               <Component {...pageProps} />
-            </div>
-            <Footer />
-          </Layout>
-        </StyledComponentsRegistry>
-      </IntlProvider>
-    </ApolloProvider>
+              <Footer />
+            </Layout>
+          </StyledComponentsRegistry>
+        </IntlProvider>
+      </ApolloProvider>
+    </QueryParamProvider>
   ) : null
 }
