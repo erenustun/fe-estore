@@ -9,7 +9,8 @@ import { getBearerToken } from '@shared/util'
 
 const httpLink = createHttpLink({
   uri:
-    process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT || 'http://localhost:3000/graphql',
+    `${process.env.NEXT_PUBLIC_BACKEND_HOST}/graphql` ||
+    'http://localhost:3000/graphql',
 })
 
 const authLink = setContext((_, { headers }) => {
