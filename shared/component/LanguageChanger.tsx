@@ -30,10 +30,12 @@ export const LanguageChanger = ({ className }: LanguageChangerProps) => {
 
   return (
     <Dropdown
+      className={className}
       label={<span>{settings?.language}</span>}
       list={LANGUAGE_LIST}
       onClick={handleChange}
       postLabelComponent={<LanguageIcon className="ml-1 h-4 w-4" />}
+      transparentBackground={true}
     />
   )
 }

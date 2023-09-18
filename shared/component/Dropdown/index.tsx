@@ -28,8 +28,9 @@ interface DropdownProps {
   list: DropdownItem[] | any[]
   listClassName?: string
   onClick?: any
-  preLabelComponent?: ReactNode | JSX.Element | string | number
   postLabelComponent?: ReactNode | JSX.Element | string | number
+  preLabelComponent?: ReactNode | JSX.Element | string | number
+  transparentBackground?: boolean
   withCaret?: boolean
 }
 
@@ -42,8 +43,9 @@ export const Dropdown = ({
   list,
   listClassName,
   onClick,
-  preLabelComponent,
   postLabelComponent,
+  preLabelComponent,
+  transparentBackground = false,
   withCaret = false,
 }: DropdownProps) => {
   const [dropdown, setDropdown] = useState(false)
@@ -66,7 +68,13 @@ export const Dropdown = ({
         onClick={handleButtonClick}
         className={cn(
           'flex cursor-pointer select-none items-center justify-center uppercase',
-          !buttonClassName ? 'dropdown-button' : buttonClassName
+          !buttonClassName
+            ? `dropdown-button ${
+                transparentBackground
+                  ? 'bg-transparent'
+                  : 'dark:bg-blue-500 dark:hover:bg-blue-600 dark:active:bg-blue-700'
+              }`
+            : buttonClassName
         )}
       >
         {preLabelComponent}
@@ -75,7 +83,7 @@ export const Dropdown = ({
         {withCaret && renderCaret()}
       </div>
       <div
-        className={`bg-secondary-500 absolute right-0 top-0 z-10 mt-10 transform-gpu rounded border border-slate-800 shadow-lg transition duration-300 ease-in-out dark:bg-slate-900 sm:top-full sm:mt-2 ${
+        className={`bg-secondary-500 absolute right-0 top-0 z-50 mt-10 transform-gpu rounded border border-slate-800 shadow-lg transition duration-300 ease-in-out dark:bg-slate-900 sm:top-full sm:mt-2 ${
           dropdown
             ? 'translate-y-0 opacity-100'
             : '-z-10 -translate-y-[15rem] select-none opacity-0'
