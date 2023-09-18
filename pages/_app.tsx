@@ -6,7 +6,7 @@ import { ApolloProvider } from '@apollo/client'
 import { hasHydrated } from '@shared/hook'
 import { IntlProvider } from 'react-intl'
 import { apolloClient } from '@shared/config'
-import { Layout, Footer, Header } from '@component'
+import { Layout, Footer, Header, GlobalTopBar } from '@component'
 import useUserStore from '@feature/account/state/user.store'
 import { messageByLocale } from '@shared/util/intl.util'
 import { useMemo } from 'react'
@@ -29,10 +29,9 @@ export default function App({ Component, pageProps }: AppProps) {
         <IntlProvider locale={settings?.language as string} messages={messages}>
           <StyledComponentsRegistry>
             <Layout className={inter.className}>
+              <GlobalTopBar />
               <Header />
-              <div className="p-5">
-                <Component {...pageProps} />
-              </div>
+              <Component {...pageProps} />
               <Footer />
             </Layout>
           </StyledComponentsRegistry>
