@@ -1,16 +1,13 @@
 import { Button, FlexBox, Loader } from '@component'
 import { useMutation, useQuery } from '@apollo/client'
 import FetchAddresses from '@src/features/address/graphql/fetch-addresses.graphql'
-import {
-  PencilSquareIcon as EditIcon,
-  TrashIcon as DeleteIcon,
-  CheckIcon as CheckIcon,
-} from '@heroicons/react/20/solid'
+import { CheckIcon as CheckIcon } from '@heroicons/react/20/solid'
 import Link from 'next/link'
-import { routeConfig, themeConfig } from '@shared/config'
+import { routeConfig } from '@shared/config'
 import { FormattedMessage } from 'react-intl'
 import DeleteAddressMutation from '@feature/address/graphql/remove-address.graphql'
 import { Address, AddressType } from '@feature/address'
+import { TableOptions } from '@feature/address/components/table-options.component'
 
 export const ViewAddress = () => {
   const { data, loading, error } = useQuery(FetchAddresses, {
@@ -45,11 +42,11 @@ export const ViewAddress = () => {
         <div className="w-80">
           <FormattedMessage id="address_view_address" />
         </div>
+        <div className="w-96">
+          <FormattedMessage id="address_view_main_address" />
+        </div>
         <div className="w-28">
           <FormattedMessage id="address_view_options" />
-        </div>
-        <div>
-          <FormattedMessage id="address_view_main_address" />
         </div>
       </div>
       <div className="px-1">
@@ -67,23 +64,24 @@ export const ViewAddress = () => {
                 {address.firstName} {address.lastName}
               </div>
               <div className="w-80">{`${address.line1}, ${address.zipCode}, ${address.countryCode}`}</div>
-              <div className="w-28 flex items-center space-x-2">
-                <Link
+              <div className="w-96">
+                {address.primary && <CheckIcon className="h-5 w-5" />}
+              </div>{' '}
+              <div className="flex w-28 items-center space-x-2">
+                <TableOptions />
+                {/*<Link
                   href={`${routeConfig.ACCOUNT.ADDRESS.EDIT}/${address.id}`}
                 >
                   <EditIcon
-                    className={`w-5 h-5 cursor-pointer ${themeConfig.primaryIconColor} ${themeConfig.animationTransition} ${themeConfig.animationDuration} ${themeConfig.animationEaseIn}`}
+                    className={`h-5 w-5 cursor-pointer ${themeConfig.primaryIconColor} ${themeConfig.animationTransition} ${themeConfig.animationDuration} ${themeConfig.animationEaseIn}`}
                   />
                 </Link>
                 <DeleteIcon
                   onClick={() =>
                     deleteAddress({ variables: { id: address?.id } })
                   }
-                  className={`w-5 h-5 cursor-pointer ${themeConfig.dangerIconColor} ${themeConfig.animationTransition} ${themeConfig.animationDuration} ${themeConfig.animationEaseIn}`}
-                />
-              </div>
-              <div className="w-6">
-                {address.primary && <CheckIcon className="w-5 h-5" />}
+                  className={`h-5 w-5 cursor-pointer ${themeConfig.dangerIconColor} ${themeConfig.animationTransition} ${themeConfig.animationDuration} ${themeConfig.animationEaseIn}`}
+                />*/}
               </div>
             </div>
           )
