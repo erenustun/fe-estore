@@ -19,6 +19,7 @@ export * from './component/view-products.component'
 
 export * from './hook/constant'
 export * from './hook/filter.hook'
+export * from './hook/pagination.hook'
 
 export * from './model/product.model'
 export * from './model/brand.model'

@@ -10,6 +10,7 @@ interface DropdownListProps {
   href: Url | string
   label: string
   image?: string
+  query?: any
 }
 
 interface DropdownProps {
@@ -84,25 +85,26 @@ export const NavigationDropdown = ({
     <div className="dropdown-content">
       {/*bg-zinc-950*/}
       <List>
-        {list?.map((item, i) => {
-          return (
-            <Link
-              href={{ pathname: encodeURI(`/${item.href as string}`) }}
-              className="h-full w-1/4"
-              key={i}
-            >
-              <Item>
-                <Image
-                  src={`/images/${encodeURI(item.href as string)}.png`}
-                  alt={`${item.label} image`}
-                  width="150"
-                  height="0"
-                />
-                <ItemLabel>{item.label}</ItemLabel>
-              </Item>
-            </Link>
-          )
-        })}
+        {list?.map((item, i) => (
+          <Link
+            href={{
+              pathname: encodeURI(`/${item.href as string}`),
+              ...(item.query && { query: item.query }),
+            }}
+            className="h-full w-1/4"
+            key={i}
+          >
+            <Item>
+              <Image
+                src={`/images/${item.image}.png`}
+                alt={`${item.label} image`}
+                width="150"
+                height="0"
+              />
+              <ItemLabel>{item.label}</ItemLabel>
+            </Item>
+          </Link>
+        ))}
       </List>
     </div>
   </div>
