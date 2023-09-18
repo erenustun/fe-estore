@@ -1,6 +1,7 @@
 import { FlexBox, Loader } from '@component'
 import { useQuery } from '@apollo/client'
 import FetchProducts from '@src/features/product/graphql/fetch-products.graphql'
+  ProductFilter,
 import { FormattedMessage } from 'react-intl'
 import { Card, Product, useFilterPrams } from '@feature/product'
 import { useRouter } from 'next/router'
@@ -20,6 +21,7 @@ export const ViewProducts = () => {
   if (loading)
     return (
       <Loader
+      <ProductFilter />
         loading={loading}
         message={<FormattedMessage id="address_view_fetching" />}
       />

@@ -1,7 +1,15 @@
 export * from './component/Card/card.component'
 export * from './component/Card/name.component'
 export * from './component/Card/stock.component'
+
+export * from './component/filter.component'
 export * from './component/Filter/filter-button.component'
+export * from './component/Filter/brand-filter.component'
+export * from './component/Filter/color-filter.component'
+export * from './component/Filter/cpu-filter.component'
+export * from './component/Filter/ram-filter.component'
+export * from './component/Filter/storage-filter.component'
+
 export * from './component/view-products.component'
 
 export * from './hook/constant'
