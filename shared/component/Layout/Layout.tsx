@@ -1,11 +1,16 @@
 import tw from 'tailwind-styled-components'
 import { themeConfig } from '@shared/config'
 
-export const Layout = tw.section`
+interface LayoutProps {
+  className?: string
+}
+
+export const Layout = tw.section<LayoutProps>`
   ${() => themeConfig.mainBackgroundColor}
   ${() => themeConfig.mainTextColor}
   w-full
   mx-auto
   flex
   flex-col
+  ${props => props.className && props.className}
 `

@@ -1,9 +1,10 @@
 {
   "app_wip": "WIP",
   "app_slogan": "Unleash your potential with top-notch tech",
-  "app_domain": "digiplus.live",
   "app_domain": "webstorehub.io",
   "app_error": "Server error",
+  "app_home_hero_heading": "Experience the Future Today",
+  "app_home_hero_subheading": "Discover the latest innovations in smartphones.\nShop now for cutting-edge technology and unbeatable deals.",
 
 
   "header_navigation_home": "Home",

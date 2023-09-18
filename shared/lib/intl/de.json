@@ -1,9 +1,10 @@
 {
   "app_wip": "WIP",
   "app_slogan": "Entfessele dein Potenzial mit erstklassiger Technologie!",
-  "app_domain": "webstorehub.live",
   "app_domain": "webstorehub.io",
   "app_error": "Server error",
+  "app_home_hero_heading": "Erleben Sie die Zukunft schon heute",
+  "app_home_hero_subheading": "Entdecken Sie die neuesten Innovationen bei Smartphones.\nJetzt einkaufen für Spitzentechnologie und unschlagbare Angebote.",
 
 
   "header_navigation_home": "Home",

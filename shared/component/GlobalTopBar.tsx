@@ -13,8 +13,8 @@ export const GlobalTopBar = () => {
   return (
     <div className="select-none bg-[#0A52C7] py-1.5">
       <Container>
-        <FlexBox className="flex-col border border-b border-blue-600 pb-1.5 sm:hidden sm:flex-row">
-          <FlexBox className="items-center justify-center gap-x-1 border">
+        <FlexBox className="flex-col border-b border-blue-600 pb-1.5 sm:hidden sm:flex-row">
+          <FlexBox className="items-center justify-center gap-x-1">
             <PhoneIcon className="h-4 w-4 text-slate-50" />
             <Link
               href={`tel:${process.env.NEXT_PUBLIC_SUPPORT_TEL}`}
@@ -23,7 +23,7 @@ export const GlobalTopBar = () => {
               {process.env.NEXT_PUBLIC_SUPPORT_TEL}
             </Link>
           </FlexBox>
-          <FlexBox className="items-center justify-center gap-x-1 border">
+          <FlexBox className="items-center justify-center gap-x-1">
             <EnvelopeIcon className="h-4 w-4 text-slate-50" />
             <Link
               href={`mailto:${process.env.NEXT_PUBLIC_SUPPORT_EMAIL}`}
