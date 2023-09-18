@@ -1,6 +1,7 @@
 export * from './component/Card/card.component'
 export * from './component/Card/name.component'
 export * from './component/Card/stock.component'
+export * from './component/Filter/filter-button.component'
 export * from './component/view-products.component'
 
 export * from './hook/constant'
