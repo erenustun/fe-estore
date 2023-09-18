@@ -1,4 +1,4 @@
-import { SignUpView } from '@feature/auth/views/sign-up.view'
+import { SignUpView } from '@feature/auth'
 
 const SignUp = () => <SignUpView />
 export default SignUp

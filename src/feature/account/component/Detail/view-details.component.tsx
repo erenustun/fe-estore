@@ -4,7 +4,7 @@ import FetchUser from '@src/features/account/graphql/details/fetch-user.graphql'
 import Link from 'next/link'
 import { routeConfig } from '@shared/config'
 import { FormattedMessage } from 'react-intl'
-import { detailColumns as columns } from '@feature/account/components/details/detail.column'
+import { detailColumns as columns } from '@feature/account'
 
 export const ViewDetails = () => {
   const { data, loading, error } = useQuery(FetchUser, {

@@ -4,9 +4,8 @@ import { useCallback } from 'react'
 import { useRouter } from 'next/router'
 import { AddressView } from '@feature/address'
 import cn from 'classnames'
-import { AccountNavigation } from '@feature/account/components/navigation.component'
-import { DetailsView } from '@feature/account/views/details/details.view'
-import { OrdersView } from '@feature/order/views/orders.view'
+import { OrdersView } from '@feature/order'
+import { DetailView, AccountNavigation } from '@feature/account'
 
 export const AccountView = () => {
   const { pathname } = useRouter()
@@ -18,7 +17,7 @@ export const AccountView = () => {
   const renderSection = useCallback(() => {
     switch (pathname) {
       case routeConfig.ACCOUNT.INDEX:
-        return <DetailsView />
+        return <DetailView />
       case routeConfig.ACCOUNT.ADDRESS.INDEX:
         return <AddressView />
       case routeConfig.ACCOUNT.ORDER.INDEX:

@@ -1,11 +1,11 @@
 import { H2, Loader } from '@component'
 import { FormattedMessage } from 'react-intl'
-import { ViewDetails } from '@feature/account/components/details/view-details.component'
+import { ViewDetails } from '@feature/account'
 import { getNameFromEmail } from '@shared/util'
 import { useQuery } from '@apollo/client'
-import FetchUsername from '@src/features/account/graphql/details/fetch-username.graphql'
+import FetchUsername from '@feature/account/graphql/details/fetch-username.graphql'
 
-export const DetailsView = () => {
+export const DetailView = () => {
   const { data, loading } = useQuery(FetchUsername, {
     fetchPolicy: 'cache-and-network',
   })

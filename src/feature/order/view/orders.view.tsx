@@ -3,7 +3,7 @@ import { useQuery } from '@apollo/client'
 import FetchOrders from '@feature/order/graphql/fetch-orders.graphql'
 import { FormattedMessage } from 'react-intl'
 import { AddressType } from '@feature/address'
-import { ViewOrders } from '@feature/order/components/view-orders.component'
+import { ViewOrders } from '@feature/order/component/view-orders.component'
 
 export const OrdersView = () => {
   const { data, loading, error } = useQuery(FetchOrders, {

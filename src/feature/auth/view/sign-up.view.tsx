@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { Box, Container } from '@component'
-import { SignUp } from '@feature/auth/components/sign-up.component'
+import { SignUp } from '@feature/auth/component/sign-up.component'
 import { themeConfig } from '@shared/config'
 
 export const SignUpView = () => (

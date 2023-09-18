@@ -1,6 +1,6 @@
 import { FC, useState } from 'react'
 import { useSpring, animated } from '@react-spring/web'
-import { AccountIcon } from '@feature/account/components/account-icon.component'
+import { AccountIcon } from '@feature/account'
 import { pushUri } from '@shared/util'
 import tw from 'tailwind-styled-components'
 import {

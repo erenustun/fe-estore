@@ -7,7 +7,7 @@ import { routeConfig } from '@shared/config'
 import { FormattedMessage } from 'react-intl'
 import DeleteAddressMutation from '@feature/address/graphql/remove-address.graphql'
 import { Address, AddressType } from '@feature/address'
-import { TableOptions } from '@feature/address/components/table-options.component'
+import { TableOptions } from '@feature/address/component/table-options.component'
 
 export const ViewAddress = () => {
   const { data, loading, error } = useQuery(FetchAddresses, {

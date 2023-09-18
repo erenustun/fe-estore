@@ -1,4 +1,4 @@
-import { SignIn } from '@feature/auth/components/sign-in.component'
+import { SignIn } from '@feature/auth/component/sign-in.component'
 import Image from 'next/image'
 import { Box, Container } from '@component'
 import { themeConfig } from '@shared/config'

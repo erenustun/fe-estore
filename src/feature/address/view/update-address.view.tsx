@@ -1,7 +1,7 @@
 import { Container } from '@component'
 import { themeConfig } from '@shared/config'
 import cn from 'classnames'
-import { UpdateAddress } from '@feature/address/components/update-address.component'
+import { UpdateAddress } from '@feature/address/component/update-address.component'
 
 export const UpdateAddressView = () => (
   <Container className="min-h-[62rem] flex-row">
