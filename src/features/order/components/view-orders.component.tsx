@@ -61,7 +61,7 @@ export const ViewOrders = () => {
                   <>
                     <FlexBox key={i}>
                       <Image
-                        src={`${process.env.NEXT_PUBLIC_BACKEND_SERVER}${orderHasProduct.product.thumbnail}`}
+                        src={`${process.env.NEXT_PUBLIC_BACKEND_HOST}${orderHasProduct.product.thumbnail}`}
                         height="158"
                         width="158"
                         alt=""

@@ -1,14 +1,11 @@
-import { Container, H2 } from '@component'
-import { FormattedMessage } from 'react-intl'
-import { ViewProducts } from '@feature/product/component/view-products.component'
+import { Container, FlexBox } from '@component'
+import { Featured, ViewProducts } from '@feature/product'
 
 export const ProductsView = () => (
-  <Container>
-    <div className="flex flex-col">
-      <H2>
-        <FormattedMessage id="product_index" />{' '}
-      </H2>
+  <Container className="py-5">
+    <FlexBox>
+      <Featured />
       <ViewProducts />
-    </div>
+    </FlexBox>
   </Container>
 )
