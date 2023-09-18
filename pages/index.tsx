@@ -1,12 +1,5 @@
-import { Button, Container } from '@component'
+import { HomeView } from '@feature/home'
 
-const Home = () => {
-  return (
-    <Container className="py-20">
-      <span>Home</span>
-      <Button>Home</Button>
-    </Container>
-  )
-}
+const Home = () => <HomeView />
 
 export default Home

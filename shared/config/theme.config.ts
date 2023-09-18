@@ -54,8 +54,8 @@ export const themeConfig = {
 
   inputFieldBorder: 'border border-gray-600',
 
-  textSizeH1: 'text-3xl md:text-4xl',
-  textSizeH2: 'text-2xl md:text-3xl',
+  textSizeH1: 'text-xl sm:text-3xl md:text-4xl',
+  textSizeH2: 'text-lg sm:text-2xl md:text-3xl',
   textSizeH3: 'text-xl md:text-2xl',
   textSizeH4: 'text-lg md:text-xl',
   textSizeH5: 'text-base',

@@ -13,8 +13,8 @@ export const Logo = () => {
         <Image
           src="/images/web_store_hub_logo_info-blue.png"
           alt="Picture of the author"
-          width={42}
-          height={42}
+          width={150}
+          height={150}
         />
       </div>
     </>
