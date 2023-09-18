@@ -37,7 +37,7 @@ export const Header = () => {
 
     <HeaderTW>
       <Container className="flex flex-row items-center justify-between">
-        <Link href="/">
+        <Link href={routeConfig.HOME}>
           <Image
             src="/images/web_store_hub_logo_info-blue.png"
             alt="e-commerce store logo"

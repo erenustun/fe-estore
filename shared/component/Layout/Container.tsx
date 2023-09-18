@@ -11,7 +11,7 @@ const Container = tw.span<ContainerProps>`
   mx-auto
   flex
   flex-col
-  px-1
+  px-1.5
   md:px-2
   2xl:px-0
   ${p => (!p.fluid ? themeConfig.mainContainerMaxWidth : 'w-full')}
