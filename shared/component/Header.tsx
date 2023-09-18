@@ -5,7 +5,7 @@ import {
   BuildingStorefrontIcon,
   HomeIcon,
 } from '@heroicons/react/24/outline'
-import { Badge, Container, NavLink, LanguageChanger } from '@component'
+import { Badge, Container, NavLink } from '@component'
 import Link from 'next/link'
 import tw from 'tailwind-styled-components'
 import { HeaderAuthConditionComponent } from '@feature/auth/components/header-auth-condition.component'
@@ -59,7 +59,6 @@ export const Header = () => {
         </NavTW>
         <div className="flex items-center">
           <section className="flex items-center space-x-5">
-            <LanguageChanger />
             <div className="relative cursor-pointer">
               <BookmarkIcon
                 className={cn(

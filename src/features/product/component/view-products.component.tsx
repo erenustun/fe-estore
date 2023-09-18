@@ -1,4 +1,4 @@
-import { FlexBox, Loader } from '@component'
+import { Button, FlexBox, Loader, PageHeading } from '@component'
 import { useQuery } from '@apollo/client'
 import FetchProducts from '@src/features/product/graphql/fetch-products.graphql'
 import {
@@ -49,9 +49,6 @@ export const ViewProducts = () => {
   const showMoreItems = (page: number) => {
     query.page = (page + 1).toString()
 
-  if (loading)
-    return (
-      <Loader
     replace(
       {
         pathname,
@@ -62,6 +59,23 @@ export const ViewProducts = () => {
     )
   }
 
+  if (loading) return <Loader loading={loading} />
+
+  return (
+    <PageHeading
+      labelLocale="product_smartphone_view_index"
+      image={`${process.env.NEXT_PUBLIC_BACKEND_HOST}/images/category/smartphone.jpg`}
+      subLabelLocale={
+        products && page !== 1
+          ? 'product_index_count_of'
+          : 'product_index_count'
+      }
+      subLabelValues={
+        products && page !== 1
+          ? { currentCount: products?.length, total: data?.products?.count }
+          : { count: data?.products?.count }
+      }
+    >
       <ProductFilter />
       <ProductGrid
         error={error}
