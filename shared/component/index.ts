@@ -4,6 +4,7 @@ export * from './Branding/Social/InstagramIcon'
 export * from './Branding/Social/MetaIcon'
 export * from './Branding/Social/WhatsappIcon'
 
+export * from './AnimateIn'
 export * from './Badge'
 export * from './Button'
 export * from './Currency'
