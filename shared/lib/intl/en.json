@@ -2,10 +2,12 @@
   "app_wip": "WIP",
   "app_slogan": "Unleash your potential with top-notch tech",
   "app_domain": "digiplus.live",
+  "app_domain": "webstorehub.io",
+  "app_error": "Server error",
 
 
   "header_navigation_home": "Home",
-  "header_navigation_shop": "Shop",
+  "header_navigation_products": "Products",
   "header_navigation_brands": "Brands",
   "header_navigation_laptops": "Notebooks",
   "header_navigation_phones": "Mobile Phones",

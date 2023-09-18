@@ -1,7 +1,8 @@
-export * from './component/Card/card.component'
+export * from './component/card.component'
 export * from './component/Card/name.component'
 export * from './component/Card/stock.component'
 
+export * from './component/grid.component'
 export * from './component/filter.component'
 export * from './component/Filter/filter-button.component'
 export * from './component/Filter/brand-filter.component'
