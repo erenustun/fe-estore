@@ -17,6 +17,8 @@ export * from './component/Filter/storage-filter.component'
 
 export * from './component/view-products.component'
 
+export * from './constant/pagination.constant'
+
 export * from './hook/constant'
 export * from './hook/filter.hook'
 export * from './hook/pagination.hook'

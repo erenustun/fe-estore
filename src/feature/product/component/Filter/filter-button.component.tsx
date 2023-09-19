@@ -47,7 +47,8 @@ export const SelectFilter = ({
           'flex min-w-[14rem] select-none items-center justify-between px-2',
           listOpen && 'border-slate-500',
           buttonClassName,
-          disabled && 'cursor-not-allowed'
+          disabled && 'cursor-not-allowed',
+          activeList?.length > 0 && 'border border-blue-600'
         )}
         style="primary-dark"
       >
