@@ -1,4 +1,4 @@
-import { CreateAddressView } from '@feature/address/views/create-address.view'
+import { CreateAddressView } from '@feature/address'
 
 const CreateAddressPage = () => <CreateAddressView />
 

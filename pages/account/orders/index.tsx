@@ -1,4 +1,4 @@
-import { AccountView } from '@feature/account/views/account.view'
+import { AccountView } from '@feature/account'
 
 const AccountOrders = () => <AccountView />
 export default AccountOrders
