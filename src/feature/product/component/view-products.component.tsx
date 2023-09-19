@@ -1,6 +1,6 @@
 import { Button, FlexBox, Loader, PageHeading } from '@component'
 import { useQuery } from '@apollo/client'
-import FetchProducts from '@src/features/product/graphql/fetch-products.graphql'
+import FetchProducts from '@feature/product/graphql/fetch-products.graphql'
 import {
   ProductFilter,
   useFilterPrams,
@@ -21,7 +21,7 @@ export const ViewProducts = () => {
     'limit',
     withDefault(NumberParam, DEFAULT_PAGE_LIMIT)
   )
-  const { query, pathname, replace, push } = useRouter()
+  const { query, pathname, replace } = useRouter()
   const filterArgs = useFilterPrams(query)
   const [products, setProducts] = useState<[]>([])
   const paginationArgs = usePaginationParams(query)
