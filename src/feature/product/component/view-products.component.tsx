@@ -1,4 +1,4 @@
-import { Button, FlexBox, PageHeading } from '@component'
+import { Button, FlexBox, Loader, PageHeading } from '@component'
 import { useQuery } from '@apollo/client'
 import FetchProducts from '@feature/product/graphql/fetch-products.graphql'
 import {
@@ -6,24 +6,24 @@ import {
   useFilterPrams,
   usePaginationParams,
   ProductGrid,
-  DEFAULT_PAGE_LIMIT,
 } from '@feature/product'
 import { useRouter } from 'next/router'
+import { useState } from 'react'
+import { DEFAULT_PAGE, DEFAULT_PAGE_LIMIT } from '@shared/constant'
 import { NumberParam, useQueryParam, withDefault } from 'use-query-params'
 import { FormattedMessage } from 'react-intl'
-import { isWithinSixDigits } from '@shared/util'
 
 export const ViewProducts = () => {
-  const [take] = useQueryParam(
-    'take',
-    withDefault(NumberParam, DEFAULT_PAGE_LIMIT),
-    {
-      updateType: 'pushIn',
-    }
+  const [page] = useQueryParam('page', withDefault(NumberParam, DEFAULT_PAGE), {
+    updateType: 'pushIn',
+  })
+  const [offset] = useQueryParam(
+    'limit',
+    withDefault(NumberParam, DEFAULT_PAGE_LIMIT)
   )
-
   const { query, pathname, replace } = useRouter()
   const filterArgs = useFilterPrams(query)
+  const [products, setProducts] = useState<[]>([])
   const paginationArgs = usePaginationParams(query)
 
   const { data, loading, error } = useQuery(FetchProducts, {
@@ -32,12 +32,22 @@ export const ViewProducts = () => {
       filterArgs,
     },
     fetchPolicy: 'cache-and-network',
+    // @ts-ignore
+    onCompleted: data => {
+      if (page > 1 && products.length < 6)
+        replace({ pathname, query: { ...query, page: 1 } })
+      if (products.length > data.products.count)
+        setProducts(data.products.data as [])
+      if (products.length < data.products.count)
+        setProducts([...products, ...(data.products.data as [])])
+      return data
+    },
   })
+  let pageCount = 0
+  if (data) pageCount = Math.ceil(data.products?.count / offset)
 
-  const showMoreItems = (take: number) => {
-    query.take = !isWithinSixDigits(take, parseInt(data.products?.count))
-      ? (take + 6).toString()
-      : data.products?.count?.toString()
+  const showMoreItems = (page: number) => {
+    query.page = (page + 1).toString()
 
     replace(
       {
@@ -49,23 +59,22 @@ export const ViewProducts = () => {
     )
   }
 
-  if (loading) return null
+  if (loading) return <Loader loading={loading} />
 
+  //const image = `${process.env.NEXT_PUBLIC_BACKEND_HOST}/images/category/smartphone.jpg`
+  const image = `${process.env.NEXT_PUBLIC_BACKEND_HOST}/images/category/mobile.jpg`
   return (
     <PageHeading
       labelLocale="product_smartphone_view_index"
-      image={`${process.env.NEXT_PUBLIC_BACKEND_HOST}/images/category/smartphone.jpg`}
+      image={image}
       subLabelLocale={
-        data.products?.data && take > DEFAULT_PAGE_LIMIT
+        products && page !== 1
           ? 'product_index_count_of'
           : 'product_index_count'
       }
       subLabelValues={
-        data.products?.data && take > DEFAULT_PAGE_LIMIT
-          ? {
-              currentCount: data.products?.data.length,
-              total: data?.products?.count,
-            }
+        products && page !== 1
+          ? { currentCount: products?.length, total: data?.products?.count }
           : { count: data?.products?.count }
       }
     >
@@ -73,11 +82,11 @@ export const ViewProducts = () => {
       <ProductGrid
         error={error}
         loading={loading}
-        productData={data.products?.data}
+        productData={products ? products : data.products?.data}
       />
-      {data.products?.data.length < data?.products?.count && (
+      {pageCount > page && (
         <FlexBox className="mt-10 w-full items-center justify-center">
-          <Button onClick={() => showMoreItems(take)} style="primary-dark">
+          <Button onClick={() => showMoreItems(page)} style="primary-dark">
             <FormattedMessage id="product_view_load_more" />
           </Button>
         </FlexBox>

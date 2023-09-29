@@ -1,5 +1,5 @@
 import { PropsWithChildren } from 'react'
-import { H2, FlexBox } from '@shared/component'
+import { H2, FlexBox, H1 } from '@shared/component'
 import { FormattedMessage } from 'react-intl'
 import Image from 'next/image'
 
@@ -21,15 +21,15 @@ export const PageHeading = ({
 }: PropsWithChildren<PageHeadingProps>) => {
   return (
     <FlexBox direction="col" className="mb-32 w-full">
-      <H2 className="mb-4 font-bold">
+      <H1 className="mb-4 font-bold">
         <FormattedMessage
           id={labelLocale}
           values={labelValues && labelValues}
         />
-      </H2>
+      </H1>
       {image && (
         <Image
-          className="mb-6 h-80 w-full object-cover"
+          className="mb-6 h-48 w-full object-cover md:h-80"
           src={image}
           alt="smartphone cover"
           width="1200"

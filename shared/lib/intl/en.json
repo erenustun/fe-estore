@@ -21,9 +21,9 @@
   "de": "German",
 
 
-  "account_navigation_details": "My preferences",
-  "account_navigation_address": "My addresses",
-  "account_navigation_orders": "My Orders",
+  "account_navigation_details": "User settings",
+  "account_navigation_address": "Manage addresses",
+  "account_navigation_orders": "Orders",
 
 
   "account_index": "User account - {username}",
@@ -103,7 +103,7 @@
   "product_index_count_of": "{currentCount} of {total} products",
   "product_view_featured_brands": "Top 10 Brands",
   "product_view_fetching": "Fetching products...",
-  "product_view_load_more": "Load more products",
+  "product_view_load_more": "Load more...",
   "product_view_add_to_cart": "Add to Cart",
   "product_view_available": "Available",
   "product_view_sold_out": "Out of stock",
@@ -262,7 +262,7 @@
   "filter_tagsStorage": "Storage: {amount}GB",
   "filter_tagsMinPrice": "Min. Price: {amount}.-",
   "filter_tagsMaxPrice": "Max. Price: {amount}.-",
-  "filter_gb": "{size} GB",
+  "filter_gb": "GB",
 
   "Category_laptop": "Notebooks",
   "Category_smartphone": "Smartphones",

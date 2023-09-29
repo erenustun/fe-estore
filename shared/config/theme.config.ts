@@ -18,7 +18,6 @@ export const themeConfig = {
   radiusLarge: 'rounded-lg',
 
   mainBackgroundColor: 'bg-[#00050D]',
-  //mainBackgroundColor: 'bg-gradient-to-tr from-gray-950 to-slate-900',
   mainTextColor: 'text-slate-200',
 
   mainContainerMaxWidth: 'max-w-9xl',
@@ -34,7 +33,6 @@ export const themeConfig = {
 
   headerHeight: 'h-24 border-b border-slate-900',
   headerBackgroundColor: 'bg-[#00050D]',
-  //headerBackgroundColor: 'bg-gradient-to-tr from-slate-950 to-zinc-950',
   headerShadow: 'shadow-xl',
 
   formLabel: 'mb-1 select-none text-sm tracking-wide leading-5',
@@ -45,17 +43,20 @@ export const themeConfig = {
   loadingAnimation:
     'animate-[pulse_1500ms_ease-in-out_infinite] cursor-not-allowed',
 
-  navLinkTextHover: 'hover:text-blue-300',
-  navLinkTextActive: 'active:text-blue-400',
-  navLinkCurrentPage: 'text-blue-400',
+  navLinkTextHover: 'hover:text-sky-300',
+  navLinkTextActive: 'active:text-sky-500',
+  navLinkCurrentPage: 'text-[#47ABFF]',
+  navLinkBgHover: 'group-hover:bg-sky-300',
+  navLinkBgActive: 'group-active:bg-sky-500',
+  navLinkCurrentBg: 'bg-[#47ABFF]',
 
   textLinkTextHover: 'hover:text-blue-300',
   textLinkTextActive: 'active:text-blue-500',
 
   inputFieldBorder: 'border border-gray-600',
 
-  textSizeH1: 'text-xl sm:text-3xl md:text-4xl',
-  textSizeH2: 'text-lg sm:text-2xl md:text-3xl',
+  textSizeH1: 'text-2xl sm:text-3xl md:text-4xl',
+  textSizeH2: 'text-xl sm:text-2xl md:text-3xl',
   textSizeH3: 'text-xl md:text-2xl',
   textSizeH4: 'text-lg md:text-xl',
   textSizeH5: 'text-base',
@@ -64,8 +65,7 @@ export const themeConfig = {
   buttonText: 'font-medium tracking-wide',
 
   primaryBackgroundColor: 'bg-[#0A52C7]',
-  //primaryBackgroundColor: 'bg-blue-500 border border-blue-400',
-  primaryBackgroundHover: `hover:bg-blue-500 hover:border-blue-500`,
+  primaryBackgroundHover: `hover:bg-sky-600 hover:border-sky-600`,
   primaryBackgroundActive: `active:bg-blue-700`,
   primaryBackgroundColorAlt: 'bg-blue-700',
   primaryBackgroundHoverAlt: `hover:bg-blue-800`,
@@ -73,11 +73,6 @@ export const themeConfig = {
   primaryBackgroundColorDark: 'bg-transparent border border-slate-600',
   primaryBackgroundHoverDark: `hover:border-slate-700`,
   primaryBackgroundActiveDark: `active:border-blue-700`,
-  /*
-  primaryBackgroundColorDark: 'bg-[#03183b]',
-  primaryBackgroundHoverDark: `hover:bg-blue-950 hover:border-blue-950`,
-  primaryBackgroundActiveDark: `active:bg-blue-700`,
-  */
 
   primaryBorderColor: 'border border-blue-600',
   primaryBorderBottomColor: 'border-b border-b-blue-800',

@@ -47,48 +47,20 @@ export const Header = () => {
         </Link>
         <NavTW>
           <NavLink
-            label={intl.formatMessage({ id: 'header_navigation_home' })}
             href={routeConfig.HOME}
             icon={<HomeIcon className="mr-1 h-4" />}
+            label={intl.formatMessage({ id: 'header_navigation_home' })}
+            mainHeader
           />
           <NavLink
-            label={intl.formatMessage({ id: 'header_navigation_products' })}
             href={routeConfig.PRODUCT.INDEX}
             icon={<BuildingStorefrontIcon className="mr-1 h-4" />}
+            label={intl.formatMessage({ id: 'header_navigation_products' })}
+            mainHeader
           />
         </NavTW>
         <div className="flex items-center">
           <section className="flex items-center space-x-5">
-            <div className="relative cursor-pointer">
-              <BookmarkIcon
-                className={cn(
-                  'h-6 w-6',
-                  themeConfig.navLinkTextHover,
-                  themeConfig.navLinkTextActive,
-                  themeConfig.animationTransition,
-                  themeConfig.animationDuration,
-                  themeConfig.animationEaseIn
-                )}
-              />
-              <Badge className="absolute right-0 top-0 -mr-2 -mt-2 h-4 w-4">
-                9
-              </Badge>
-            </div>
-            <div className="relative cursor-pointer">
-              <ShoppingCartIcon
-                className={cn(
-                  'h-6 w-6',
-                  themeConfig.navLinkTextHover,
-                  themeConfig.navLinkTextActive,
-                  themeConfig.animationTransition,
-                  themeConfig.animationDuration,
-                  themeConfig.animationEaseIn
-                )}
-              />
-              <Badge className="absolute right-0 top-0 -mr-2 -mt-2 h-4 w-4">
-                2
-              </Badge>
-            </div>
             <HeaderAuthConditionComponent />
           </section>
         </div>

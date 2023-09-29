@@ -21,18 +21,11 @@ export const ProductName = (product: Product) => {
         <span className={'font-medium'}>{brandName && brandName}</span>
         <span>{`${productName} (${resolution && resolution}, ${
           cpuName && cpuName
-        }, ${intl.formatMessage(
-          {
-            id: 'filter_gb',
-          },
-          { size: dataStorage[0] }
-        )}, 
-        ${intl.formatMessage(
-          {
-            id: 'filter_gb',
-          },
-          { size: dataRam }
-        )})`}</span>
+        }, ${dataStorage}${intl.formatMessage({
+          id: 'filter_gb',
+        })}, ${dataRam}${intl.formatMessage({
+          id: 'filter_gb',
+        })})`}</span>
       </div>
     </div>
   )
