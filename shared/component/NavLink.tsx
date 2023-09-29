@@ -6,7 +6,6 @@ import { themeConfig } from '@shared/config'
 import { useRouter } from 'next/router'
 import cn from 'classnames'
 import { FlexBox } from '@shared/component/Layout/FlexBox'
-import theme from 'tailwindcss/defaultTheme'
 
 interface NavLinkProps {
   as?: string

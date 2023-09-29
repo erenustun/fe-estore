@@ -1,16 +1,10 @@
 import Image from 'next/image'
-import {
-  BookmarkIcon,
-  ShoppingCartIcon,
-  BuildingStorefrontIcon,
-  HomeIcon,
-} from '@heroicons/react/24/outline'
-import { Badge, Container, NavLink } from '@component'
+import { BuildingStorefrontIcon, HomeIcon } from '@heroicons/react/24/outline'
+import { Container, NavLink } from '@component'
 import Link from 'next/link'
 import tw from 'tailwind-styled-components'
 import { HeaderAuthConditionComponent } from '@feature/auth/component/header-auth-condition.component'
 import { routeConfig, themeConfig } from '@shared/config'
-import cn from 'classnames'
 import { useIntl } from 'react-intl'
 
 const HeaderTW = tw.div`

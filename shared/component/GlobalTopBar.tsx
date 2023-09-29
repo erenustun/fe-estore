@@ -46,7 +46,6 @@ export const GlobalTopBar = () => {
             </FlexBox>
           </FlexBox>
 
-          <LanguageChanger className="mt-2 sm:mt-0" />
           <FlexBox className="w-1/3 justify-end">
             <FlexBox className="mr-4 mt-0.5 items-center space-x-5">
               <div className="relative cursor-pointer">
