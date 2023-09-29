@@ -5,7 +5,7 @@ import { themeConfig } from '@shared/config'
 
 export const SignUpView = () => (
   <Container
-    className="min-h-[55rem] bg-[url(/images/account-bg-2.jpg)] bg-cover"
+    className="min-h-[55rem] bg-[url(/images/account-bg.jpg)] bg-cover"
     fluid
   >
     <Box className="flex justify-evenly -space-x-6">

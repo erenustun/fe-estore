@@ -1,4 +1,4 @@
-import { Box, FlexBox, H4, H5, Loader } from '@component'
+import { Box, FlexBox, H2, Loader } from '@component'
 import { useQuery } from '@apollo/client'
 import FetchOrders from '@feature/order/graphql/fetch-orders.graphql'
 import { FormattedDate, FormattedMessage } from 'react-intl'
@@ -68,41 +68,41 @@ export const ViewOrders = () => {
                       />
                       <FlexBox direction="col">
                         <FlexBox className="space-x-1">
-                          <H4 className="font-bold">
+                          <H2 className="font-bold">
                             {orderHasProduct.product.brand.name}
-                          </H4>
-                          <H4>{orderHasProduct.product.name}</H4>
+                          </H2>
+                          <H2>{orderHasProduct.product.name}</H2>
                         </FlexBox>
-                        <H5>
+                        <H2>
                           <FormattedMessage
                             id="order_view_quantity"
                             values={{ amount: orderHasProduct.quantity }}
                           />
-                        </H5>
-                        <H4
+                        </H2>
+                        <H2
                           className={cn(
                             themeConfig.dangerTextColor,
                             'font-semibold'
                           )}
                         >
                           {orderHasProduct.product.price}.-
-                        </H4>
+                        </H2>
                       </FlexBox>
                       <FlexBox direction="col" className="ml-20">
-                        <H5>
+                        <H2>
                           <FormattedMessage id="order_view_status" />
-                        </H5>
-                        <H4 className={cn(themeConfig.warningTextColor)}>
+                        </H2>
+                        <H2 className={cn(themeConfig.warningTextColor)}>
                           In - Transit
-                        </H4>
+                        </H2>
                       </FlexBox>
                       <FlexBox direction="col" className="ml-20">
-                        <H5>
+                        <H2>
                           <FormattedMessage id="order_view_expected" />
-                        </H5>
-                        <H4 className="font-medium text-slate-300">
+                        </H2>
+                        <H2 className="font-medium text-slate-300">
                           24. - 27. December
-                        </H4>
+                        </H2>
                       </FlexBox>
                     </FlexBox>
                     {i + 1 < order.products.length && (
@@ -123,9 +123,9 @@ export const ViewOrders = () => {
               ) : (
                 <div></div>
               )}
-              <H4 className={cn(themeConfig.dangerTextColor, 'font-semibold')}>
+              <H2 className={cn(themeConfig.dangerTextColor, 'font-semibold')}>
                 {order.total}.-
-              </H4>
+              </H2>
             </div>
           </Box>
         )

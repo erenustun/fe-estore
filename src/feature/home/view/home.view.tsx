@@ -6,8 +6,11 @@ import { FormattedMessage } from 'react-intl'
 
 export const HomeView = () => {
   return (
-    <Container className="md:py-14 lg:py-20">
+    <Container className="min-h-[calc(100vh-160px)] justify-center md:min-h-fit md:py-14 lg:py-20">
       <Link href={`${routeConfig.PRODUCT.INDEX}?brand=Apple`}>
+        <H1 className=" py-2 text-center lg:hidden">
+          <FormattedMessage id="app_home_hero_heading" />
+        </H1>
         <Image
           className="rounded-lg"
           src={`${process.env.NEXT_PUBLIC_BACKEND_HOST}/images/home/hero-3.jpg`}
@@ -26,14 +29,9 @@ export const HomeView = () => {
             <FormattedMessage id="app_home_hero_subheading" />
           </H2>
         </FlexBox>
-        <FlexBox direction="col" className="mt-4 flex text-center lg:hidden">
-          <H1>
-            <FormattedMessage id="app_home_hero_heading" />
-          </H1>
-          <H2>
-            <FormattedMessage id="app_home_hero_subheading" />
-          </H2>
-        </FlexBox>
+        <H2 className="mt-4 flex text-center lg:hidden">
+          <FormattedMessage id="app_home_hero_subheading" />
+        </H2>
       </Link>
     </Container>
   )

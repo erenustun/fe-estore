@@ -1,4 +1,3 @@
-export * from './component/account-dropdown.component'
 export * from './component/account-icon.component'
 export * from './component/Detail/detail.column'
 export * from './component/Detail/view-details.component'

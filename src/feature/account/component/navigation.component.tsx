@@ -8,7 +8,7 @@ import { FormattedMessage } from 'react-intl'
 import { routeConfig } from '@shared/config'
 
 export const AccountNavigation = () => (
-  <Box className="flex w-60 flex-col space-y-5 self-start">
+  <Box className="flex w-60 flex-col space-y-3 self-start">
     <NavLink
       href={routeConfig.ACCOUNT.INDEX}
       label={<FormattedMessage id="account_navigation_details" />}

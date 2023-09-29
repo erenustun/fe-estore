@@ -4,7 +4,6 @@ import {
   Container,
   Form,
   H2,
-  H3,
   Input,
   Loader,
   Select,
@@ -299,7 +298,7 @@ export const CreateAddress = () => {
             <Button className="flex self-end">
               <FormattedMessage id="address_form_create_save" />
             </Button>
-            {isSubmitting && <H3>Loading</H3>}
+            {isSubmitting && <H2>Loading</H2>}
           </Form>
           <Loader
             message={<FormattedMessage id="address_form_create_saving" />}

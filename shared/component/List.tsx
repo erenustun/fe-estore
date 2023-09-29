@@ -1,11 +1,14 @@
-import { H4 } from '@shared/component'
+import { H2 } from '@shared/component'
 import { FormattedMessage } from 'react-intl'
 import { ApolloError } from '@apollo/client'
+import cn from 'classnames'
+import { ArrowRightIcon } from '@heroicons/react/24/solid'
 
 interface ListProps {
   className?: string
   error?: ApolloError | string
-  labelLocale: string
+  isNav?: boolean
+  labelLocale?: string
   list: ListItemProps[]
   loading?: boolean
   onClick?: (label: string | number) => void
@@ -19,6 +22,7 @@ interface ListItemProps {
 export const List = ({
   className,
   error,
+  isNav = false,
   labelLocale,
   list,
   loading,
@@ -43,15 +47,25 @@ export const List = ({
 
   return (
     <div className={className}>
-      <H4 className="mb-2">
-        <FormattedMessage id={labelLocale} />
-      </H4>
-      <ul className="tracking-widr select-none space-y-1">
+      {labelLocale && (
+        <H2 className="mb-2">
+          <FormattedMessage id={labelLocale} />
+        </H2>
+      )}
+      <ul
+        className={cn(
+          'select-none space-y-1 tracking-wide',
+          isNav && 'w-full space-y-1.5'
+        )}
+      >
         {list?.map((listItem, index) => {
           return (
             <li
               key={index}
-              className="flex cursor-pointer items-center capitalize text-white duration-300 ease-in hover:text-blue-200 active:text-sky-600"
+              className={cn(
+                'flex cursor-pointer items-center capitalize text-white duration-300 ease-in hover:text-blue-200 active:text-sky-600',
+                isNav && 'w-full items-center justify-between py-2 text-xl'
+              )}
               onClick={() =>
                 onClick &&
                 onClick(
@@ -59,7 +73,8 @@ export const List = ({
                 )
               }
             >
-              {listItem.label ?? listItem.value}
+              <span>{listItem.label ?? listItem.value}</span>
+              {isNav && <ArrowRightIcon className="h-6 w-6" />}
             </li>
           )
         })}

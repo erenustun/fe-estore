@@ -47,8 +47,7 @@ export const SelectFilter = ({
           'flex min-w-[14rem] select-none items-center justify-between px-2',
           listOpen && 'border-slate-500',
           buttonClassName,
-          disabled && 'cursor-not-allowed',
-          activeList?.length > 0 && 'border border-blue-600'
+          disabled && 'cursor-not-allowed'
         )}
         style="primary-dark"
       >
@@ -77,7 +76,7 @@ export const SelectFilter = ({
           )}
         </div>
       </Button>
-      <AnimateIn show={listOpen} direction="to-bottom">
+      <AnimateIn direction="to-bottom">
         {listOpen && (
           <div className="fixed mt-2 w-60 rounded-sm bg-slate-900 p-4 shadow">
             {list?.map((listItem, index) => {

@@ -71,7 +71,7 @@ export const Dropdown = ({
           !buttonClassName
             ? `dropdown-button ${
                 transparentBackground
-                  ? 'bg-transparent'
+                  ? 'bg-transparent !px-0 !shadow-none'
                   : 'dark:bg-blue-500 dark:hover:bg-blue-600 dark:active:bg-blue-700'
               }`
             : buttonClassName

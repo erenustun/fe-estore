@@ -12,10 +12,12 @@ import {
 } from '@heroicons/react/20/solid'
 import { pushUri } from '@shared/util'
 import Image from 'next/image'
+import { useRouter } from 'next/router'
 
 export const HeaderAuthConditionComponent = () => {
   const { token, reset, signOut } = useAuthStore(state => state)
   const jwt = getCookie('token')
+  const { pathname } = useRouter()
 
   const accountMenuList = [
     {
@@ -42,7 +44,7 @@ export const HeaderAuthConditionComponent = () => {
 
   return !getCookie('token') && getCookie('token').length === 0 && !token ? (
     <Link href={routeConfig.ACCOUNT.AUTH.SIGN_IN}>
-      <Button>
+      <Button className="rounded-md">
         <FormattedMessage id="auth_form_login_button" />
       </Button>
     </Link>
@@ -50,17 +52,27 @@ export const HeaderAuthConditionComponent = () => {
     <div className="relative">
       <Dropdown
         label={
-          <span className="flex h-7 w-7 cursor-pointer items-center justify-center rounded-full">
+          <span
+            className={`flex cursor-pointer items-center justify-center rounded-full ${
+              pathname.includes(routeConfig.ACCOUNT.INDEX)
+                ? 'h-9 w-9'
+                : 'h-8 w-8'
+            }`}
+          >
             <Image
               src="https://i.pravatar.cc/301"
               alt="user avatar"
-              width="32"
-              height="32"
-              className="rounded-full bg-cover bg-center"
+              width="64"
+              height="64"
+              className={`rounded-full bg-cover bg-center ${
+                pathname.includes(routeConfig.ACCOUNT.INDEX) &&
+                'border-4 border-blue-400'
+              }`}
             />
           </span>
         }
         list={accountMenuList}
+        transparentBackground
       />
     </div>
   )
