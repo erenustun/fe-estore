@@ -1,6 +1,6 @@
 import { Button, FlexBox, Loader, SimpleTable } from '@component'
 import { useQuery } from '@apollo/client'
-import FetchUser from '@src/features/account/graphql/details/fetch-user.graphql'
+import FetchUser from '@feature/account/graphql/detail/fetch-user.graphql'
 import Link from 'next/link'
 import { routeConfig } from '@shared/config'
 import { FormattedMessage } from 'react-intl'

@@ -1,6 +1,6 @@
 import { Box, FlexBox, H4, H5, Loader } from '@component'
 import { useQuery } from '@apollo/client'
-import FetchOrders from '@src/features/order/graphql/fetch-orders.graphql'
+import FetchOrders from '@feature/order/graphql/fetch-orders.graphql'
 import { FormattedDate, FormattedMessage } from 'react-intl'
 import { AddressType } from '@feature/address'
 import { Order } from '@feature/order'

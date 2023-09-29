@@ -3,7 +3,7 @@ import { FormattedMessage } from 'react-intl'
 import { ViewDetails } from '@feature/account'
 import { getNameFromEmail } from '@shared/util'
 import { useQuery } from '@apollo/client'
-import FetchUsername from '@feature/account/graphql/details/fetch-username.graphql'
+import FetchUsername from '@feature/account/graphql/detail/fetch-username.graphql'
 
 export const DetailView = () => {
   const { data, loading } = useQuery(FetchUsername, {

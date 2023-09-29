@@ -1,6 +1,6 @@
 import { Button, FlexBox, Loader } from '@component'
 import { useMutation, useQuery } from '@apollo/client'
-import FetchAddresses from '@src/features/address/graphql/fetch-addresses.graphql'
+import FetchAddresses from '@feature/address/graphql/fetch-addresses.graphql'
 import { CheckIcon as CheckIcon } from '@heroicons/react/20/solid'
 import Link from 'next/link'
 import { routeConfig } from '@shared/config'

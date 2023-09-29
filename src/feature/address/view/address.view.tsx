@@ -1,6 +1,6 @@
 import { H1, H2 } from '@component'
 import { useQuery } from '@apollo/client'
-import FetchAddresses from '@src/features/address/graphql/fetch-addresses.graphql'
+import FetchAddresses from '@feature/address/graphql/fetch-addresses.graphql'
 import { FormattedMessage } from 'react-intl'
 import { AddressType, ViewAddress } from '@feature/address'
 
