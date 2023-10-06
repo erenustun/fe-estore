@@ -57,7 +57,7 @@ export const themeConfig = {
 
   textSizeH1: 'text-2xl sm:text-3xl md:text-4xl',
   textSizeH2: 'text-xl sm:text-2xl md:text-3xl',
-  textSizeH3: 'text-xl md:text-2xl',
+  textSizeH3: 'text-lg md:text-xl',
   textSizeH4: 'text-lg md:text-xl',
   textSizeH5: 'text-base',
 
