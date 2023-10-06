@@ -89,7 +89,7 @@ export const Dropdown = ({
             : '-z-10 -translate-y-[15rem] select-none opacity-0'
         }`}
       >
-        {list && (
+        {list && dropdown && (
           <div className={listClassName}>
             {list.map((item: DropdownItem, i) => (
               <div
