@@ -6,9 +6,13 @@ interface H3Props {
 }
 
 export const H3 = tw.h3<H3Props>`
-  ${() => themeConfig.textSizeH3}
+  ${() => themeConfig.h3Size}
+  ${() => themeConfig.headingColor}
+  ${() => themeConfig.animationTransition}
+  ${() => themeConfig.animationDuration}
+  ${() => themeConfig.animationEaseIn}
   ${props => props.className && props.className}
   font-light
   tracking-wide
-  mb-3
+  mb-1
 `
