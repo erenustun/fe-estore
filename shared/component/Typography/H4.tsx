@@ -7,7 +7,7 @@ interface H4Props {
 
 export const H4 = tw.h4<H4Props>`
   ${() => themeConfig.h4Size}
-  ${() => themeConfig.headingColor}
+  ${() => themeConfig.bodyTextColor}
   ${() => themeConfig.animationTransition}
   ${() => themeConfig.animationDuration}
   ${() => themeConfig.animationEaseIn}

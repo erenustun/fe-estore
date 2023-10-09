@@ -7,7 +7,7 @@ interface LayoutProps {
 
 export const Layout = tw.section<LayoutProps>`
   ${() => themeConfig.mainBackgroundColor}
-  ${() => themeConfig.mainTextColor}
+  ${() => themeConfig.bodyTextColor}
   w-full
   mx-auto
   flex

@@ -47,7 +47,7 @@ export const Header = () => {
             mainHeader
           />
           <NavLink
-            href={routeConfig.PRODUCT.INDEX}
+            href={`${routeConfig.PRODUCT.INDEX}${routeConfig.PRODUCT.INDEX_DEFAULT_PARAMS}`}
             icon={<BuildingStorefrontIcon className="mr-1 h-4" />}
             label={intl.formatMessage({ id: 'header_navigation_products' })}
             mainHeader

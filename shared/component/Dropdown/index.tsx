@@ -5,6 +5,7 @@ import cx from 'classnames'
 import cn from 'classnames'
 import { FormattedMessage } from 'react-intl'
 import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/solid'
+import { themeConfig } from '@shared/config'
 
 interface DropdownConditionActionProps {
   action: () => void
@@ -68,6 +69,11 @@ export const Dropdown = ({
         onClick={handleButtonClick}
         className={cn(
           'flex cursor-pointer select-none items-center justify-center uppercase',
+          themeConfig.primaryTextHover,
+          themeConfig.infoTextActive,
+          themeConfig.animationTransition,
+          themeConfig.animationDuration,
+          themeConfig.animationEaseIn,
           !buttonClassName
             ? `dropdown-button ${
                 transparentBackground
@@ -106,9 +112,14 @@ export const Dropdown = ({
                 }}
               >
                 <div
-                  className={
-                    'text-primary-600 relative cursor-pointer select-none px-3 py-2 text-sm active:text-white dark:text-blue-100'
-                  }
+                  className={cn(
+                    'relative cursor-pointer select-none px-3 py-2 text-sm',
+                    themeConfig.bodyTextColor,
+                    themeConfig.infoTextActive,
+                    themeConfig.animationTransition,
+                    themeConfig.animationDuration,
+                    themeConfig.animationEaseIn
+                  )}
                 >
                   {item.href ? (
                     <Link href={item.href}>

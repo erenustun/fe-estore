@@ -7,7 +7,7 @@ interface H2Props {
 
 export const H2 = tw.h2<H2Props>`
   ${() => themeConfig.h2Size}
-  ${() => themeConfig.headingColor}
+  ${() => themeConfig.bodyTextColor}
   ${() => themeConfig.animationTransition}
   ${() => themeConfig.animationDuration}
   ${() => themeConfig.animationEaseIn}

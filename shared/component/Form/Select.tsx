@@ -25,13 +25,13 @@ interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
 }
 
 const Label = tw.label<{ error: string }>`
-  ${() => themeConfig.mainTextColor}
+  ${() => themeConfig.bodyTextColor}
   ${() => themeConfig.formLabel}
   ${p => p.error && themeConfig.dangerTextColor}
 `
 
 const StyledSelect = tw.select<SelectProps>`
-  ${() => themeConfig.mainTextColor}
+  ${() => themeConfig.bodyTextColor}
   ${() => themeConfig.inputFieldBorder}
   ${() => themeConfig.primaryBorderActive}
   ${() => themeConfig.radiusDefault}
@@ -64,7 +64,7 @@ export const Select = ({
     </Label>
     <div className="relative flex items-center">
       {!noIcon && (
-        <span className={`absolute left-2 z-10 ${themeConfig.mainTextColor}`}>
+        <span className={`absolute left-2 z-10 ${themeConfig.bodyTextColor}`}>
           {icon}
         </span>
       )}

@@ -7,6 +7,7 @@ import {
   LanguageChanger,
   List,
   MetaIcon,
+  MobileNavigation,
   WhatsappIcon,
 } from '@component'
 import { EnvelopeIcon, PhoneIcon } from '@heroicons/react/24/solid'
@@ -16,7 +17,8 @@ import Hamburger from 'hamburger-react'
 import { pushUri } from '@shared/util'
 import { BookmarkIcon, ShoppingCartIcon } from '@heroicons/react/24/outline'
 import cn from 'classnames'
-import { themeConfig } from '@shared/config'
+import { routeConfig, themeConfig } from '@shared/config'
+import { FormattedMessage } from 'react-intl'
 
 export const GlobalTopBar = () => {
   const [menuOpen, setMenu] = useState(false)
@@ -28,8 +30,8 @@ export const GlobalTopBar = () => {
   }
 
   return (
-    <div className="select-none bg-[#0A52C7] py-1.5">
-      <Container>
+    <div className="select-none bg-slate-900 py-1.5">
+      <Container className={cn('dark:text-slate-300')}>
         <FlexBox className="mt-1 justify-between">
           <div className="ml-0 flex w-1/3 flex-wrap items-center justify-start space-x-2 sm:mt-0 sm:gap-x-3">
             <MetaIcon alternativeIcon={true} className="h-4 w-4" />
@@ -37,7 +39,7 @@ export const GlobalTopBar = () => {
             <WhatsappIcon className="h-5 w-5" />
           </div>
 
-          <FlexBox className="hidden w-1/3 flex-col items-center gap-y-1 sm:flex sm:flex-row sm:justify-evenly">
+          <FlexBox className="hidden w-1/3 flex-col items-center gap-y-1 lg:flex lg:flex-row lg:justify-evenly">
             <FlexBox className="items-center gap-x-1">
               <PhoneIcon className="h-4 w-4 text-slate-50" />
               <Link
@@ -64,8 +66,8 @@ export const GlobalTopBar = () => {
                 <BookmarkIcon
                   className={cn(
                     'h-5 w-5',
-                    themeConfig.navLinkTextHover,
-                    themeConfig.navLinkTextActive,
+                    themeConfig.primaryTextHover,
+                    themeConfig.infoTextActive,
                     themeConfig.animationTransition,
                     themeConfig.animationDuration,
                     themeConfig.animationEaseIn
@@ -79,8 +81,8 @@ export const GlobalTopBar = () => {
                 <ShoppingCartIcon
                   className={cn(
                     'h-5 w-5',
-                    themeConfig.navLinkTextHover,
-                    themeConfig.navLinkTextActive,
+                    themeConfig.primaryTextHover,
+                    themeConfig.infoTextActive,
                     themeConfig.animationTransition,
                     themeConfig.animationDuration,
                     themeConfig.animationEaseIn
@@ -92,32 +94,19 @@ export const GlobalTopBar = () => {
               </div>
             </FlexBox>
             <LanguageChanger className="ml-2 mt-3 md:mt-0" />
-            <div className="m-0 flex border p-0 md:hidden">
+            <div className="flex md:hidden">
               <Hamburger
-                rounded={true}
                 toggled={menuOpen}
                 toggle={toggleMenu}
-                direction="left"
+                direction="right"
                 duration={0.5}
-                size={20}
+                size={18}
               />
             </div>
           </FlexBox>
         </FlexBox>
-        <AnimateIn direction="to-bottom">
-          {menuOpen && (
-            <FlexBox direction="col" className="w-full">
-              <List
-                className="flex w-full flex-col md:hidden"
-                list={[
-                  { label: 'Home', value: '/' },
-                  { label: 'Products', value: 'products' },
-                ]}
-                onClick={handleNavClick}
-                isNav
-              />
-            </FlexBox>
-          )}
+        <AnimateIn direction="to-bottom" show={menuOpen}>
+          <MobileNavigation menuOpen={menuOpen} setMenu={setMenu} />
         </AnimateIn>
       </Container>
     </div>

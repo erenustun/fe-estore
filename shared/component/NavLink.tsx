@@ -23,9 +23,9 @@ const LinkWrapper = tw.span`
   space-x-1
   font-medium
   select-none
-  ${() => themeConfig.mainTextColor}
-  ${() => themeConfig.navLinkTextHover}
-  ${() => themeConfig.navLinkTextActive}
+  ${() => themeConfig.bodyTextColor}
+  ${() => themeConfig.primaryTextHover}
+  ${() => themeConfig.infoTextActive}
   ${() => themeConfig.animationTransition}
   ${() => themeConfig.animationDuration}
   ${() => themeConfig.animationEaseIn}
@@ -45,7 +45,7 @@ export const NavLink = ({
     <Link
       href={href}
       as={as}
-      className={' flex cursor-pointer select-none items-center'}
+      className={'flex cursor-pointer select-none items-center'}
     >
       <LinkWrapper
         className={cn(
