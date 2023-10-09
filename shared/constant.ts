@@ -1,4 +1,5 @@
-export const PAGINATION_TAKE = 12
+export const PAGINATION_TAKE_DEFAULT = 12
+export const PAGINATION_TAKE_PARAM_NAME = 'take'
 
 export const LANGUAGE_LIST = [
   {

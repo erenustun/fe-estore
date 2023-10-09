@@ -9,7 +9,7 @@ import { useRouterParams } from '@shared/util'
 import { useQuery } from '@apollo/client'
 import FetchGroupedBrands from '@feature/product/graphql/fetch-grouped-brand.graphql'
 import { FormattedMessage } from 'react-intl'
-import { PAGINATION_TAKE } from '@shared/constant'
+import { PAGINATION_TAKE_DEFAULT } from '@shared/constant'
 
 export const BrandFilter = () => {
   const { query } = useRouter()
@@ -17,17 +17,11 @@ export const BrandFilter = () => {
   /* eslint-disable-next-line react-hooks/rules-of-hooks */
   const { brand } = useFilterPrams(query)
 
-  const { hasParam, removeParam, toggleParam } = useRouterParams()
+  const { removeParam, toggleParam } = useRouterParams()
 
   const { data, loading, error } = useQuery(FetchGroupedBrands, {
     fetchPolicy: 'cache-and-network',
   })
-
-  const onChange = (value: number | string) => {
-    hasParam('take') && removeParam('take', PAGINATION_TAKE)
-    removeParam('take')
-    toggleParam(FILTER_OPTIONS.brand, value)
-  }
 
   if (loading)
     return (

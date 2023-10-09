@@ -12,15 +12,18 @@ import {
   RamFilter,
 } from '@feature/product'
 import { useRouter } from 'next/router'
-import { PAGINATION_TAKE } from '@shared/constant'
+import {
+  PAGINATION_TAKE_DEFAULT,
+  PAGINATION_TAKE_PARAM_NAME,
+} from '@shared/constant'
 import { NumberParam, useQueryParam, withDefault } from 'use-query-params'
 import { FormattedMessage } from 'react-intl'
 import cn from 'classnames'
 
 export const ViewProducts = () => {
   const [take] = useQueryParam(
-    'take',
-    withDefault(NumberParam, PAGINATION_TAKE)
+    PAGINATION_TAKE_PARAM_NAME,
+    withDefault(NumberParam, PAGINATION_TAKE_DEFAULT)
   )
 
   const { query, pathname, replace } = useRouter()
@@ -57,14 +60,14 @@ export const ViewProducts = () => {
       labelLocale="product_smartphone_view_index"
       image={image}
       subLabelLocale={
-        data.products?.data && take !== PAGINATION_TAKE
+        data.products?.data && take !== PAGINATION_TAKE_DEFAULT
           ? 'product_index_count_of'
           : data?.products?.count > 1
           ? 'product_index_count'
           : 'product_index_single_count'
       }
       subLabelValues={
-        data.products?.data && take !== PAGINATION_TAKE
+        data.products?.data && take !== PAGINATION_TAKE_DEFAULT
           ? {
               currentCount: data.products?.data?.length,
               total: data?.products?.count,

@@ -7,7 +7,10 @@ import {
   XMarkIcon as XMarkIcon,
 } from '@heroicons/react/24/solid'
 import { useRouterParams } from '@shared/util'
-import { PAGINATION_TAKE } from '@shared/constant'
+import {
+  PAGINATION_TAKE_DEFAULT,
+  PAGINATION_TAKE_PARAM_NAME,
+} from '@shared/constant'
 
 interface SelectFilterProps {
   activeList?: string[] | number[]
@@ -41,7 +44,8 @@ export const FilterDropdown = ({
   const { hasParam, removeParam } = useRouterParams({ method: 'push' })
 
   const onChange = (value: number | string) => {
-    hasParam('take') && removeParam('take', PAGINATION_TAKE)
+    hasParam(PAGINATION_TAKE_PARAM_NAME) &&
+      removeParam('take', PAGINATION_TAKE_DEFAULT)
     handleChange(value)
   }
 
