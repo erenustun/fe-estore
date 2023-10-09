@@ -1,6 +1,10 @@
 import { Loader } from '@component'
 import { useRouterParams } from '@shared/util'
-import { FILTER_OPTIONS, useFilterPrams, SelectFilter } from '@feature/product'
+import {
+  FILTER_OPTIONS,
+  useFilterPrams,
+  FilterDropdown,
+} from '@feature/product'
 import { FormattedMessage } from 'react-intl'
 import { useRouter } from 'next/router'
 import { useQuery } from '@apollo/client'
@@ -12,7 +16,7 @@ export const ProcessorFilter = () => {
   /* eslint-disable-next-line react-hooks/rules-of-hooks */
   const { cpu } = useFilterPrams(query)
 
-  const { toggleParam } = useRouterParams()
+  const { toggleParam, removeParam } = useRouterParams()
 
   const { data, loading, error } = useQuery(FetchPlaceholder, {
     fetchPolicy: 'cache-and-network',
@@ -32,7 +36,7 @@ export const ProcessorFilter = () => {
   if (error) return <h1>Error: {error.message}</h1>
 
   return (
-    <SelectFilter
+    <FilterDropdown
       activeList={cpu}
       buttonClassName="w-48"
       disabled={true}
@@ -44,6 +48,7 @@ export const ProcessorFilter = () => {
       ]}
       //list={data?.groupedCpu}
       handleChange={onChange}
+      handleReset={() => removeParam(FILTER_OPTIONS.cpu)}
     />
   )
 }

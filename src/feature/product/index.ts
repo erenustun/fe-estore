@@ -1,14 +1,13 @@
-export * from './component/card.component'
-export * from './component/Card/name.component'
-export * from './component/Card/stock.component'
+export * from './component/Card/card.component'
+export * from './component/Card/component/name.component'
+export * from './component/Card/component/stock.component'
 
-export * from './component/featured.component'
-export * from './component/Featured/featured-brand.component'
+export * from './component/Featured/featured.component'
+export * from './component/Featured/component/featured-brand.component'
 
 export * from './component/grid.component'
 
-export * from './component/filter.component'
-export * from './component/Filter/filter-button.component'
+export * from './component/Filter/component/filter-dropdown.component'
 export * from './component/Filter/brand-filter.component'
 export * from './component/Filter/color-filter.component'
 export * from './component/Filter/cpu-filter.component'

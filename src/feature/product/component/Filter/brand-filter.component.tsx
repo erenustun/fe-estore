@@ -1,10 +1,15 @@
 import { Loader } from '@component'
 import { useRouter } from 'next/router'
-import { FILTER_OPTIONS, useFilterPrams, SelectFilter } from '@feature/product'
+import {
+  FILTER_OPTIONS,
+  useFilterPrams,
+  FilterDropdown,
+} from '@feature/product'
 import { useRouterParams } from '@shared/util'
 import { useQuery } from '@apollo/client'
 import FetchGroupedBrands from '@feature/product/graphql/fetch-grouped-brand.graphql'
 import { FormattedMessage } from 'react-intl'
+import { PAGINATION_TAKE } from '@shared/constant'
 
 export const BrandFilter = () => {
   const { query } = useRouter()
@@ -12,15 +17,15 @@ export const BrandFilter = () => {
   /* eslint-disable-next-line react-hooks/rules-of-hooks */
   const { brand } = useFilterPrams(query)
 
-  const { toggleParam, removeParam } = useRouterParams()
+  const { hasParam, removeParam, toggleParam } = useRouterParams()
 
   const { data, loading, error } = useQuery(FetchGroupedBrands, {
     fetchPolicy: 'cache-and-network',
   })
 
   const onChange = (value: number | string) => {
-    removeParam('page')
-    removeParam('limit')
+    hasParam('take') && removeParam('take', PAGINATION_TAKE)
+    removeParam('take')
     toggleParam(FILTER_OPTIONS.brand, value)
   }
 
@@ -35,11 +40,14 @@ export const BrandFilter = () => {
   if (error) return <h1>Error: {error.message}</h1>
 
   return (
-    <SelectFilter
+    <FilterDropdown
       activeList={brand}
       label={<FormattedMessage id="product_view_filter_select_brand" />}
       list={data?.groupedBrand}
-      handleChange={onChange}
+      handleChange={(value: number | string) =>
+        toggleParam(FILTER_OPTIONS.brand, value)
+      }
+      handleReset={() => removeParam(FILTER_OPTIONS.brand)}
     />
   )
 }

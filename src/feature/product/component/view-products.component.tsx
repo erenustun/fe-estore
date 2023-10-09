@@ -2,15 +2,20 @@ import { Button, FlexBox, Loader, PageHeading } from '@component'
 import { useQuery } from '@apollo/client'
 import FetchProducts from '@feature/product/graphql/fetch-products.graphql'
 import {
-  ProductFilter,
   useFilterPrams,
   usePaginationParams,
   ProductGrid,
+  BrandFilter,
+  ColorFilter,
+  ProcessorFilter,
+  StorageFilter,
+  RamFilter,
 } from '@feature/product'
 import { useRouter } from 'next/router'
 import { PAGINATION_TAKE } from '@shared/constant'
 import { NumberParam, useQueryParam, withDefault } from 'use-query-params'
 import { FormattedMessage } from 'react-intl'
+import cn from 'classnames'
 
 export const ViewProducts = () => {
   const [take] = useQueryParam(
@@ -33,7 +38,6 @@ export const ViewProducts = () => {
 
   const showMoreItems = (take: number) => {
     query.take = (take + 12).toString()
-
     replace(
       {
         pathname,
@@ -68,29 +72,40 @@ export const ViewProducts = () => {
           : { count: data?.products?.count }
       }
     >
-      <ProductFilter />
+      <FlexBox className="hidden w-full flex-wrap gap-x-2 gap-y-2 pb-4 lg:flex">
+        <BrandFilter />
+        <ColorFilter />
+        <ProcessorFilter />
+        <StorageFilter />
+        <RamFilter />
+      </FlexBox>
+
       <ProductGrid
         error={error}
         loading={loading}
         productData={data.products?.data}
       />
-      {data?.products?.count > data.products?.data?.length && (
-        <FlexBox
-          className="mt-10 w-full items-center justify-center gap-y-2"
-          direction="col"
-        >
-          <FormattedMessage
-            id="product_index_count_of"
-            values={{
-              currentCount: data.products?.data?.length,
-              total: data?.products?.count,
-            }}
-          />
+
+      <FlexBox
+        className={cn(
+          'w-full items-center justify-center gap-y-2',
+          data?.products?.count > data.products?.data?.length ? 'mt-14' : 'mt-2'
+        )}
+        direction="col"
+      >
+        <FormattedMessage
+          id="product_index_count_of"
+          values={{
+            currentCount: data.products?.data?.length,
+            total: data?.products?.count,
+          }}
+        />
+        {data?.products?.count > data.products?.data?.length && (
           <Button onClick={() => showMoreItems(take)} style="primary">
             <FormattedMessage id="product_view_load_more" />
           </Button>
-        </FlexBox>
-      )}
+        )}
+      </FlexBox>
     </PageHeading>
   )
 }
