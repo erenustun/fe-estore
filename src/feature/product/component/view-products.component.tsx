@@ -8,22 +8,19 @@ import {
   ProductGrid,
 } from '@feature/product'
 import { useRouter } from 'next/router'
-import { useState } from 'react'
-import { DEFAULT_PAGE, DEFAULT_PAGE_LIMIT } from '@shared/constant'
+import { PAGINATION_TAKE } from '@shared/constant'
 import { NumberParam, useQueryParam, withDefault } from 'use-query-params'
 import { FormattedMessage } from 'react-intl'
 
 export const ViewProducts = () => {
-  const [page] = useQueryParam('page', withDefault(NumberParam, DEFAULT_PAGE), {
-    updateType: 'pushIn',
-  })
-  const [offset] = useQueryParam(
-    'limit',
-    withDefault(NumberParam, DEFAULT_PAGE_LIMIT)
+  const [take] = useQueryParam(
+    'take',
+    withDefault(NumberParam, PAGINATION_TAKE)
   )
+
   const { query, pathname, replace } = useRouter()
+
   const filterArgs = useFilterPrams(query)
-  const [products, setProducts] = useState<[]>([])
   const paginationArgs = usePaginationParams(query)
 
   const { data, loading, error } = useQuery(FetchProducts, {
@@ -32,22 +29,10 @@ export const ViewProducts = () => {
       filterArgs,
     },
     fetchPolicy: 'cache-and-network',
-    // @ts-ignore
-    onCompleted: data => {
-      if (page > 1 && products.length < 6)
-        replace({ pathname, query: { ...query, page: 1 } })
-      if (products.length > data.products.count)
-        setProducts(data.products.data as [])
-      if (products.length < data.products.count)
-        setProducts([...products, ...(data.products.data as [])])
-      return data
-    },
   })
-  let pageCount = 0
-  if (data) pageCount = Math.ceil(data.products?.count / offset)
 
-  const showMoreItems = (page: number) => {
-    query.page = (page + 1).toString()
+  const showMoreItems = (take: number) => {
+    query.take = (take + 12).toString()
 
     replace(
       {
@@ -68,13 +53,18 @@ export const ViewProducts = () => {
       labelLocale="product_smartphone_view_index"
       image={image}
       subLabelLocale={
-        products && page !== 1
+        data.products?.data && take !== PAGINATION_TAKE
           ? 'product_index_count_of'
-          : 'product_index_count'
+          : data?.products?.count > 1
+          ? 'product_index_count'
+          : 'product_index_single_count'
       }
       subLabelValues={
-        products && page !== 1
-          ? { currentCount: products?.length, total: data?.products?.count }
+        data.products?.data && take !== PAGINATION_TAKE
+          ? {
+              currentCount: data.products?.data?.length,
+              total: data?.products?.count,
+            }
           : { count: data?.products?.count }
       }
     >
@@ -82,11 +72,21 @@ export const ViewProducts = () => {
       <ProductGrid
         error={error}
         loading={loading}
-        productData={products ? products : data.products?.data}
+        productData={data.products?.data}
       />
-      {pageCount > page && (
-        <FlexBox className="mt-10 w-full items-center justify-center">
-          <Button onClick={() => showMoreItems(page)} style="primary-dark">
+      {data?.products?.count > data.products?.data?.length && (
+        <FlexBox
+          className="mt-10 w-full items-center justify-center gap-y-2"
+          direction="col"
+        >
+          <FormattedMessage
+            id="product_index_count_of"
+            values={{
+              currentCount: data.products?.data?.length,
+              total: data?.products?.count,
+            }}
+          />
+          <Button onClick={() => showMoreItems(take)} style="primary">
             <FormattedMessage id="product_view_load_more" />
           </Button>
         </FlexBox>

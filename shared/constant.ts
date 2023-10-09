@@ -1,2 +1,1 @@
-export const DEFAULT_PAGE = 1
-export const DEFAULT_PAGE_LIMIT = 6
+export const PAGINATION_TAKE = 12
