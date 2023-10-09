@@ -9,7 +9,10 @@ interface BoxProps {
 const Box = tw.section<BoxProps>`
   w-full
   mx-auto
-  ${props => (props.darkborder ? 'border-gray-700' : 'border-gray-400')}
+  ${props =>
+    props.darkborder
+      ? 'border-gray-300 dark:border-gray-700'
+      : 'border-gray-400'}
   ${props => !props.notopmargin && themeConfig.boxMargin}
   ${() => themeConfig.mainContainerMaxWidth}
   ${() => themeConfig.boxBlur}
