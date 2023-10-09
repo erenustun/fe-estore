@@ -1,7 +1,7 @@
-import { Box, FlexBox, H2, Loader } from '@component'
+import { Box, Currency, FlexBox, H2, H3, H4, Loader } from '@component'
 import { useQuery } from '@apollo/client'
 import FetchOrders from '@feature/order/graphql/fetch-orders.graphql'
-import { FormattedDate, FormattedMessage } from 'react-intl'
+import { FormattedDate, FormattedMessage, useIntl } from 'react-intl'
 import { AddressType } from '@feature/address'
 import { Order } from '@feature/order'
 import Image from 'next/image'
@@ -9,6 +9,8 @@ import cn from 'classnames'
 import { themeConfig } from '@shared/config'
 
 export const ViewOrders = () => {
+  const intl = useIntl()
+
   const { data, loading, error } = useQuery(FetchOrders, {
     variables: {
       filterArgs: {
@@ -36,96 +38,114 @@ export const ViewOrders = () => {
         const created = new Date(order.created as unknown as string)
         return (
           <Box
-            className="flex flex-col space-y-4 bg-opacity-5 px-0 py-3"
+            className="flex flex-col space-y-4 bg-opacity-5 px-3 py-3"
             darkborder
             notopmargin
             key={index}
           >
-            <div className="mx-4 inline rounded bg-slate-700 px-3 py-1 text-sm">
-              <FormattedMessage
-                id="order_view_id"
-                values={{
-                  id: <b>{order.id}</b>,
-                  created: (
-                    <b>
-                      <FormattedDate value={order.created} />
-                    </b>
-                  ),
-                }}
-              />
-            </div>
-            <div className="space-y-10">
+            <FlexBox className="justify-between">
+              <H3 className="inline py-1">
+                <FormattedMessage
+                  id="order_view_id"
+                  values={{
+                    id: <b>64892138</b>,
+                    //id: <b>{order.id}</b>,
+                    created: (
+                      <b>
+                        <FormattedDate value={order.created} />
+                      </b>
+                    ),
+                  }}
+                />
+              </H3>
+              <div className="mr-4 flex justify-between px-4">
+                {created > twoDaysAgo && (
+                  <div
+                    className={cn(
+                      'cursor-pointer capitalize',
+                      themeConfig.warningTextColor,
+                      themeConfig.warningTextHover,
+                      themeConfig.warningTextActive
+                    )}
+                  >
+                    <FormattedMessage id="order_view_cancel" />
+                  </div>
+                )}
+              </div>
+            </FlexBox>
+            <FlexBox className="space-x-10">
+              <FlexBox className="gap-x-1.5">
+                <FormattedMessage id="order_view_payment_status" />
+                <div>
+                  {order.cancelled ? (
+                    <div className={cn(themeConfig.successTextColor)}>
+                      <FormattedMessage id="order_view_payment_status_cancelled" />
+                    </div>
+                  ) : order.pending ? (
+                    <div className={cn(themeConfig.warningTextColor)}>
+                      <FormattedMessage id="order_view_payment_status_awaiting" />
+                    </div>
+                  ) : (
+                    <div className={cn(themeConfig.successTextColor)}>
+                      <FormattedMessage id="order_view_payment_status_paid" />
+                    </div>
+                  )}
+                </div>
+              </FlexBox>
+              <FlexBox className="gap-x-1.5">
+                <FormattedMessage id="order_view_total" />
+                <Currency amount={order.total} className="font-semibold" />
+              </FlexBox>
+            </FlexBox>
+            <div className="space-y-2">
               {order.products.map((orderHasProduct, i) => {
                 console.log(orderHasProduct.product.thumbnail)
                 return (
                   <>
-                    <FlexBox key={i}>
+                    <FlexBox key={i} className="items-center px-0">
                       <Image
                         src={`${process.env.NEXT_PUBLIC_BACKEND_HOST}${orderHasProduct.product.thumbnail}`}
                         height="158"
                         width="158"
                         alt=""
+                        className="h-20 w-20"
                       />
-                      <FlexBox direction="col">
-                        <FlexBox className="space-x-1">
-                          <H2 className="font-bold">
-                            {orderHasProduct.product.brand.name}
-                          </H2>
-                          <H2>{orderHasProduct.product.name}</H2>
-                        </FlexBox>
-                        <H2>
+                      <FlexBox direction="col" className="mx-2 h-full w-10">
+                        <H3>
                           <FormattedMessage
                             id="order_view_quantity"
                             values={{ amount: orderHasProduct.quantity }}
                           />
-                        </H2>
-                        <H2
-                          className={cn(
-                            themeConfig.dangerTextColor,
-                            'font-semibold'
-                          )}
-                        >
-                          {orderHasProduct.product.price}.-
-                        </H2>
+                        </H3>
                       </FlexBox>
-                      <FlexBox direction="col" className="ml-20">
-                        <H2>
-                          <FormattedMessage id="order_view_status" />
-                        </H2>
-                        <H2 className={cn(themeConfig.warningTextColor)}>
-                          In - Transit
-                        </H2>
+                      <FlexBox className="items-center space-x-1 md:min-w-[24rem]">
+                        <H3 className="font-bold">
+                          {orderHasProduct.product.brand.name}
+                        </H3>
+                        <H3>{orderHasProduct.product.name}</H3>
                       </FlexBox>
-                      <FlexBox direction="col" className="ml-20">
-                        <H2>
-                          <FormattedMessage id="order_view_expected" />
-                        </H2>
-                        <H2 className="font-medium text-slate-300">
-                          24. - 27. December
-                        </H2>
+                      <FlexBox direction="col" className="md:ml-2">
+                        {order.cancelled ? (
+                          <H4>
+                            <FormattedMessage id="order_view_cancelled" />
+                          </H4>
+                        ) : !order.pending ? (
+                          <H4 className={cn(themeConfig.successTextColor)}>
+                            <FormattedMessage
+                              id="order_view_shipped"
+                              values={{
+                                date: intl.formatDate(order.shipped as Date),
+                              }}
+                            />
+                          </H4>
+                        ) : (
+                          <H4>-</H4>
+                        )}
                       </FlexBox>
                     </FlexBox>
-                    {i + 1 < order.products.length && (
-                      <div
-                        className={cn(
-                          'h-[2px] w-full',
-                          themeConfig.footerDivider
-                        )}
-                      ></div>
-                    )}
                   </>
                 )
               })}
-            </div>
-            <div className="mr-4 flex justify-between px-4">
-              {created > twoDaysAgo ? (
-                <div className={themeConfig.dangerTextColor}>Cancel</div>
-              ) : (
-                <div></div>
-              )}
-              <H2 className={cn(themeConfig.dangerTextColor, 'font-semibold')}>
-                {order.total}.-
-              </H2>
             </div>
           </Box>
         )

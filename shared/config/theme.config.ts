@@ -1,4 +1,5 @@
 export const themeConfig = {
+  /* Animation */
   animationTransition: 'transition',
   animationDuration: 'duration-200',
   animationEaseIn: 'ease-in',
@@ -12,57 +13,11 @@ export const themeConfig = {
   animationStartToLeft: '-translate-x-[1rem]',
   animationEndToLeft: 'translate-x-[10rem]',
 
-  radiusSmall: 'rounded-sm',
-  radiusDefault: 'rounded',
-  radiusMedium: 'rounded-md',
-  radiusLarge: 'rounded-lg',
-
-  mainBackgroundColor: 'bg-[#00050D]',
-  mainTextColor: 'text-slate-200',
-
-  mainContainerMaxWidth: 'max-w-9xl',
-
-  badgeBackgroundColor: 'bg-rose-500',
-
-  boxBackgroundColor: 'bg-gray-300 border',
-  boxBlur: 'backdrop-filter backdrop-blur-lg',
-  boxShadow: 'shadow-md',
-  boxOpacity: 'bg-opacity-10',
-  boxPadding: 'py-6 px-4',
-  boxMargin: 'mt-5',
-
-  headerHeight: 'h-24 border-b border-slate-900',
-  headerBackgroundColor: 'bg-[#00050D]',
-  headerShadow: 'shadow-xl',
-
-  formLabel: 'mb-1 select-none text-sm tracking-wide leading-5',
-
-  footerDivider: 'bg-slate-900',
-  footerDividerBorder: 'border-slate-900',
-
   loadingAnimation:
     'animate-[pulse_1500ms_ease-in-out_infinite] cursor-not-allowed',
 
-  navLinkTextHover: 'hover:text-sky-300',
-  navLinkTextActive: 'active:text-sky-500',
-  navLinkCurrentPage: 'text-[#47ABFF]',
-  navLinkBgHover: 'group-hover:bg-sky-300',
-  navLinkBgActive: 'group-active:bg-sky-500',
-  navLinkCurrentBg: 'bg-[#47ABFF]',
-
-  textLinkTextHover: 'hover:text-blue-300',
-  textLinkTextActive: 'active:text-blue-500',
-
-  inputFieldBorder: 'border border-gray-600',
-
-  textSizeH1: 'text-2xl sm:text-3xl md:text-4xl',
-  textSizeH2: 'text-xl sm:text-2xl md:text-3xl',
-  textSizeH3: 'text-xl md:text-2xl',
-  textSizeH4: 'text-lg md:text-xl',
-  textSizeH5: 'text-base',
-
-  buttonPadding: 'px-3.5 py-1.5',
-  buttonText: 'font-medium tracking-wide',
+  /* Background + Border styling */
+  mainBackgroundColor: 'bg-slate-200dark:bg-[#00050D]',
 
   primaryBackgroundColor: 'bg-[#0A52C7]',
   primaryBackgroundHover: `hover:bg-sky-600 hover:border-sky-600`,
@@ -99,20 +54,84 @@ export const themeConfig = {
   warningBorderColor: 'border border-orange-500',
   warningBorderActive: `focus:border-orange-700 active:border-orange-700 hover:border-orange-300`,
 
-  dangerBackgroundColor: 'bg-rose-600 border border-rose-500',
-  dangerBackgroundHover: `hover:bg-rose-700 hover:border-rose-600`,
-  dangerBackgroundActive: `active:bg-rose-800`,
+  dangerBackgroundColor: 'bg-red-600 border border-red-500',
+  dangerBackgroundHover: `hover:bg-red-700 hover:border-red-600`,
+  dangerBackgroundActive: `active:bg-red-800`,
 
-  dangerBorderColor: 'border border-rose-500',
-  dangerBorderActive: `focus:border-rose-700 active:border-rose-700 hover:border-rose-300`,
+  dangerBorderColor: 'border border-red-500',
+  dangerBorderActive: `focus:border-red-700 active:border-red-700 hover:border-red-300`,
 
-  primaryTextColor: 'text-blue-400 active:text-blue-50',
-  successTextColor: 'text-green-400 active:text-green-50',
-  infoTextColor: 'text-sky-400 active:text-sky-50',
-  warningTextColor: 'text-orange-400 active:text-orange-50',
-  dangerTextColor:
-    'text-rose-400 active:text-rose-50 cursor-pointer hover:text-rose-500',
+  /* Badge */
+  badgeBackgroundColor: 'bg-red-500',
+
+  /* Box */
+  boxBackgroundColor: 'bg-gray-300 border',
+  boxBlur: 'backdrop-filter backdrop-blur-lg',
+  boxShadow: 'shadow-md',
+  boxOpacity: 'bg-opacity-10',
+  boxPadding: 'py-6 px-4',
+  boxMargin: 'mt-5',
+
+  /* Button */
+  buttonPadding: 'px-3.5 py-1.5',
+  buttonText: 'font-medium tracking-wide',
+
+  /* Container */
+  mainContainerMaxWidth: 'max-w-9xl',
+
+  /* Footer */
+  footerDivider: 'bg-slate-400 dark:bg-slate-900',
+  footerDividerBorder: 'border-slate-400 dark:border-slate-900',
+
+  /* Form */
+  formLabel: 'mb-1 select-none text-sm tracking-wide leading-5',
+  inputFieldBorder: 'border border-gray-600',
+
+  /* Header */
+  headerHeight: 'h-24 border-b border-slate-900',
+  headerBackgroundColor: 'bg-[#00050D]',
+  headerShadow: 'shadow-xl',
+
+  /* Radius */
+  radiusSmall: 'rounded-sm',
+  radiusDefault: 'rounded',
+  radiusMedium: 'rounded-md',
+  radiusLarge: 'rounded-lg',
+
+  /* Typography styling */
+  mainTextColor: 'text-slate-200',
+
+  navLinkTextHover: 'hover:text-sky-300',
+  navLinkTextActive: 'active:text-sky-500',
+  navLinkCurrentPage: 'text-[#47ABFF]',
+  navLinkBgHover: 'group-hover:bg-sky-300',
+  navLinkBgActive: 'group-active:bg-sky-500',
+  navLinkCurrentBg: 'bg-[#47ABFF]',
+
+  h1Size: 'text-2xl sm:text-4xl',
+  h2Size: 'text-xl sm:text-2xl',
+  h3Size: 'text-lg md:text-xl',
+  h4Size: 'text-md md:text-lg',
+  headingColor: 'text-slate-700 dark:text-slate-50',
+
+  primaryTextColor: 'text-blue-400 dark:text-blue-500',
+  successTextColor: 'text-green-400 dark:text-green-500',
+  infoTextColor: 'text-sky-400 dark:text-sky-500',
+  warningTextColor: 'text-orange-400 dark:text-orange-500',
+  dangerTextColor: 'text-pink-400 dark:text-pink-500',
+
+  primaryTextHover: 'hover:text-blue-600 dark:hover:text-blue-300',
+  successTextHover: 'hover:text-green-600 dark:hover:text-green-300',
+  infoTextHover: 'hover:text-sky-600 dark:hover:text-sky-300',
+  warningTextHover: 'hover:text-orange-600 dark:hover:text-orange-300',
+  dangerTextHover: 'hover:text-red-600 dark:hover:text-red-300',
+
+  primaryTextActive: 'active:text-blue-600 dark:active:text-blue-700',
+  successTextActive: 'active:text-green-600 dark:active:text-green-700',
+  infoTextActive: 'active:text-sky-600 dark:active:text-sky-700',
+  warningTextActive: 'active:text-orange-600 dark:active:text-orange-700',
+  dangerTextActive: 'active:text-red-600 dark:active:text-red-700',
 
   primaryIconColor: 'text-slate-200 hover:text-blue-500 active:text-blue-700',
-  dangerIconColor: 'text-slate-200 hover:text-rose-500 active:text-rose-700',
+  dangerIconColor: 'text-slate-200 hover:text-red-500 active:text-red-700',
 }

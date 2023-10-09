@@ -21,7 +21,7 @@ export const OrdersView = () => {
 
   return (
     <div className="flex flex-col">
-      <H2>
+      <H2 className="mb-3">
         <FormattedMessage
           id="order_index"
           values={{ count: data?.currentOrders?.length }}

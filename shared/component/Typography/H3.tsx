@@ -1,14 +1,18 @@
 import tw from 'tailwind-styled-components'
 import { themeConfig } from '@shared/config'
 
-export const H1 = tw.h1`
-  ${() => themeConfig.h1Size}
+interface H3Props {
+  className?: string
+}
+
+export const H3 = tw.h3<H3Props>`
+  ${() => themeConfig.h3Size}
   ${() => themeConfig.headingColor}
   ${() => themeConfig.animationTransition}
   ${() => themeConfig.animationDuration}
   ${() => themeConfig.animationEaseIn}
-  font-semibold
+  ${props => props.className && props.className}
+  font-light
   tracking-wide
   mb-1
-  cursor-pointer
- `
+`

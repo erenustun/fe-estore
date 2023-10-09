@@ -6,9 +6,13 @@ interface H2Props {
 }
 
 export const H2 = tw.h2<H2Props>`
-  ${() => themeConfig.textSizeH2}
+  ${() => themeConfig.h2Size}
+  ${() => themeConfig.headingColor}
+  ${() => themeConfig.animationTransition}
+  ${() => themeConfig.animationDuration}
+  ${() => themeConfig.animationEaseIn}
   ${props => props.className && props.className}
-  font-light
+  font-normal
   tracking-wide
   mb-3
 `
