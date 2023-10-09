@@ -1,20 +1,32 @@
 import {
+  AnimateIn,
   Badge,
   Container,
   FlexBox,
   InstagramIcon,
   LanguageChanger,
+  List,
   MetaIcon,
   WhatsappIcon,
 } from '@component'
 import { EnvelopeIcon, PhoneIcon } from '@heroicons/react/24/solid'
 import Link from 'next/link'
+import { useState } from 'react'
+import Hamburger from 'hamburger-react'
 import { pushUri } from '@shared/util'
 import { BookmarkIcon, ShoppingCartIcon } from '@heroicons/react/24/outline'
 import cn from 'classnames'
 import { themeConfig } from '@shared/config'
 
 export const GlobalTopBar = () => {
+  const [menuOpen, setMenu] = useState(false)
+  const toggleMenu = () => setMenu(!menuOpen)
+
+  const handleNavClick = (label: string | number) => {
+    pushUri(`/${label}`)
+    setMenu(!menuOpen)
+  }
+
   return (
     <div className="select-none bg-[#0A52C7] py-1.5">
       <Container>
@@ -80,8 +92,33 @@ export const GlobalTopBar = () => {
               </div>
             </FlexBox>
             <LanguageChanger className="ml-2 mt-3 md:mt-0" />
+            <div className="m-0 flex border p-0 md:hidden">
+              <Hamburger
+                rounded={true}
+                toggled={menuOpen}
+                toggle={toggleMenu}
+                direction="left"
+                duration={0.5}
+                size={20}
+              />
+            </div>
           </FlexBox>
         </FlexBox>
+        <AnimateIn direction="to-bottom">
+          {menuOpen && (
+            <FlexBox direction="col" className="w-full">
+              <List
+                className="flex w-full flex-col md:hidden"
+                list={[
+                  { label: 'Home', value: '/' },
+                  { label: 'Products', value: 'products' },
+                ]}
+                onClick={handleNavClick}
+                isNav
+              />
+            </FlexBox>
+          )}
+        </AnimateIn>
       </Container>
     </div>
   )
