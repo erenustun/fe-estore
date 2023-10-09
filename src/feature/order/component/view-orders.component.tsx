@@ -1,4 +1,4 @@
-import { Box, Currency, FlexBox, H2, H3, H4, Loader } from '@component'
+import { Box, Currency, FlexBox, H3, H4, Loader } from '@component'
 import { useQuery } from '@apollo/client'
 import FetchOrders from '@feature/order/graphql/fetch-orders.graphql'
 import { FormattedDate, FormattedMessage, useIntl } from 'react-intl'
