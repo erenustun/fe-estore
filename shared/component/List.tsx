@@ -2,11 +2,7 @@ import { H2 } from '@shared/component'
 import { FormattedMessage } from 'react-intl'
 import { ApolloError } from '@apollo/client'
 import cn from 'classnames'
-import {
-  ArrowDownIcon,
-  ArrowRightIcon,
-  ArrowUpIcon,
-} from '@heroicons/react/24/solid'
+import { ArrowRightIcon } from '@heroicons/react/24/solid'
 import { themeConfig } from '@shared/config'
 import { ReactNode } from 'react'
 
