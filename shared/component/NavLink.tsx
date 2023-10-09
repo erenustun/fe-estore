@@ -56,7 +56,7 @@ export const NavLink = ({
         )}
       >
         <FlexBox className="items-center">
-          {icon && <div className="mr-2">{icon}</div>}
+          {icon && <div className="mr-0.5">{icon}</div>}
           <div>{label}</div>
         </FlexBox>
         {mainHeader && router.pathname === href && (

@@ -1,9 +1,8 @@
-import { DEFAULT_PAGE_LIMIT } from '@feature/product'
+import { PAGINATION_TAKE } from '@shared/constant'
 
 export const usePaginationParams = (query: any) => {
   const { take } = query
   return {
-    page: 1,
-    limit: take ? parseInt(take as string) : DEFAULT_PAGE_LIMIT,
+    take: take ? parseInt(take as string) : PAGINATION_TAKE,
   }
 }

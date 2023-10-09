@@ -31,7 +31,7 @@ export const Card = (product: Product) => (
           </div>
           <div className={'flex items-center justify-between'}>
             <Currency
-              className={'text-danger-default text-lg font-bold'}
+              className={'text-lg font-bold text-red-600'}
               amount={product.price}
             />
             <ProductStock stock={product?.stock} />

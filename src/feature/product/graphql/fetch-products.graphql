@@ -4,8 +4,7 @@ query Products(
 ) {
   products(filterArgs: $filterArgs, paginationArgs: $paginationArgs) {
     count
-    page
-    limit
+    take
     data {
       id
       brand {
@@ -15,27 +14,35 @@ query Products(
         name
       }
       specification {
-        battery {
-          capacity
-        }
-        connectivity {
-          connectivity
-        }
-        cpu {
-          name
-        }
-        display {
-          aspectRatio
-          resolution
-          size
-        }
+        batteryCapacity
+        batteryChargingSpeed
+        batteryReverseCharging
+        batteryType
+        batteryWirelessCharging
+        connectAudio
+        connectBluetoothVersion
+        connectConnectivity
+        connectMobileStandard
+        connectUsb
+        connectWifiStandard
+        cpuCores
+        cpuFrequency
+        cpuName
+        created
         dataRam
         dataStorage
+        deleted
         dimensionDepth
         dimensionLength
         dimensionUnit
         dimensionWeight
         dimensionWidth
+        displayAspectRatio
+        displayPixelDensity
+        displayRefreshRate
+        displayResolution
+        displayScreenToBody
+        displaySize
       }
       ratingAverage
       thumbnail
