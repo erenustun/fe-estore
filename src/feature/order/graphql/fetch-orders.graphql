@@ -3,6 +3,7 @@ query Orders {
     id
     created
     cancelled
+    shipped
     products {
       quantity
       product {

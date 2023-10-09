@@ -269,7 +269,10 @@ type Mutation {
   updateBrand(id: String!, name: String!): IUpdateResponse!
   updateCategory(id: String!, name: String!): IUpdateResponse!
   updateCustomer(data: UpdateUserInput!): User!
-  updateCustomerAddress(data: UpdateAddressInput!, id: String!): IUpdateResponse!
+  updateCustomerAddress(
+    data: UpdateAddressInput!
+    id: String!
+  ): IUpdateResponse!
   updateProduct(data: UpdateProductInput!, id: String!): IUpdateResponse!
   updateUser(data: UpdateUserInput!, id: String!): User!
 }
@@ -475,7 +478,11 @@ type Query {
   groupedStorage: [GroupedStorageResponse!]!
   order(id: Float!): Order!
   product(id: String!): Product!
-  products(filterArgs: FilterArgsInput, paginationArgs: PaginationArgsInput, sortArgs: SortArgsInput): ProductsFetchResponse!
+  products(
+    filterArgs: FilterArgsInput
+    paginationArgs: PaginationArgsInput
+    sortArgs: SortArgsInput
+  ): ProductsFetchResponse!
   ratings(productId: String!): [ProductRating!]!
   requestEmailChange(email: String!): IEmailResponse!
   requestPasswordChange(email: String!): IEmailResponse!
