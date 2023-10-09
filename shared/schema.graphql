@@ -319,8 +319,7 @@ input OrderInput {
 }
 
 input PaginationArgsInput {
-  limit: Int!
-  page: Int!
+  take: Int!
 }
 
 input PasswordChangeInput {
@@ -452,16 +451,14 @@ type ProductsFetchResponse {
   count: Int!
   data: [Product!]!
   filter: FilterArgs
-  limit: Int!
-  page: Int!
+  take: Int!
 }
 
 input ProductsFetchResponseInput {
   count: Int!
   data: [ProductInput!]!
   filter: FilterArgsInput
-  limit: Int!
-  page: Int!
+  take: Int!
 }
 
 type Query {

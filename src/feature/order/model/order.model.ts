@@ -7,6 +7,7 @@ export class Order {
   total: number
   pending: boolean
   cancelled?: Date | null
+  shipped?: Date | null
   billingAddress?: Address
   products: OrderHasProduct[]
   shippingAddress?: Address
