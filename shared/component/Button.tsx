@@ -49,6 +49,7 @@ const PrimaryOutlinedButton = tw(ButtonBase)<ButtonProps>`
   ${() => themeConfig.primaryBorderColor}
   ${() => themeConfig.primaryBorderActive}
   ${() => themeConfig.primaryTextColor}
+  ${() => themeConfig.primaryTextActive}
   ${() => themeConfig.primaryBackgroundActive}
   ${props => props.className}
 `
@@ -64,6 +65,7 @@ const SuccessOutlinedButton = tw(ButtonBase)<ButtonProps>`
   ${() => themeConfig.successBorderColor}
   ${() => themeConfig.successBorderActive}
   ${() => themeConfig.successTextColor}
+  ${() => themeConfig.successTextActive}
   ${() => themeConfig.successBackgroundActive}
   ${props => props.className}
 `
@@ -79,6 +81,7 @@ const InfoOutlinedButton = tw(ButtonBase)<ButtonProps>`
   ${() => themeConfig.infoBorderColor}
   ${() => themeConfig.infoBorderActive}
   ${() => themeConfig.infoTextColor}
+  ${() => themeConfig.infoTextActive}
   ${() => themeConfig.infoBackgroundActive}
   ${props => props.className}
 `
@@ -94,6 +97,7 @@ const WarningOutlinedButton = tw(ButtonBase)<ButtonProps>`
   ${() => themeConfig.warningBorderColor}
   ${() => themeConfig.warningBorderActive}
   ${() => themeConfig.warningTextColor}
+  ${() => themeConfig.warningTextActive}
   ${() => themeConfig.warningBackgroundActive}
   ${props => props.className}
 `
@@ -109,6 +113,7 @@ const DangerOutlinedButton = tw(ButtonBase)<ButtonProps>`
   ${() => themeConfig.dangerBorderColor}
   ${() => themeConfig.dangerBorderActive}
   ${() => themeConfig.dangerTextColor}
+  ${() => themeConfig.dangerTextActive}
   ${() => themeConfig.dangerBackgroundActive}
   ${props => props.className}
 `
