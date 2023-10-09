@@ -23,7 +23,7 @@ const nextConfig = {
     ]
   },
   i18n: {
-    locales: ['en', 'de'],
+    locales: ['cz', 'de', 'en', 'fr', 'it', 'nl'],
     defaultLocale: 'en'
   },
   webpack: (config) => {
