@@ -7,7 +7,6 @@ import {
   ArrowRightIcon,
   ArrowUpIcon,
 } from '@heroicons/react/24/solid'
-import theme from 'tailwindcss/defaultTheme'
 import { themeConfig } from '@shared/config'
 import { ReactNode } from 'react'
 

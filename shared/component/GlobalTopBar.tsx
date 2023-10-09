@@ -5,7 +5,6 @@ import {
   FlexBox,
   InstagramIcon,
   LanguageChanger,
-  List,
   MetaIcon,
   MobileNavigation,
   WhatsappIcon,
@@ -17,17 +16,11 @@ import Hamburger from 'hamburger-react'
 import { pushUri } from '@shared/util'
 import { BookmarkIcon, ShoppingCartIcon } from '@heroicons/react/24/outline'
 import cn from 'classnames'
-import { routeConfig, themeConfig } from '@shared/config'
-import { FormattedMessage } from 'react-intl'
+import { themeConfig } from '@shared/config'
 
 export const GlobalTopBar = () => {
   const [menuOpen, setMenu] = useState(false)
   const toggleMenu = () => setMenu(!menuOpen)
-
-  const handleNavClick = (label: string | number) => {
-    pushUri(`/${label}`)
-    setMenu(!menuOpen)
-  }
 
   return (
     <div className="select-none bg-slate-900 py-1.5">

@@ -9,7 +9,6 @@ import { useRouterParams } from '@shared/util'
 import { useQuery } from '@apollo/client'
 import FetchGroupedBrands from '@feature/product/graphql/fetch-grouped-brand.graphql'
 import { FormattedMessage } from 'react-intl'
-import { PAGINATION_TAKE_DEFAULT } from '@shared/constant'
 
 export const BrandFilter = () => {
   const { query } = useRouter()
