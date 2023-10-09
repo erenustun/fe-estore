@@ -12,17 +12,17 @@ export const AccountNavigation = () => (
     <NavLink
       href={routeConfig.ACCOUNT.INDEX}
       label={<FormattedMessage id="account_navigation_details" />}
-      icon={<UserIcon className="h-4 w-4" />}
+      icon={<UserIcon className="mr-2 h-4 w-4" />}
     />
     <NavLink
       href={routeConfig.ACCOUNT.ORDER.INDEX}
       label={<FormattedMessage id="account_navigation_orders" />}
-      icon={<ListBulletIcon className="h-4 w-4" />}
+      icon={<ListBulletIcon className="mr-2 h-4 w-4" />}
     />
     <NavLink
       href={routeConfig.ACCOUNT.ADDRESS.INDEX}
       label={<FormattedMessage id="account_navigation_address" />}
-      icon={<HomeIcon className="h-4 w-4" />}
+      icon={<HomeIcon className="mr-2 h-4 w-4" />}
     />
   </Box>
 )

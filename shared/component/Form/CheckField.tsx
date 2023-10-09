@@ -2,6 +2,7 @@ import { ReactNode } from 'react'
 import { FlexBox } from '@shared/component'
 import { CheckCircleIcon } from '@heroicons/react/24/solid'
 import cn from 'classnames'
+import { themeConfig } from '@shared/config'
 
 interface CheckFieldProps {
   active: boolean
@@ -17,7 +18,16 @@ export const CheckField = ({
   value,
 }: CheckFieldProps) => (
   <FlexBox
-    className={cn('w-full cursor-pointer select-none items-center', className)}
+    className={cn(
+      'w-full cursor-pointer select-none items-center',
+      className,
+      themeConfig.bodyTextColor,
+      themeConfig.infoTextHover,
+      themeConfig.infoTextActive,
+      themeConfig.animationTransition,
+      themeConfig.animationDuration,
+      themeConfig.animationEaseIn
+    )}
   >
     <FlexBox className="items-center">
       {active ? (
@@ -26,8 +36,6 @@ export const CheckField = ({
         <div className="ml-1 h-4 w-4 rounded-full border-2 border-slate-800 bg-transparent" />
       )}
     </FlexBox>
-    <p className="ml-2 mt-1 text-sm leading-normal text-white">
-      {label ?? value}
-    </p>
+    <p className="ml-2 mt-1 text-sm leading-normal">{label ?? value}</p>
   </FlexBox>
 )

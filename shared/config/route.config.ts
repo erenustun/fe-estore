@@ -1,3 +1,8 @@
+import {
+  PAGINATION_TAKE_DEFAULT,
+  PAGINATION_TAKE_PARAM_NAME,
+} from '@shared/constant'
+
 export const routeConfig = {
   HOME: '/',
   ACCOUNT: {
@@ -20,6 +25,7 @@ export const routeConfig = {
   },
   PRODUCT: {
     INDEX: '/products',
+    INDEX_DEFAULT_PARAMS: `?${PAGINATION_TAKE_PARAM_NAME}=${PAGINATION_TAKE_DEFAULT}`,
     CATEGORY: '/products/category',
     BRAND: '/products/brand',
   },

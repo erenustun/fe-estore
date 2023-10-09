@@ -24,7 +24,7 @@ const TextLinkWrapper = tw.span`
   flex
   items-center
   text-sm
-  ${() => themeConfig.mainTextColor}
+  ${() => themeConfig.bodyTextColor}
   ${() => themeConfig.primaryTextHover}
   ${() => themeConfig.primaryTextActive}
   ${() => themeConfig.animationTransition}

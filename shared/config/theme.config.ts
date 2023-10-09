@@ -17,7 +17,7 @@ export const themeConfig = {
     'animate-[pulse_1500ms_ease-in-out_infinite] cursor-not-allowed',
 
   /* Background + Border styling */
-  mainBackgroundColor: 'bg-slate-200dark:bg-[#00050D]',
+  mainBackgroundColor: 'bg-slate-200 dark:bg-[#00050D]',
 
   primaryBackgroundColor: 'bg-[#0A52C7]',
   primaryBackgroundHover: `hover:bg-sky-600 hover:border-sky-600`,
@@ -99,8 +99,6 @@ export const themeConfig = {
   radiusLarge: 'rounded-lg',
 
   /* Typography styling */
-  mainTextColor: 'text-slate-200',
-
   navLinkTextHover: 'hover:text-sky-300',
   navLinkTextActive: 'active:text-sky-500',
   navLinkCurrentPage: 'text-[#47ABFF]',
@@ -112,8 +110,8 @@ export const themeConfig = {
   h2Size: 'text-xl sm:text-2xl',
   h3Size: 'text-lg md:text-xl',
   h4Size: 'text-md md:text-lg',
-  headingColor: 'text-slate-700 dark:text-slate-50',
 
+  bodyTextColor: 'text-slate-700 dark:text-slate-200',
   primaryTextColor: 'text-blue-400 dark:text-blue-500',
   successTextColor: 'text-green-400 dark:text-green-500',
   infoTextColor: 'text-sky-400 dark:text-sky-500',
@@ -122,13 +120,13 @@ export const themeConfig = {
 
   primaryTextHover: 'hover:text-blue-600 dark:hover:text-blue-300',
   successTextHover: 'hover:text-green-600 dark:hover:text-green-300',
-  infoTextHover: 'hover:text-sky-600 dark:hover:text-sky-300',
+  infoTextHover: 'hover:text-sky-600 dark:hover:text-blue-300',
   warningTextHover: 'hover:text-orange-600 dark:hover:text-orange-300',
   dangerTextHover: 'hover:text-red-600 dark:hover:text-red-300',
 
   primaryTextActive: 'active:text-blue-600 dark:active:text-blue-700',
   successTextActive: 'active:text-green-600 dark:active:text-green-700',
-  infoTextActive: 'active:text-sky-600 dark:active:text-sky-700',
+  infoTextActive: 'active:text-sky-600 dark:active:text-sky-500',
   warningTextActive: 'active:text-orange-600 dark:active:text-orange-700',
   dangerTextActive: 'active:text-red-600 dark:active:text-red-700',
 

@@ -29,8 +29,7 @@ export const ViewDetails = () => {
         hover
         stripped
       />
-
-      <Link href={routeConfig.ACCOUNT.INDEX} className="mt-3 self-end">
+      <Link href={routeConfig.ACCOUNT.EDIT} className="mt-3 self-end">
         <Button>
           <FormattedMessage id="account_view_edit_user" />
         </Button>

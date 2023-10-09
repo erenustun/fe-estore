@@ -7,7 +7,7 @@ interface H3Props {
 
 export const H3 = tw.h3<H3Props>`
   ${() => themeConfig.h3Size}
-  ${() => themeConfig.headingColor}
+  ${() => themeConfig.bodyTextColor}
   ${() => themeConfig.animationTransition}
   ${() => themeConfig.animationDuration}
   ${() => themeConfig.animationEaseIn}

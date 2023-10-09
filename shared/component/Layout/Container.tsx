@@ -15,7 +15,7 @@ const Container = tw.span<ContainerProps>`
   md:px-2
   2xl:px-0
   ${p => (!p.fluid ? themeConfig.mainContainerMaxWidth : 'w-full')}
-  ${() => `${themeConfig.mainTextColor}`}
+  ${() => `${themeConfig.bodyTextColor}`}
   ${props => props.className && props.className}
 `
 

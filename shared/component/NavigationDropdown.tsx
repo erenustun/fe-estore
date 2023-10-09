@@ -22,9 +22,9 @@ interface DropdownProps {
 const DropdownButton = tw.span`
   flex
   items-center
-  ${() => themeConfig.mainTextColor}
-  ${() => themeConfig.navLinkTextHover}
-  ${() => themeConfig.navLinkTextActive}
+  ${() => themeConfig.bodyTextColor}
+  ${() => themeConfig.primaryTextHover}
+  ${() => themeConfig.infoTextActive}
   ${() => themeConfig.animationTransition}
   ${() => themeConfig.animationDuration}
   ${() => themeConfig.animationEaseIn}

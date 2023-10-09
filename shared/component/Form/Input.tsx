@@ -21,7 +21,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 const Label = tw.label<{ error: string }>`
-  ${() => themeConfig.mainTextColor}
+  ${() => themeConfig.bodyTextColor}
   ${p => p.error && themeConfig.dangerTextColor}
   mb-1
   select-none
@@ -31,7 +31,7 @@ const Label = tw.label<{ error: string }>`
 `
 
 export const StyledInput = tw.input<InputProps>`
-  ${() => themeConfig.mainTextColor}
+  ${() => themeConfig.bodyTextColor}
   ${() => themeConfig.inputFieldBorder}
   ${() => themeConfig.primaryBorderActive}
   ${() => themeConfig.radiusDefault}
@@ -80,7 +80,7 @@ export const Input = ({
       <div className="relative flex">
         {!noIcon && (
           <span
-            className={`absolute left-2 top-2 z-10 ${themeConfig.mainTextColor}`}
+            className={`absolute left-2 top-2 z-10 ${themeConfig.bodyTextColor}`}
           >
             {icon}
           </span>
@@ -97,13 +97,13 @@ export const Input = ({
         />
         {secretField && !fieldVisible && (
           <EyeSlashIcon
-            className={`absolute right-2 top-2 h-5 w-5 cursor-pointer ${themeConfig.mainTextColor}`}
+            className={`absolute right-2 top-2 h-5 w-5 cursor-pointer ${themeConfig.bodyTextColor}`}
             onClick={toggleFieldVisibility}
           />
         )}
         {secretField && fieldVisible && (
           <EyeIcon
-            className={`absolute right-2 top-2 h-5 w-5 cursor-pointer ${themeConfig.mainTextColor}`}
+            className={`absolute right-2 top-2 h-5 w-5 cursor-pointer ${themeConfig.bodyTextColor}`}
             onClick={toggleFieldVisibility}
           />
         )}

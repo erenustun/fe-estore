@@ -1,6 +1,10 @@
 import { Loader } from '@component'
 import { useRouterParams } from '@shared/util'
-import { FILTER_OPTIONS, useFilterPrams, SelectFilter } from '@feature/product'
+import {
+  FILTER_OPTIONS,
+  useFilterPrams,
+  FilterDropdown,
+} from '@feature/product'
 import { FormattedMessage } from 'react-intl'
 import { useRouter } from 'next/router'
 import { useQuery } from '@apollo/client'
@@ -12,7 +16,7 @@ export const ColorFilter = () => {
   /* eslint-disable-next-line react-hooks/rules-of-hooks */
   const { color } = useFilterPrams(query)
 
-  const { toggleParam } = useRouterParams()
+  const { toggleParam, removeParam } = useRouterParams()
 
   const { data, loading, error } = useQuery(FetchPlaceholder, {
     fetchPolicy: 'cache-and-network',
@@ -32,7 +36,7 @@ export const ColorFilter = () => {
   if (error) return <h1>Error: {error.message}</h1>
 
   return (
-    <SelectFilter
+    <FilterDropdown
       activeList={color}
       buttonClassName="w-40"
       disabled={true}
@@ -43,6 +47,7 @@ export const ColorFilter = () => {
       ]}
       //list={data?.groupedColor}
       handleChange={onChange}
+      handleReset={() => removeParam(FILTER_OPTIONS.color)}
     />
   )
 }

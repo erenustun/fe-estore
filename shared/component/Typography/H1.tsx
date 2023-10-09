@@ -3,12 +3,11 @@ import { themeConfig } from '@shared/config'
 
 export const H1 = tw.h1`
   ${() => themeConfig.h1Size}
-  ${() => themeConfig.headingColor}
+  ${() => themeConfig.bodyTextColor}
   ${() => themeConfig.animationTransition}
   ${() => themeConfig.animationDuration}
   ${() => themeConfig.animationEaseIn}
   font-semibold
   tracking-wide
   mb-1
-  cursor-pointer
  `
