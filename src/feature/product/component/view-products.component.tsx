@@ -19,6 +19,7 @@ import {
 import { NumberParam, useQueryParam, withDefault } from 'use-query-params'
 import { FormattedMessage } from 'react-intl'
 import cn from 'classnames'
+import { useEffect } from 'react'
 
 export const ViewProducts = () => {
   const [take] = useQueryParam(
@@ -40,16 +41,32 @@ export const ViewProducts = () => {
   })
 
   const showMoreItems = (take: number) => {
-    query.take = (take + 12).toString()
+    query.take = (take + PAGINATION_TAKE_DEFAULT).toString()
     replace(
       {
         pathname,
         query,
       },
       undefined,
-      { scroll: false }
+      { scroll: true }
     )
   }
+
+  const handleClickScroll = () => {
+    const element = document.getElementById(
+      'bottom-scroll-after-loading-more-data'
+    )
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'end' })
+    }
+  }
+
+  useEffect(() => {
+    setTimeout(() => {
+      parseInt(query.take as string) > PAGINATION_TAKE_DEFAULT &&
+        handleClickScroll()
+    }, 200)
+  }, [query.take])
 
   if (loading) return <Loader loading={loading} />
 
@@ -88,6 +105,8 @@ export const ViewProducts = () => {
         loading={loading}
         productData={data.products?.data}
       />
+
+      <div id="bottom-scroll-after-loading-more-data"></div>
 
       <FlexBox
         className={cn(

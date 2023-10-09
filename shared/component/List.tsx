@@ -90,13 +90,7 @@ export const List = ({
               }
             >
               <span>{listItem.label ?? listItem.value}</span>
-              {listItem.isParent ? (
-                <ArrowUpIcon className="h-6 w-6" />
-              ) : isNav ? (
-                <ArrowRightIcon className="h-6 w-6" />
-              ) : (
-                <ArrowDownIcon className="h-6 w-6" />
-              )}
+              {isNav && <ArrowRightIcon className="h-6 w-6" />}
             </li>
           )
         })}
