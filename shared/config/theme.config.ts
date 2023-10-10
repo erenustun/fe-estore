@@ -77,7 +77,7 @@ export const themeConfig = {
   buttonText: 'font-medium tracking-wide',
 
   /* Container */
-  mainContainerMaxWidth: 'max-w-9xl',
+  mainContainerMaxWidth: 'max-w-10xl',
 
   /* Footer */
   footerDivider: 'bg-slate-400 dark:bg-slate-900',
@@ -97,6 +97,9 @@ export const themeConfig = {
   radiusDefault: 'rounded',
   radiusMedium: 'rounded-md',
   radiusLarge: 'rounded-lg',
+
+  /* Sidebar */
+  sidebarWidth: 'w-full max-w-[22rem]',
 
   /* Typography styling */
   navLinkTextHover: 'hover:text-sky-300',

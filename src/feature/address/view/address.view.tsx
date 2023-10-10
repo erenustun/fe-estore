@@ -1,4 +1,4 @@
-import { H1, H2 } from '@component'
+import { FlexBox, H1, H2 } from '@component'
 import { useQuery } from '@apollo/client'
 import FetchAddresses from '@feature/address/graphql/fetch-addresses.graphql'
 import { FormattedMessage } from 'react-intl'
@@ -19,7 +19,7 @@ export const AddressView = () => {
   if (error) return <h1>Error: {error.message}</h1>
 
   return (
-    <div className="flex flex-col">
+    <FlexBox direction="col">
       <H2>
         <FormattedMessage
           id="address_index"
@@ -27,6 +27,6 @@ export const AddressView = () => {
         />
       </H2>
       <ViewAddress />
-    </div>
+    </FlexBox>
   )
 }

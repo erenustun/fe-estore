@@ -52,7 +52,7 @@ export const SimpleTable = ({
               </span>
             </>
           ) : (
-            <FlexBox className="space-x-48">
+            <FlexBox className="flex-col space-y-3 md:flex-row md:space-x-48 md:space-y-0">
               {column.header?.map((headerNode, headerIndex: number) => (
                 <FlexBox direction="col" className="px-4" key={headerIndex}>
                   <span className="text-sm font-light">{headerNode}</span>
