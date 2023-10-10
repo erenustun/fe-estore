@@ -1,11 +1,11 @@
-import { H1, H2 } from '@component'
+import { Container, H1, H2 } from '@component'
 import { useQuery } from '@apollo/client'
 import FetchOrders from '@feature/order/graphql/fetch-orders.graphql'
 import { FormattedMessage } from 'react-intl'
 import { AddressType } from '@feature/address'
 import { ViewOrders } from '@feature/order/component/view-orders.component'
 
-export const OrdersView = () => {
+export const OrderView = () => {
   const { data, loading, error } = useQuery(FetchOrders, {
     variables: {
       filterArgs: {
@@ -20,7 +20,7 @@ export const OrdersView = () => {
   if (error) return <h1>Error: {error.message}</h1>
 
   return (
-    <div className="flex flex-col">
+    <Container className="flex flex-col">
       <H2 className="mb-3">
         <FormattedMessage
           id="order_index"
@@ -28,6 +28,6 @@ export const OrdersView = () => {
         />
       </H2>
       <ViewOrders />
-    </div>
+    </Container>
   )
 }

@@ -3,11 +3,11 @@ export * from './component/update-address.component'
 export * from './component/view-address.component'
 export * from './component/table-options.component'
 
-export * from './constants/create-user.constant'
-export * from './constants/update-address.constant'
+export * from './constant/create-user.constant'
+export * from './constant/update-address.constant'
 
-export * from './enums/address-type.enum'
-export * from './enums/country.enum'
+export * from './enum/address-type.enum'
+export * from './enum/country.enum'
 
 export * from './model/address.model'
 export * from './model/create-address.input'

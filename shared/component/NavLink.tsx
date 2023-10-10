@@ -40,17 +40,19 @@ export const NavLink = ({
   mainHeader = false,
 }: NavLinkProps) => {
   const router = useRouter()
-
   return (
     <Link
       href={href}
       as={as}
-      className={'flex cursor-pointer select-none items-center'}
+      className={cn(
+        'flex cursor-pointer select-none items-center',
+        themeConfig.infoTextHover
+      )}
     >
       <LinkWrapper
         className={cn(
-          router.pathname === href && themeConfig.navLinkCurrentPage,
-          router.pathname === href && 'font-semibold',
+          router.pathname === (href as string).split('?')[0] &&
+            cn('font-semibold', themeConfig.infoTextColor),
           className,
           'group'
         )}
@@ -59,13 +61,11 @@ export const NavLink = ({
           {icon && <div className="mr-0.5">{icon}</div>}
           <div>{label}</div>
         </FlexBox>
-        {mainHeader && router.pathname === href && (
+        {mainHeader && router.pathname === (href as string).split('?')[0] && (
           <div
             className={cn(
-              'rounde mt-[1px] h-[2px] w-full',
-              themeConfig.navLinkBgHover,
-              themeConfig.navLinkBgActive,
-              themeConfig.navLinkCurrentBg
+              'mt-[1px] h-[1px] w-full',
+              themeConfig.infoBackgroundColor
             )}
           ></div>
         )}

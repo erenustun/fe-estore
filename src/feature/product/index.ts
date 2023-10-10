@@ -2,8 +2,7 @@ export * from './component/Card/card.component'
 export * from './component/Card/component/name.component'
 export * from './component/Card/component/stock.component'
 
-export * from './component/Featured/featured.component'
-export * from './component/Featured/component/featured-brand.component'
+export * from './component/featured-brand.component'
 
 export * from './component/grid.component'
 
@@ -27,4 +26,4 @@ export * from './model/image.model'
 export * from './model/rating.model'
 export * from './model/specification.model'
 
-export * from './view/products.view'
+export * from './view/product.view'
