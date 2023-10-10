@@ -1,4 +1,4 @@
-import { FeaturedBrand, ProductStock } from '@feature/product'
+import { FeaturedBrand } from '@feature/product'
 import React from 'react'
 import { AnimateIn } from '@component'
 import { CartModal } from '@feature/cart'
