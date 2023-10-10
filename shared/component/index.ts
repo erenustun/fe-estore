@@ -21,6 +21,7 @@ export * from './NavigationDropdown'
 export * from './Notification'
 export * from './PageHeading'
 export * from './Rating'
+export * from './Sidebar'
 export * from './SimpleTable'
 export * from './TextLink'
 

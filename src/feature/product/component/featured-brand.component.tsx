@@ -4,7 +4,11 @@ import FetchBrands from '@feature/product/graphql/fetch-grouped-brand.graphql'
 import { useRouterParams } from '@shared/util'
 import { FILTER_OPTIONS } from '@feature/product'
 
-export const FeaturedBrand = () => {
+interface FeaturedBrandProps {
+  className?: string
+}
+
+export const FeaturedBrand = ({ className }: FeaturedBrandProps) => {
   const { setParam } = useRouterParams()
 
   const { data, loading, error } = useQuery(FetchBrands, {
@@ -16,6 +20,7 @@ export const FeaturedBrand = () => {
 
   return (
     <List
+      className={className}
       error={error}
       list={data?.groupedBrand}
       labelLocale="product_view_featured_brands"

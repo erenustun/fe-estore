@@ -1,5 +1,5 @@
-import { ProductsView } from '@feature/product'
+import { ProductView } from '@feature/product'
 
-const Products = () => <ProductsView />
+const Products = () => <ProductView />
 
 export default Products

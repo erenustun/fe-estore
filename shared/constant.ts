@@ -24,3 +24,26 @@ export const LANGUAGE_LIST = [
 
 export const FREE_SHIPPING_AFTER = 45
 export const SHIPPING_COST = 7
+
+export const FORM_SALUTATIONS = [
+  {
+    name: 'Please choose',
+    value: 0,
+  },
+  {
+    name: 'Ms.',
+    value: 'ms',
+  },
+  {
+    name: 'Mr.',
+    value: 'mr',
+  },
+  {
+    name: 'Mrs.',
+    value: 'mrs',
+  },
+  {
+    name: 'Mx.',
+    value: 'mx',
+  },
+]

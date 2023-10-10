@@ -20,7 +20,7 @@ export const PageHeading = ({
   subLabelValues,
 }: PropsWithChildren<PageHeadingProps>) => {
   return (
-    <FlexBox direction="col" className="mb-32 w-full">
+    <FlexBox direction="col" className="mb-32 w-full px-3">
       <H1 className="mb-4 font-bold">
         <FormattedMessage
           id={labelLocale}
