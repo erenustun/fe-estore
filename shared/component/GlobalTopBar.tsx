@@ -13,14 +13,23 @@ import { EnvelopeIcon, PhoneIcon } from '@heroicons/react/24/solid'
 import Link from 'next/link'
 import { useState } from 'react'
 import Hamburger from 'hamburger-react'
-import { pushUri } from '@shared/util'
 import { BookmarkIcon, ShoppingCartIcon } from '@heroicons/react/24/outline'
 import cn from 'classnames'
 import { themeConfig } from '@shared/config'
+import useCartStore, {
+  useCartItems,
+  useWishlistItems,
+} from '@feature/cart/state/cart.store'
+import { shallow } from 'zustand/shallow'
 
 export const GlobalTopBar = () => {
   const [menuOpen, setMenu] = useState(false)
   const toggleMenu = () => setMenu(!menuOpen)
+
+  const cartItemsN = useCartItems()
+  const wishlistItemsN = useWishlistItems()
+
+  const { showCart, toggleCart } = useCartStore(state => state, shallow)
 
   return (
     <div className="select-none bg-slate-900 py-1.5">
@@ -67,10 +76,11 @@ export const GlobalTopBar = () => {
                   )}
                 />
                 <Badge className="absolute right-0 top-0 -mr-2 -mt-2 h-4 w-4 pr-0.5 pt-0.5">
-                  9
+                  {wishlistItemsN}
                 </Badge>
               </div>
-              <div className="relative cursor-pointer">
+              {/*<Link href={routeConfig.ACCOUNT.CART.INDEX}>*/}
+              <div className="relative cursor-pointer" onClick={toggleCart}>
                 <ShoppingCartIcon
                   className={cn(
                     'h-5 w-5',
@@ -82,9 +92,10 @@ export const GlobalTopBar = () => {
                   )}
                 />
                 <Badge className="absolute right-0 top-0 -mr-2 -mt-2 h-4 w-4 pt-0.5">
-                  2
+                  {cartItemsN}
                 </Badge>
               </div>
+              {/*</Link>*/}
             </FlexBox>
             <LanguageChanger className="ml-2 mt-3 md:mt-0" />
             <div className="flex md:hidden">
