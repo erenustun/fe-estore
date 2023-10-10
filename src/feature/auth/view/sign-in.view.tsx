@@ -8,8 +8,8 @@ export const SignInView = () => (
     className="min-h-[55rem] bg-[url(/images/account-bg-2.jpg)] bg-cover"
     fluid
   >
-    <Box className="flex justify-evenly -space-x-6">
-      <div className="-mt-4 h-full scale-95 bg-cover bg-center">
+    <Box className="flex justify-evenly lg:-space-x-6">
+      <div className="-mt-4 hidden h-full scale-95 bg-cover bg-center lg:block">
         <Image
           src="/images/1.jpg"
           width="500"

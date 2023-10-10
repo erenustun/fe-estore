@@ -30,7 +30,7 @@ export const Header = () => {
     // TODO: add useSpring for mobile navigation like --> transform: isVisible ? 'translate3D(0,10px,0)' : 'translate3D(0,120px,0)',
 
     <HeaderTW>
-      <Container className="flex flex-row items-center justify-between">
+      <Container className="flex-row items-center justify-between">
         <Link href={routeConfig.HOME}>
           <Image
             src="/images/web_store_hub_logo_info-blue.png"

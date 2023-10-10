@@ -16,7 +16,7 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import { ApolloError } from '@apollo/client'
 import { pushUri } from '@shared/util'
 import * as Yup from 'yup'
-import { Button, Form, FormSub, FormTitle, Input, TextLink } from '@component'
+import { Button, Form, FormSub, H1, Input, TextLink } from '@component'
 import { routeConfig, themeConfig } from '@shared/config'
 import useAuthStore from '@feature/auth/state/auth.store'
 import cn from 'classnames'
@@ -77,9 +77,9 @@ export const SignUp = () => {
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
       <div className="flex flex-col space-y-1">
-        <FormTitle>
+        <H1>
           <FormattedMessage id="auth_form_register" />
-        </FormTitle>
+        </H1>
         <FormSub>
           <FormattedMessage id="auth_form_register_sub" />
         </FormSub>
