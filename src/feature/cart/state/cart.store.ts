@@ -10,7 +10,7 @@ const initial = {
   error: null,
   showCart: false,
   favorites: [],
-  showWishlist: false,
+  showFavorites: false,
 }
 
 const useCartStore = create(
@@ -140,7 +140,7 @@ const useCartStore = create(
             set(state => ({ ...state, fetching: false, error }))
           }
         },
-        addToWishlist: (product: Product) => {
+        addToFavorites: (product: Product) => {
           try {
             set(state => ({ ...state, fetching: true }))
             set(state => {
@@ -156,7 +156,7 @@ const useCartStore = create(
                       product,
                     },
                   ],
-                  showWishlist: !state.showWishlist && true,
+                  showFavorites: !state.showFavorites && true,
                 }
               } else return {}
             })
@@ -166,7 +166,7 @@ const useCartStore = create(
             set(state => ({ ...state, fetching: false, error }))
           }
         },
-        removeFromWishlist: (productId: string) => {
+        removeFromFavorites: (productId: string) => {
           try {
             set(state => ({ ...state, fetching: true }))
             set(state => {
@@ -183,9 +183,9 @@ const useCartStore = create(
             set(state => ({ ...state, fetching: false, error }))
           }
         },
-        toggleWishlist: () => {
+        toggleFavorites: () => {
           try {
-            set(state => ({ ...state, showWishlist: !state.showWishlist }))
+            set(state => ({ ...state, showFavorites: !state.showFavorites }))
           } catch (e: any) {
             const error = formatError(e)
             set(state => ({ ...state, fetching: false, error }))

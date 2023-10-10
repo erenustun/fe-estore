@@ -26,6 +26,7 @@ export * from './TextLink'
 
 export * from './Layout/Box'
 export * from './Layout/Container'
+export * from './Layout/Divider'
 export * from './Layout/FlexBox'
 export * from './Layout/Layout'
 

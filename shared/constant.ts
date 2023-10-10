@@ -21,3 +21,6 @@ export const LANGUAGE_LIST = [
     intl: 'nl',
   },
 ]
+
+export const FREE_SHIPPING_AFTER = 45
+export const SHIPPING_COST = 7

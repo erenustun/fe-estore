@@ -20,8 +20,8 @@ export interface ICartStore {
   increase: (productId: string) => void
   decrease: (productId: string) => void
   favorites: IWishlist[] | []
-  addToWishlist: (product: Product) => void | ICartStore | Partial<ICartStore>
-  removeFromWishlist: (productId: string) => void
-  showWishlist: boolean
-  toggleWishlist: () => void
+  addToFavorites: (product: Product) => void | ICartStore | Partial<ICartStore>
+  removeFromFavorites: (productId: string) => void
+  showFavorites: boolean
+  toggleFavorites: () => void
 }
