@@ -1,4 +1,4 @@
-import { Button, FlexBox, Loader, PageHeading } from '@component'
+import { Button, FlexBox, PageHeading } from '@component'
 import { useQuery } from '@apollo/client'
 import FetchProducts from '@feature/product/graphql/fetch-products.graphql'
 import {
