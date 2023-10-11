@@ -20,7 +20,7 @@ export const HomeView = () => {
         />
         <FlexBox
           direction="col"
-          className="absolute left-1/2 top-1/2 -mt-20 hidden w-full -translate-x-1/2 -translate-y-1/2 items-center justify-center gap-y-4 rounded-lg bg-slate-950 px-1 py-10 text-center opacity-80 lg:flex lg:w-auto"
+          className="absolute left-1/2 top-1/2 -mt-20 hidden w-full -translate-x-1/2 -translate-y-1/2 items-center justify-center gap-y-4 rounded-lg bg-slate-950 px-1 py-10 text-center opacity-80 lg:flex lg:w-auto 2xl:mt-40"
         >
           <H1>
             <FormattedMessage id="app_home_hero_heading" />

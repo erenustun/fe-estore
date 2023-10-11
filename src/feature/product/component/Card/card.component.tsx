@@ -22,7 +22,7 @@ export const Card = (product: Product) => {
             src={`${process.env.NEXT_PUBLIC_BACKEND_HOST}${
               product.thumbnail as string
             }`}
-            className="fit h-80 w-full rounded-sm object-scale-down focus:outline-none"
+            className="fit 8xl:h-80 h-60 w-full rounded-sm object-scale-down focus:outline-none md:h-64"
             loading="lazy"
             width="512"
             height="512"
