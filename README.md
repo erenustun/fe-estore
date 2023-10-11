@@ -47,12 +47,9 @@ npm run dev
 ```
 
 ### Demo accounts:
-```bash
-# Email
-customer@webstorehub.io
-# Password
-password
-```
+| E-Mail | Password | Account type |
+|---|---|---|
+| customer@webstorehub.io | password | Customer |
 
 ### NextJS application (Demo)
 ```bash
