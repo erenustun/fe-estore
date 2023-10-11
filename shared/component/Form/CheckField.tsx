@@ -33,7 +33,7 @@ export const CheckField = ({
       {active ? (
         <CheckCircleIcon className="h-5 w-5 text-teal-300" />
       ) : (
-        <div className="ml-1 h-4 w-4 rounded-full border-2 border-slate-800 bg-transparent" />
+        <div className="ml-1 h-4 w-4 rounded-full border-2 border-slate-600 bg-transparent" />
       )}
     </FlexBox>
     <p className="ml-2 mt-1 text-sm leading-normal">{label ?? value}</p>

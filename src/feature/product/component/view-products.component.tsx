@@ -1,4 +1,4 @@
-import { Button, FlexBox, Loader, PageHeading } from '@component'
+import { Button, FlexBox, PageHeading } from '@component'
 import { useQuery } from '@apollo/client'
 import FetchProducts from '@feature/product/graphql/fetch-products.graphql'
 import {
@@ -68,8 +68,6 @@ export const ViewProducts = () => {
     }, 200)
   }, [query.take])
 
-  if (loading) return <Loader loading={loading} />
-
   //const image = `${process.env.NEXT_PUBLIC_BACKEND_HOST}/images/category/smartphone.jpg`
   const image = `${process.env.NEXT_PUBLIC_BACKEND_HOST}/images/category/mobile.jpg`
   return (
@@ -77,14 +75,14 @@ export const ViewProducts = () => {
       labelLocale="product_smartphone_view_index"
       image={image}
       subLabelLocale={
-        data.products?.data && take !== PAGINATION_TAKE_DEFAULT
+        data?.products?.data && take !== PAGINATION_TAKE_DEFAULT
           ? 'product_index_count_of'
           : data?.products?.count > 1
           ? 'product_index_count'
           : 'product_index_single_count'
       }
       subLabelValues={
-        data.products?.data && take !== PAGINATION_TAKE_DEFAULT
+        data?.products?.data && take !== PAGINATION_TAKE_DEFAULT
           ? {
               currentCount: data.products?.data?.length,
               total: data?.products?.count,
@@ -103,7 +101,7 @@ export const ViewProducts = () => {
       <ProductGrid
         error={error}
         loading={loading}
-        productData={data.products?.data}
+        productData={data?.products?.data}
       />
 
       <div id="bottom-scroll-after-loading-more-data"></div>
@@ -111,18 +109,20 @@ export const ViewProducts = () => {
       <FlexBox
         className={cn(
           'w-full items-center justify-center gap-y-2',
-          data?.products?.count > data.products?.data?.length ? 'mt-14' : 'mt-2'
+          data?.products?.count > data?.products?.data?.length
+            ? 'mt-14'
+            : 'mt-2'
         )}
         direction="col"
       >
         <FormattedMessage
           id="product_index_count_of"
           values={{
-            currentCount: data.products?.data?.length,
+            currentCount: data?.products?.data?.length,
             total: data?.products?.count,
           }}
         />
-        {data?.products?.count > data.products?.data?.length && (
+        {data?.products?.count > data?.products?.data?.length && (
           <Button onClick={() => showMoreItems(take)} style="primary">
             <FormattedMessage id="product_view_load_more" />
           </Button>
