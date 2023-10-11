@@ -46,6 +46,14 @@ Clone the project, navigate into project directory & install dependencies:
 npm run dev
 ```
 
+### Demo accounts:
+```bash
+# Email
+customer@webstorehub.io
+# Password
+password
+```
+
 ### NextJS application (Demo)
 ```bash
 http://localhost:3060
@@ -55,3 +63,4 @@ http://localhost:3060
 - [x] Viewing products in a list and as a single item
 - [x] Adding products to a shopping cart with an input field for quantity (`one-to-many`)
 - [ ] Creating & managing orders
+- [ ] Admin Dashboard
