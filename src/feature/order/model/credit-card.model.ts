@@ -1,12 +1,13 @@
 import { BaseEntity } from '@shared/model'
 import { User } from '@feature/account'
+import { Invoice } from '@feature/order'
 
 export class CreditCard extends BaseEntity {
+  cardType: string
   creditCardNumber: string
   expirationDate: Date
   expirationDateFormatted?: string
-  ccv: number
-  cardType: string
   main?: boolean
+  invoice?: Invoice[]
   user?: User
 }

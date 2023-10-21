@@ -19,7 +19,7 @@ export const themeConfig = {
   /* Background + Border styling */
   mainBackgroundColor: 'bg-slate-200 dark:bg-[#00050D]',
 
-  primaryBackgroundColor: 'bg-[#0A52C7]',
+  primaryBackgroundColor: 'bg-[#2522C7]',
   primaryBackgroundHover: `hover:bg-sky-600 hover:border-sky-600`,
   primaryBackgroundActive: `active:bg-blue-700`,
   primaryBackgroundColorAlt: 'bg-blue-700',
@@ -73,7 +73,7 @@ export const themeConfig = {
   boxMargin: 'mt-5',
 
   /* Button */
-  buttonPadding: 'px-3.5 py-1.5',
+  buttonPadding: 'px-3.5 py-1',
   buttonText: 'font-medium tracking-wide',
 
   /* Container */
@@ -114,7 +114,7 @@ export const themeConfig = {
   h3Size: 'text-lg md:text-xl',
   h4Size: 'text-md md:text-lg',
 
-  bodyTextColor: 'text-slate-700 dark:text-slate-200',
+  bodyTextColor: 'text-slate-700 dark:text-slate-50',
   primaryTextColor: 'text-blue-400 dark:text-blue-500',
   successTextColor: 'text-green-400 dark:text-green-500',
   infoTextColor: 'text-sky-400 dark:text-sky-500',

@@ -1,18 +1,18 @@
-import { OrderHasProduct } from '@feature/order'
+import { Invoice, OrderHasProduct } from '@feature/order'
 import { Address } from '@feature/address'
 import { User } from '@feature/account'
+import { BaseEntity } from '@shared/model'
 
-export class Order {
-  id: number
-  total: number
-  pending: boolean
+export class Order extends BaseEntity {
   cancelled?: Date | null
-  shipped?: Date | null
-  billingAddress?: Address
-  products: OrderHasProduct[]
-  shippingAddress?: Address
-  user?: User | null
   created?: Date
-  updated?: Date
   deleted?: Date
+  deliverTo?: Address
+  invoice?: Invoice
+  pending: boolean
+  products: OrderHasProduct[]
+  shipped?: Date | null
+  total: number
+  updated?: Date
+  user?: User | null
 }

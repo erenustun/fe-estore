@@ -14,8 +14,10 @@ type Address {
   deleted: DateTime
   firstName: String!
   id: String
+  invoice: [Invoice!]
   lastName: String!
   line1: String!
+  order: [Order!]
   phone: String
   primary: Boolean
   state: String!
@@ -36,8 +38,10 @@ input AddressInput {
   companyName: String
   countryCode: Country!
   firstName: String!
+  invoice: [InvoiceInput!]
   lastName: String!
   line1: String!
+  order: [OrderInput!]
   phone: String
   primary: Boolean
   state: String!
@@ -52,25 +56,33 @@ enum AddressType {
   SHIPPING
 }
 
-type BlogPost {
-  content: String!
-  created: DateTime
-  deleted: DateTime
-  id: String
-  subTitle: String
-  title: String!
-  updated: DateTime
-}
-
-input BlogPostInput {
-  content: String!
-  subTitle: String
-  title: String!
-}
-
 input BrandInput {
   name: String!
   product: ProductInput
+}
+
+type Card {
+  cardType: String!
+  created: DateTime
+  creditCardNumber: String!
+  deleted: DateTime
+  expirationDate: DateTime!
+  expirationDateFormatted: String
+  id: String
+  invoice: [Invoice!]
+  main: Boolean
+  updated: DateTime
+  user: User
+}
+
+input CardInput {
+  cardType: String!
+  creditCardNumber: String!
+  expirationDate: DateTime!
+  expirationDateFormatted: String
+  invoice: [InvoiceInput!]
+  main: Boolean
+  user: UserInput
 }
 
 input CategoryInput {
@@ -94,8 +106,10 @@ input CreateAddressInput {
   companyName: String
   countryCode: Country!
   firstName: String!
+  invoice: [InvoiceInput!]
   lastName: String!
   line1: String!
+  order: [OrderInput!]
   phone: String
   primary: Boolean
   state: String!
@@ -106,16 +120,14 @@ input CreateAddressInput {
 }
 
 input CreateCreditCardInput {
-  ccv: Int!
   creditCardNumber: String!
   expirationDate: DateTime!
-  main: Boolean
+  main: Int
 }
 
 input CreateOrderInput {
-  billingTo: String
   products: [AddProductToOrderInput!]!
-  shippingTo: String
+  shipTo: String
   total: Float!
 }
 
@@ -137,30 +149,6 @@ input CreateRatingInput {
   productId: String!
   star: Int!
   text: String!
-}
-
-type CreditCard {
-  cardType: String!
-  ccv: Int!
-  created: DateTime
-  creditCardNumber: String!
-  deleted: DateTime
-  expirationDate: DateTime!
-  expirationDateFormatted: String
-  id: String
-  main: Boolean
-  updated: DateTime
-  user: User
-}
-
-input CreditCardInput {
-  cardType: String!
-  ccv: Int!
-  creditCardNumber: String!
-  expirationDate: DateTime!
-  expirationDateFormatted: String
-  main: Boolean
-  user: UserInput
 }
 
 """
@@ -232,6 +220,24 @@ type IUpdateResponse {
   raw: [String!]!
 }
 
+type Invoice {
+  billTo: Address
+  card: Card
+  created: DateTime
+  deleted: DateTime
+  id: String
+  order: Order
+  paid: DateTime
+  updated: DateTime
+}
+
+input InvoiceInput {
+  billTo: AddressInput
+  card: CardInput
+  order: OrderInput
+  paid: DateTime
+}
+
 input LoginInput {
   email: String!
   password: String!
@@ -245,7 +251,7 @@ type Mutation {
   createAddress(data: CreateAddressInput!): Address!
   createBrand(name: String!): ProductBrand!
   createCategory(name: String!): ProductCategory!
-  createCreditCard(data: CreateCreditCardInput!): CreditCard!
+  createCreditCard(data: CreateCreditCardInput!): Card!
   createOrder(data: CreateOrderInput!): Order!
   createProduct(data: CreateProductInput!): Product!
   createRating(data: CreateRatingInput!): ProductRating!
@@ -278,15 +284,15 @@ type Mutation {
 }
 
 type Order {
-  billingAddress: Address
   cancelled: DateTime
   created: DateTime
   deleted: DateTime
+  deliverTo: Address
   id: Float!
+  invoice: Invoice
   pending: Boolean!
   products: [OrderHasProduct!]!
   shipped: DateTime
-  shippingAddress: Address
   total: Float!
   updated: DateTime
   user: User
@@ -307,15 +313,15 @@ input OrderHasProductInput {
 }
 
 input OrderInput {
-  billingAddress: AddressInput
   cancelled: DateTime
   created: DateTime
   deleted: DateTime
+  deliverTo: AddressInput
   id: Float!
+  invoice: InvoiceInput
   pending: Boolean!
   products: [OrderHasProductInput!]!
   shipped: DateTime
-  shippingAddress: AddressInput
   total: Float!
   updated: DateTime
   user: UserInput
@@ -467,10 +473,9 @@ input ProductsFetchResponseInput {
 type Query {
   address(filterArgs: AddressFilterArgsInput, id: String!): Address!
   addresses(filterArgs: AddressFilterArgsInput): [Address!]!
-  blogPosts: [BlogPost!]!
   brands: [ProductBrand!]!
   categories: [ProductCategory!]!
-  creditCards: [CreditCard!]!
+  creditCards: [Card!]!
   currentOrders: [Order!]!
   fetchCustomer: User!
   groupedBrand: [GroupedBrandResponse!]!
@@ -503,7 +508,7 @@ input RegisterInput {
   activationToken: String
   address: [AddressInput!]
   avatar: String
-  creditCards: [CreditCardInput!]
+  creditCards: [CardInput!]
   email: String!
   emailToken: String
   firstName: String!
@@ -574,8 +579,10 @@ input UpdateAddressInput {
   deleted: DateTime
   firstName: String
   id: String
+  invoice: [InvoiceInput!]
   lastName: String
   line1: String
+  order: [OrderInput!]
   phone: String
   primary: Boolean
   state: String
@@ -606,7 +613,7 @@ input UpdateUserInput {
   address: [AddressInput!]
   avatar: String
   created: DateTime
-  creditCards: [CreditCardInput!]
+  creditCards: [CardInput!]
   deleted: DateTime
   email: String
   emailToken: String
@@ -627,7 +634,7 @@ type User {
   address: [Address!]
   avatar: String
   created: DateTime
-  creditCards: [CreditCard!]
+  creditCards: [Card!]
   deleted: DateTime
   email: String!
   emailToken: String
@@ -647,7 +654,7 @@ input UserInput {
   activationToken: String
   address: [AddressInput!]
   avatar: String
-  creditCards: [CreditCardInput!]
+  creditCards: [CardInput!]
   email: String!
   emailToken: String
   firstName: String!

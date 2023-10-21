@@ -8,8 +8,8 @@ const AccountOrders = () => {
     <>
       <Head>
         <title>
-          {intl.formatMessage({ id: 'navigation_orders' })} -{' '}
-          {intl.formatMessage({ id: 'app_slogan' })} -{' '}
+          {intl.formatMessage({ id: 'header_navigation_user_orders' })} -{' '}
+          {intl.formatMessage({ id: 'app_slogan' })} -
           {intl.formatMessage({ id: 'app_domain' })}
         </title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />

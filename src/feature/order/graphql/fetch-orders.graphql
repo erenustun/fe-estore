@@ -23,7 +23,7 @@ query Orders {
     user {
       id
     }
-    shippingAddress {
+    deliverTo {
       firstName
       lastName
       line1
@@ -33,15 +33,18 @@ query Orders {
       primary
       type
     }
-    billingAddress {
-      firstName
-      lastName
-      line1
-      zipCode
-      state
-      countryCode
-      primary
-      type
+    invoice {
+      paid
+      billTo {
+        firstName
+        lastName
+        line1
+        zipCode
+        state
+        countryCode
+        primary
+        type
+      }
     }
   }
 }

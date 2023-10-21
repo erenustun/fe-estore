@@ -1,6 +1,7 @@
 import tw from 'tailwind-styled-components'
 import { themeConfig } from '@shared/config'
 import { PropsWithChildren, useCallback } from 'react'
+import cn from 'classnames'
 
 interface ButtonProps {
   style?:
@@ -17,6 +18,7 @@ interface ButtonProps {
 }
 
 const ButtonBase = tw.button<ButtonProps>`
+  ${() => themeConfig.bodyTextColor}
   ${() => themeConfig.buttonText}
   ${() => themeConfig.buttonPadding}
   ${() => themeConfig.animationTransition}
@@ -27,7 +29,7 @@ const ButtonBase = tw.button<ButtonProps>`
   items-center 
   justify-center
   transform 
-  hover:scale-[101%]
+  hover:scale-[102%]
   cursor-pointer
 `
 
@@ -130,7 +132,7 @@ export const Button = ({
       switch (style) {
         case 'primary':
           return (
-            <PrimarySolidButton onClick={onClick} className={className}>
+            <PrimarySolidButton onClick={onClick} className={cn(className, '')}>
               {children}
             </PrimarySolidButton>
           )
