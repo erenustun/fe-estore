@@ -105,165 +105,167 @@ export const CreateAddress = () => {
   }
 
   return (
-    <Container className="min-h-[62rem] flex-row">
-      <Form
-        onSubmit={handleSubmit(onSubmit)}
-        loading={isSubmitting}
-        className="w-3/5"
-      >
-        <Select
-          name="title"
-          label={<FormattedMessage id="address_form_title" />}
-          register={register}
-          options={FORM_SALUTATIONS}
-          errors={errors}
-          icon={<UserIcon className="h-5 w-5" />}
-          required
-        />
-        <div className="flex flex-row justify-between">
-          <Input
-            autoFocus
-            errors={errors}
-            label={<FormattedMessage id="address_form_firstName" />}
-            name="firstName"
-            placeholder={intl.formatMessage({
-              id: 'address_form_firstName',
-            })}
-            register={register}
-            required
-            type="text"
-            noIcon
-          />
-          <Input
-            errors={errors}
-            label={<FormattedMessage id="address_form_lastName" />}
-            name="lastName"
-            placeholder={intl.formatMessage({
-              id: 'address_form_lastName',
-            })}
-            register={register}
-            required
-            type="text"
-            noIcon
-          />
-        </div>
-        <Input
-          errors={errors}
-          icon={<DevicePhoneMobileIcon className="h-5 w-5" />}
-          label={<FormattedMessage id="address_form_phone" />}
-          name="phone"
-          placeholder={intl.formatMessage({ id: 'address_form_phone' })}
-          register={register}
-          type="text"
-        />
-        <Input
-          errors={errors}
-          icon={<HomeIcon className="h-5 w-5" />}
-          label={<FormattedMessage id="address_form_street_address" />}
-          name="line1"
-          placeholder={intl.formatMessage({
-            id: 'address_form_street_address',
-          })}
-          register={register}
-          required
-          type="text"
-        />
-        <section className="flex space-x-4">
-          <Input
-            className="w-11/12"
-            errors={errors}
-            label={<FormattedMessage id="address_form_state" />}
-            name="state"
-            placeholder={intl.formatMessage({ id: 'address_form_state' })}
-            register={register}
-            required
-            type="text"
-            noIcon
-          />
-          <Input
-            errors={errors}
-            label={<FormattedMessage id="address_form_zip_code" />}
-            name="zipCode"
-            placeholder={intl.formatMessage({
-              id: 'address_form_zip_code',
-            })}
-            register={register}
-            required
-            type="text"
-            noIcon
-          />
-        </section>
-        <section className="flex flex-col gap-y-5">
+    <Container className="w-full flex-row justify-center">
+      <div>
+        <Form
+          onSubmit={handleSubmit(onSubmit)}
+          loading={isSubmitting}
+          className=""
+        >
           <Select
-            name="countryCode"
-            label={<FormattedMessage id="address_form_country" />}
+            name="title"
+            label={<FormattedMessage id="address_form_title" />}
             register={register}
-            required
-            options={[
-              {
-                name: 'Please choose',
-                value: 0,
-              },
-              {
-                value: 'AT',
-                name: <FormattedMessage id="AT" />,
-              },
-              {
-                value: 'DE',
-                name: <FormattedMessage id="DE" />,
-              },
-              {
-                value: 'FR',
-                name: <FormattedMessage id="FR" />,
-              },
-              {
-                value: 'IT',
-                name: <FormattedMessage id="IT" />,
-              },
-              {
-                value: 'NL',
-                name: <FormattedMessage id="NL" />,
-              },
-              {
-                value: 'PL',
-                name: <FormattedMessage id="PL" />,
-              },
-              {
-                value: 'ES',
-                name: <FormattedMessage id="ES" />,
-              },
-              {
-                value: 'CH',
-                name: <FormattedMessage id="CH" />,
-              },
-              {
-                value: 'UK',
-                name: <FormattedMessage id="UK" />,
-              },
-            ]}
+            options={FORM_SALUTATIONS}
             errors={errors}
-            icon={<GlobeAltIcon className="h-5 w-5" />}
+            icon={<UserIcon className="h-5 w-5" />}
+            required
+          />
+          <div className="flex flex-row justify-between gap-x-4">
+            <Input
+              autoFocus
+              errors={errors}
+              label={<FormattedMessage id="address_form_firstName" />}
+              name="firstName"
+              placeholder={intl.formatMessage({
+                id: 'address_form_firstName',
+              })}
+              register={register}
+              required
+              type="text"
+              noIcon
+            />
+            <Input
+              errors={errors}
+              label={<FormattedMessage id="address_form_lastName" />}
+              name="lastName"
+              placeholder={intl.formatMessage({
+                id: 'address_form_lastName',
+              })}
+              register={register}
+              required
+              type="text"
+              noIcon
+            />
+          </div>
+          <Input
+            errors={errors}
+            icon={<DevicePhoneMobileIcon className="h-5 w-5" />}
+            label={<FormattedMessage id="address_form_phone" />}
+            name="phone"
+            placeholder={intl.formatMessage({ id: 'address_form_phone' })}
+            register={register}
+            type="text"
           />
           <Input
-            className="ml-1 flex flex-row-reverse gap-x-2 self-start"
             errors={errors}
-            label={<FormattedMessage id="address_form_primary" />}
-            name="primary"
+            icon={<HomeIcon className="h-5 w-5" />}
+            label={<FormattedMessage id="address_form_street_address" />}
+            name="line1"
+            placeholder={intl.formatMessage({
+              id: 'address_form_street_address',
+            })}
             register={register}
-            type="checkbox"
+            required
+            type="text"
           />
-        </section>
-        <Button className="flex self-end">
-          <FormattedMessage id="address_form_create_save" />
-        </Button>
-        {isSubmitting && <H2>Loading</H2>}
-      </Form>
-      <Loader
-        message={<FormattedMessage id="address_form_create_saving" />}
-        loading={isSubmitting}
-      />
-      <div className="flex w-64 self-start"></div>
-      <section className={cn('w-4/5 pl-5', themeConfig.boxMargin)}></section>
+          <section className="flex gap-x-4">
+            <Input
+              className="w-11/12"
+              errors={errors}
+              label={<FormattedMessage id="address_form_state" />}
+              name="state"
+              placeholder={intl.formatMessage({ id: 'address_form_state' })}
+              register={register}
+              required
+              type="text"
+              noIcon
+            />
+            <Input
+              errors={errors}
+              label={<FormattedMessage id="address_form_zip_code" />}
+              name="zipCode"
+              placeholder={intl.formatMessage({
+                id: 'address_form_zip_code',
+              })}
+              register={register}
+              required
+              type="text"
+              noIcon
+            />
+          </section>
+          <section className="flex flex-col gap-y-5">
+            <Select
+              name="countryCode"
+              label={<FormattedMessage id="address_form_country" />}
+              register={register}
+              required
+              options={[
+                {
+                  name: 'Please choose',
+                  value: 0,
+                },
+                {
+                  value: 'AT',
+                  name: <FormattedMessage id="AT" />,
+                },
+                {
+                  value: 'DE',
+                  name: <FormattedMessage id="DE" />,
+                },
+                {
+                  value: 'FR',
+                  name: <FormattedMessage id="FR" />,
+                },
+                {
+                  value: 'IT',
+                  name: <FormattedMessage id="IT" />,
+                },
+                {
+                  value: 'NL',
+                  name: <FormattedMessage id="NL" />,
+                },
+                {
+                  value: 'PL',
+                  name: <FormattedMessage id="PL" />,
+                },
+                {
+                  value: 'ES',
+                  name: <FormattedMessage id="ES" />,
+                },
+                {
+                  value: 'CH',
+                  name: <FormattedMessage id="CH" />,
+                },
+                {
+                  value: 'UK',
+                  name: <FormattedMessage id="UK" />,
+                },
+              ]}
+              errors={errors}
+              icon={<GlobeAltIcon className="h-5 w-5" />}
+            />
+            <Input
+              className="ml-1 flex flex-row-reverse gap-x-2 self-start"
+              errors={errors}
+              label={<FormattedMessage id="address_form_primary" />}
+              name="primary"
+              register={register}
+              type="checkbox"
+            />
+          </section>
+          <Button className="flex self-end">
+            <FormattedMessage id="address_form_create_save" />
+          </Button>
+          {isSubmitting && <H2>Loading</H2>}
+        </Form>
+        <Loader
+          message={<FormattedMessage id="address_form_create_saving" />}
+          loading={isSubmitting}
+        />
+        <div className="flex w-64 self-start"></div>
+        <section className={cn('w-4/5 pl-5', themeConfig.boxMargin)}></section>
+      </div>
     </Container>
   )
 }
