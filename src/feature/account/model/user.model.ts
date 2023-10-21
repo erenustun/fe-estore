@@ -1,6 +1,5 @@
 import { Address } from '@feature/address'
-import { CreditCard } from '@feature/account'
-import { Order } from '@feature/order'
+import { Order, CreditCard } from '@feature/order'
 import { ProductRating } from '@feature/product'
 import { BaseEntity } from '@shared/model'
 

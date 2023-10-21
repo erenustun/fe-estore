@@ -1,6 +1,7 @@
 import { PropsWithChildren } from 'react'
 import { FlexBox } from '@shared/component'
 import { themeConfig } from '@shared/config'
+import cn from 'classnames'
 
 interface AnimateInProps {
   direction: 'to-top' | 'to-right' | 'to-bottom' | 'to-left'
@@ -13,7 +14,8 @@ export const AnimateIn = ({
   show,
 }: PropsWithChildren<AnimateInProps>) => (
   <FlexBox
-    className={`gap-x-4 rounded transition duration-300 ease-in-out ${
+    className={cn(
+      'gap-x-4 rounded transition duration-300 ease-in-out',
       show
         ? direction === 'to-top'
           ? `${themeConfig.animationStartToTop} z-10 opacity-100`
@@ -33,7 +35,7 @@ export const AnimateIn = ({
         : direction === 'to-left'
         ? `${themeConfig.animationEndToLeft} z-10 opacity-0`
         : null
-    }`}
+    )}
   >
     {show && children}
   </FlexBox>
