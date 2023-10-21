@@ -90,11 +90,13 @@ export const PaymentMethod = () => {
                   id={'checkout_view_payment_invoice_address'}
                 />
               </p>
-              <p className={'flex flex-col font-light'}>
-                <span>{`${billingData?.addresses[0]?.firstName} ${billingData?.addresses[0]?.lastName}`}</span>
-                <span>{`${billingData?.addresses[0]?.line1}`}</span>
-                <span>{`${billingData?.addresses[0]?.countryCode}-${billingData?.addresses[0]?.zipCode} ${billingData?.addresses[0]?.state}`}</span>
-              </p>
+              {!billingLoading && (
+                <p className={'flex flex-col font-light'}>
+                  <span>{`${billingData?.addresses[0]?.firstName} ${billingData?.addresses[0]?.lastName}`}</span>
+                  <span>{`${billingData?.addresses[0]?.line1}`}</span>
+                  <span>{`${billingData?.addresses[0]?.countryCode}-${billingData?.addresses[0]?.zipCode} ${billingData?.addresses[0]?.state}`}</span>
+                </p>
+              )}
             </div>
           </>
         )}
