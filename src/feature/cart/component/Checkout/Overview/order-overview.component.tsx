@@ -1,11 +1,8 @@
 import React from 'react'
 import { FormattedMessage } from 'react-intl'
-import { Button, Currency, Divider, FlexBox, H3, H4 } from '@component'
+import { Currency, Divider, FlexBox, H3, H4 } from '@component'
 import { ListBulletIcon } from '@heroicons/react/24/solid'
-import useCartStore, {
-  useCartItems,
-  useCartTotal,
-} from '@feature/cart/state/cart.store'
+import useCartStore, { useCartTotal } from '@feature/cart/state/cart.store'
 import { shallow } from 'zustand/shallow'
 import Image from 'next/image'
 import { ProductStock } from '@feature/product'
@@ -15,7 +12,6 @@ export const OrderOverview = () => {
   const { cart } = useCartStore(state => state, shallow)
 
   const cartTotal = useCartTotal()
-  const cartItems = useCartItems()
 
   return (
     <div className={'space-y-2.5'}>
