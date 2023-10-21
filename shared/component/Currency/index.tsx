@@ -21,6 +21,7 @@ export const Currency = ({
         : `${CURRENCY_CODE} ${amount}.00`
       : decimalCount(amount) === 1
       ? `${CURRENCY_CODE} ${amount}0`
-      : `${CURRENCY_CODE} ${amount}`}
+      : `${CURRENCY_CODE} ${Math.round(amount)}.-`}{' '}
+    {/*round properly 389.312 --> 389.35*/}
   </div>
 )
